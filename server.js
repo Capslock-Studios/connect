@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
-const app = express();
 
+const app = express();
 
 // Middleware
 app.use(cors());
@@ -12,9 +12,12 @@ app.use(express.json());
 
 // Connect to MongoDB Atlas
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+  .catch((err) => {
+      console.error("❌ MongoDB Connection Error:", err);
+      process.exit(1); // Exit process if DB fails to connect
+  });
 
 // User Schema
 const userSchema = new mongoose.Schema({
@@ -73,10 +76,18 @@ app.post("/api/users", async (req, res) => {
 
 // GET: Retrieve Users
 app.get("/api/users", async (req, res) => {
-    const users = await User.find().select("-passwordHash"); // Don't send hashed passwords
-    res.json(users);
+    try {
+        const users = await User.find().select("-passwordHash"); // Don't send hashed passwords
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to fetch users" });
+    }
 });
 
-// Start Server
+// Start Server with proper error handling
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+}).on("error", (err) => {
+    console.error("❌ Server failed to start:", err);
+});
