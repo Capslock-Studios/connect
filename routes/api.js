@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("/models/User"); // Adjust path based on your structure
+const User = require("../models/user"); // Adjust path based on your structure
 
 // Test Route
 router.get("/", (req, res) => {
