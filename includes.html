@@ -13,6 +13,35 @@
 </head>
 <body>
     <div class="container">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #ip {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+    <p id="ip">Fetching...</p>
+    
+    <script>
+        async function fetchIP() {
+            try {
+                let response = await fetch('https://api64.ipify.org?format=json');
+                let data = await response.json();
+                document.getElementById('ip').innerText = `Your IP: ${data.ip}`;
+            } catch (error) {
+                document.getElementById('ip').innerText = 'Failed to fetch IP';
+                console.error('Error fetching IP:', error);
+            }
+        }
+        
+        fetchIP();
+    </script>
         <h1>WhatsNext Data Test</h1>
         <div class="data-section">
             <h2>Users</h2>
