@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsNext Data Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        form { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        input, select, button { display: block; width: 100%; margin-bottom: 10px; padding: 8px; }
+        button { background: blue; color: white; border: none; cursor: pointer; }
+        button:hover { background: darkblue; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WhatsNext Database Test</h1>
+
+        <!-- Savvy Form -->
+        <form id="savvyForm">
+            <h2>Create Savvy</h2>
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <input type="text" name="creatorId" placeholder="Creator ID (Optional)">
+            <input type="email" name="creatorEmail" placeholder="Creator Email" required>
+            <input type="tel" name="creatorPhone" placeholder="Creator Phone" required>
+            <input type="text" name="location" placeholder="Latitude, Longitude">
+            <button type="submit">Submit Savvy</button>
+        </form>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
