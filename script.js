@@ -1,17 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const userForm = document.getElementById("userForm");
-
-    if (!userForm) {
-        console.error("❌ Error: userForm not found!");
-        return;
-    }
-
     // Function to get user location and autofill input field
     function getUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    document.querySelector('[name="location"]').value = `${position.coords.latitude}, ${position.coords.longitude}`;
+                    document.querySelector('[name="location"]').value = 
+                        `${position.coords.latitude}, ${position.coords.longitude}`;
                 },
                 (error) => {
                     alert("❌ Failed to get location: " + error.message);
@@ -22,45 +16,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Attach geolocation function to button
-    const locationButton = document.querySelector('button[onclick="getUserLocation()"]');
+    // Attach geolocation function to button (better selection)
+    const locationButton = document.getElementById("getLocationBtn");
     if (locationButton) {
         locationButton.addEventListener("click", getUserLocation);
     }
 
-    userForm.addEventListener("submit", async function (e) {
-        e.preventDefault(); // Prevent page reload
+    // Attach submit event listeners to all forms dynamically
+    document.querySelectorAll("form").forEach(form => {
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault(); // Prevent page reload
+            
+            const formData = new FormData(form);
+            const jsonObject = Object.fromEntries(formData.entries());
 
-        const formData = {
-            name: this.name.value,
-            email: this.email.value,
-            password: this.password.value,
-            phoneNumber: this.phoneNumber.value || null,
-            profilePicture: this.profilePicture.value || null,
-            location: this.location.value || null,
-            role: this.role.value
-        };
+            // Determine entity based on form ID
+            const entity = form.id.replace("Form", ""); // E.g., "user" from "userForm"
+            const apiUrl = `https://dbconn-b837.onrender.com/api/${entity}s`; // e.g., /api/users, /api/companies
 
-        // Use Netlify Environment Variable or Render Fallback
-        const API_URL = window.API_URL || "https://dbconn-b837.onrender.com/api/users"; 
+            try {
+                const response = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(jsonObject),
+                });
 
-        try {
-            // Fetch existing users (GET request)
-            let usersResponse = await fetch(API_URL);
-            let usersData = await usersResponse.json();
-            console.log("Existing Users:", usersData);
-
-            // Create a new user (POST request)
-            let response = await fetch(API_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
-            });
-
-            let result = await response.json();
-            alert("✅ User Created: " + JSON.stringify(result));
-        } catch (error) {
-            console.error("❌ Error:", error);
-        }
+                const result = await response.json();
+                if (response.ok) {
+                    alert(`${entity} submitted successfully!`);
+                    form.reset(); // Clear form
+                } else {
+                    alert(`Error: ${result.message}`);
+                }
+            } catch (error) {
+                alert("Failed to submit. Check your API connection.");
+                console.error("Submission Error:", error);
+            }
+        });
     });
 });
