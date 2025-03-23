@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const app = express();
 
-// ✅ Allow both Netlify sites
+// ✅ CORS Configuration
 const allowedOrigins = [
     "https://testmapspulse.netlify.app",
     "https://mongo-piano.netlify.app"
@@ -20,23 +20,33 @@ const corsOptions = {
             callback(new Error("CORS not allowed for this origin"));
         }
     },
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
+    methods: "GET,POST,PUT,DELETE,OPTIONS",
+    allowedHeaders: "Content-Type,Authorization",
+    credentials: true,
+    optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Handle preflight requests globally
 app.use(express.json());
 
 // ✅ MongoDB Connection
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+  })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => {
-    console.error("❌ MongoDB Connection Error:", err);
-    process.exit(1);
+      console.error("❌ MongoDB Connection Error:", err);
   });
 
-// ✅ API Routes (Make sure `api.js` contains these routes)
+// Prevent server crash if MongoDB disconnects
+mongoose.connection.on("error", err => {
+    console.error("❌ MongoDB Error:", err);
+});
+
+// ✅ API Routes
 const userRoutes = require("./routes/api");
 app.use("/api", userRoutes);
 
