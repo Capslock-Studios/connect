@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://testmapspulse.netlify.app/",  //  Netlify URL
+  origin: "https://testmapspulse.netlify.app",  //  Netlify URL
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization"
 };
