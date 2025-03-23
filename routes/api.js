@@ -4,7 +4,7 @@ const User = require("../models/user");
 const Company = require("../models/company");
 const Post = require("../models/post");
 const Product = require("../models/product");
-const Savvy = require("../models/savvy");
+const Savvy = require("../models/trendSavvy");
 const Petition = require("../models/petition");
 const ClickTracking = require("../models/clickTracking");
 
