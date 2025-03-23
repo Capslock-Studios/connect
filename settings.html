@@ -16,6 +16,7 @@
 <body>
     <h2>Company Logos</h2>
     <div class="logo-container" id="logoContainer"></div>
+    <button id="addCompanyBtn">Add Company</button>
     
     <div class="details" id="companyDetails">
         <h2 id="companyName"></h2>
@@ -40,7 +41,73 @@
         <div id="products-container"></div>
     </div>
 
+    <div id="addCompanyForm" style="display: none; margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+        <h3>Add New Company</h3>
+        <form id="companyForm">
+            <label>Name: <input type="text" id="name" required></label><br>
+            <label>Category: <input type="text" id="categoryInput" required></label><br>
+            <label>Description: <textarea id="descriptionInput" required></textarea></label><br>
+            <label>Email: <input type="email" id="emailInput" required></label><br>
+            <label>Phone: <input type="tel" id="phoneInput" required></label><br>
+            <label>Logo URL: <input type="url" id="logoInput" required></label><br>
+            <label>Latitude: <input type="text" id="latitudeInput" required></label><br>
+            <label>Longitude: <input type="text" id="longitudeInput" required></label><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
     <script>
+        //modal
+        document.getElementById("addCompanyBtn").addEventListener("click", function () {
+    document.getElementById("addCompanyForm").style.display = "block";
+});
+
+// Handle form submission
+document.getElementById("companyForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    let newCompany = {
+        name: document.getElementById("name").value,
+        category: document.getElementById("categoryInput").value,
+        description: document.getElementById("descriptionInput").value,
+        email: document.getElementById("emailInput").value,
+        phoneNumber: document.getElementById("phoneInput").value,
+        logo: document.getElementById("logoInput").value,
+        location: {
+            latitude: parseFloat(document.getElementById("latitudeInput").value),
+            longitude: parseFloat(document.getElementById("longitudeInput").value)
+        }
+    };
+
+    try {
+        let response = await fetch("https://dbconn-b837.onrender.com/api/companies", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newCompany)
+        });
+
+        if (!response.ok) throw new Error("Failed to add company");
+
+        let createdCompany = await response.json();
+
+        alert("Company added successfully!");
+        document.getElementById("companyForm").reset();
+        document.getElementById("addCompanyForm").style.display = "none";
+
+        // Add new company logo dynamically
+        let logoContainer = document.getElementById("logoContainer");
+        let img = document.createElement("img");
+        img.src = createdCompany.logo;
+        img.className = "logo";
+        img.onclick = () => displayCompanyDetails(createdCompany);
+        logoContainer.appendChild(img);
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error adding company");
+    }
+});
+///
         // Fetch and display posts
         async function fetchPosts(companyId) {
             try {
