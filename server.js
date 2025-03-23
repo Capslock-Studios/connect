@@ -26,6 +26,18 @@ const corsOptions = {
     optionsSuccessStatus: 200
 };
 
+app.get("/api/collections", async (req, res) => {
+  try {
+      const collections = await mongoose.connection.db.listCollections().toArray();
+      const collectionNames = collections.map(col => col.name);
+      res.json(collectionNames);
+  } catch (error) {
+      console.error("❌ Error fetching collections:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions)); // Handle preflight requests globally
 app.use(express.json());
