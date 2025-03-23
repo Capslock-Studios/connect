@@ -5,13 +5,12 @@ require("dotenv").config();
 
 const app = express();
 
-// ✅ Fix: Define allowed origins correctly
+// ✅ Allow both Netlify sites
 const allowedOrigins = [
     "https://testmapspulse.netlify.app",
     "https://mongo-piano.netlify.app"
 ];
 
-// ✅ Fix: Proper CORS middleware
 const corsOptions = {
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -28,9 +27,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// ✅ Fix: Remove duplicate `cors()`
-
-// Connect to MongoDB
+// ✅ MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
@@ -39,11 +36,11 @@ mongoose
     process.exit(1);
   });
 
-// API Routes
+// ✅ API Routes (Make sure `api.js` contains these routes)
 const userRoutes = require("./routes/api");
 app.use("/api", userRoutes);
 
-// Serve Static Files
+// ✅ Serve Static Files
 app.use(express.static("public"));
 
 const PORT = process.env.PORT || 5000;
