@@ -12,7 +12,7 @@ document.getElementById("userForm").addEventListener("submit", async function(e)
     };
 
     try {
-        let response = await fetch("http://localhost:5000/api/users", {
+        let response = await fetch("https://dbconn-b837.onrender.com/api/users", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
