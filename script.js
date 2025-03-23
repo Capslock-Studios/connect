@@ -6,6 +6,28 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    // Function to get user location and autofill input field
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    document.querySelector('[name="location"]').value = `${position.coords.latitude}, ${position.coords.longitude}`;
+                },
+                (error) => {
+                    alert("❌ Failed to get location: " + error.message);
+                }
+            );
+        } else {
+            alert("❌ Geolocation is not supported by your browser.");
+        }
+    }
+
+    // Attach geolocation function to button
+    const locationButton = document.querySelector('button[onclick="getUserLocation()"]');
+    if (locationButton) {
+        locationButton.addEventListener("click", getUserLocation);
+    }
+
     userForm.addEventListener("submit", async function (e) {
         e.preventDefault(); // Prevent page reload
 
