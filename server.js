@@ -4,16 +4,31 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 
+// ✅ Fix: Define allowed origins correctly
+const allowedOrigins = [
+    "https://testmapspulse.netlify.app",
+    "https://mongo-piano.netlify.app"
+];
+
+// ✅ Fix: Proper CORS middleware
 const corsOptions = {
-  origin: "https://testmapspulse.netlify.app",  //  Netlify URL
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization"
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.error("❌ CORS Blocked for:", origin);
+            callback(new Error("CORS not allowed for this origin"));
+        }
+    },
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
 };
 
 app.use(cors(corsOptions));
+app.use(express.json());
+
+// ✅ Fix: Remove duplicate `cors()`
 
 // Connect to MongoDB
 mongoose
@@ -28,7 +43,7 @@ mongoose
 const userRoutes = require("./routes/api");
 app.use("/api", userRoutes);
 
-// Serve Static Files (For `test.html`)
+// Serve Static Files
 app.use(express.static("public"));
 
 const PORT = process.env.PORT || 5000;
