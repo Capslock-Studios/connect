@@ -43,47 +43,55 @@
 <body>
     <h1>Database Collections</h1>
     <div id="collections"></div>
-    
+
     <script>
         async function fetchCollections() {
             try {
-                const collectionsRes = await fetch('https://dbconn-b837.onrender.com/api/collections');
-                if (!collectionsRes.ok) throw new Error('Failed to fetch collections');
+                // Fetch collections list
+                console.log("Fetching collections...");
+                const response = await fetch("https://dbconn-b837.onrender.com/api/collections");
+                if (!response.ok) throw new Error("Failed to fetch collections");
                 
-                const collections = await collectionsRes.json();
-                console.log("Collections:", collections);
-                const container = document.getElementById('collections');
+                const collections = await response.json();
+                console.log("Collections fetched:", collections);
+                
+                const container = document.getElementById("collections");
 
                 for (const collection of collections) {
                     try {
-                        const response = await fetch(`https://dbconn-b837.onrender.com/api/${collection}`);
-                        if (!response.ok) throw new Error(`Failed to fetch ${collection}`);
+                        console.log(`Fetching data from: ${collection}...`);
+                        const dataResponse = await fetch(`https://dbconn-b837.onrender.com/api/${collection}`);
+                        if (!dataResponse.ok) throw new Error(`Failed to fetch ${collection}`);
                         
-                        const data = await response.json();
-                        
-                        const title = document.createElement('h2');
+                        const data = await dataResponse.json();
+                        console.log(`${collection} data:`, data);
+
+                        // Create collection title
+                        const title = document.createElement("h2");
                         title.textContent = collection.charAt(0).toUpperCase() + collection.slice(1);
                         container.appendChild(title);
 
                         if (data.length > 0) {
-                            const table = document.createElement('table');
+                            const table = document.createElement("table");
                             const headers = Object.keys(data[0]);
 
-                            const thead = document.createElement('thead');
-                            const headerRow = document.createElement('tr');
+                            // Table header
+                            const thead = document.createElement("thead");
+                            const headerRow = document.createElement("tr");
                             headers.forEach(header => {
-                                const th = document.createElement('th');
+                                const th = document.createElement("th");
                                 th.textContent = header;
                                 headerRow.appendChild(th);
                             });
                             thead.appendChild(headerRow);
                             table.appendChild(thead);
                             
-                            const tbody = document.createElement('tbody');
+                            // Table body
+                            const tbody = document.createElement("tbody");
                             data.forEach(item => {
-                                const row = document.createElement('tr');
+                                const row = document.createElement("tr");
                                 headers.forEach(header => {
-                                    const td = document.createElement('td');
+                                    const td = document.createElement("td");
                                     td.textContent = item[header] || "N/A";
                                     row.appendChild(td);
                                 });
@@ -92,22 +100,22 @@
                             table.appendChild(tbody);
                             container.appendChild(table);
                         } else {
-                            const emptyMessage = document.createElement('p');
+                            const emptyMessage = document.createElement("p");
                             emptyMessage.textContent = `No data found for ${collection}`;
                             emptyMessage.classList.add("error");
                             container.appendChild(emptyMessage);
                         }
                     } catch (err) {
                         console.error(`Error fetching ${collection}:`, err);
-                        const errorMsg = document.createElement('p');
+                        const errorMsg = document.createElement("p");
                         errorMsg.textContent = `Error fetching ${collection}`;
                         errorMsg.classList.add("error");
                         container.appendChild(errorMsg);
                     }
                 }
             } catch (error) {
-                console.error('Error fetching collections:', error);
-                document.getElementById('collections').innerHTML = '<p class="error">Failed to load collections.</p>';
+                console.error("Error fetching collections:", error);
+                document.getElementById("collections").innerHTML = '<p class="error">Failed to load collections.</p>';
             }
         }
 
