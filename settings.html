@@ -3,126 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsNext Data Test</title>
+    <title>WhatsNext Companies</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        .data-section { margin-bottom: 20px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
-
-        /* Header and Navigation */
-        header {
-            background: #333;
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            transition: 0.3s;
-        }
-        nav ul li a:hover {
-            background: #555;
-            border-radius: 5px;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .logo-container { display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 10px; }
+        .logo { width: 80px; height: 80px; cursor: pointer; border-radius: 50%; object-fit: cover; }
+        .details { margin-top: 20px; padding: 10px; border: 1px solid #ccc; display: none; }
+        .social-links a { margin-right: 10px; }
     </style>
-
-    <!-- Define API URL globally -->
-    <script>
-        window.API_URL = "https://dbconn-b837.onrender.com/api"; 
-    </script>
 </head>
 <body>
-
-<header>
-    <h1>My Site</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/models/user.html">User</a></li>
-            <li><a href="/models/company.html">Company</a></li>
-            <li><a href="/models/product.html">Product</a></li>
-        </ul>
-    </nav>
-</header>
-
-<div class="container">
-    <h1>WhatsNext Data Test</h1>
-
-    <div class="data-section">
-        <h2>Users</h2>
-        <pre id="users">Loading...</pre>
+    <h2>Company Logos</h2>
+    <div class="logo-container" id="logoContainer"></div>
+    
+    <div class="details" id="companyDetails">
+        <h2 id="companyName"></h2>
+        <p><strong>Category:</strong> <span id="category"></span></p>
+        <p><strong>Description:</strong> <span id="description"></span></p>
+        <p><strong>Contact:</strong> <a id="email"></a> | <a id="phone"></a></p>
+        <p><strong>Location:</strong> <span id="location"></span></p>
+        <div class="social-links">
+            <a id="facebook" target="_blank">Facebook</a>
+            <a id="twitter" target="_blank">Twitter</a>
+            <a id="instagram" target="_blank">Instagram</a>
+        </div>
     </div>
-    <div class="data-section">
-        <h2>Companies</h2>
-        <pre id="companies">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Posts</h2>
-        <pre id="posts">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Products</h2>
-        <pre id="products">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Savvys</h2>
-        <pre id="savvys">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Petitions</h2>
-        <pre id="petitions">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Click Tracking</h2>
-        <pre id="clickTracking">Loading...</pre>
-    </div>
-</div>
 
-<!-- Fetch API Data -->
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const apiBaseUrl = window.API_URL; // Uses dynamic API URL
-
-        async function fetchData(endpoint, elementId) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-
-            try {
-                let response = await fetch(`${apiBaseUrl}/${endpoint}`);
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
-                let data = await response.json();
-                element.textContent = JSON.stringify(data, null, 2);
-            } catch (error) {
-                element.textContent = "❌ Error fetching data.";
-                console.error(`❌ Error fetching ${endpoint}:`, error);
-            }
+    <script>
+        async function fetchCompanies() {
+            const response = await fetch('https://dbconn-b837.onrender.com/api/companies');
+            const companies = await response.json();
+            const logoContainer = document.getElementById('logoContainer');
+            
+            companies.forEach(company => {
+                const img = document.createElement('img');
+                img.src = company.logo;
+                img.className = 'logo';
+                img.onclick = () => displayCompanyDetails(company);
+                logoContainer.appendChild(img);
+            });
         }
 
-        // Fetch all data
-        fetchData("users", "users");
-        fetchData("companies", "companies");
-        fetchData("posts", "posts");
-        fetchData("products", "products");
-        fetchData("savvys", "savvys");
-        fetchData("petitions", "petitions");
-        fetchData("click-tracking", "clickTracking");
-    });
-</script>
+        function displayCompanyDetails(company) {
+            document.getElementById('companyName').innerText = company.name;
+            document.getElementById('category').innerText = company.category;
+            document.getElementById('description').innerText = company.description;
+            document.getElementById('email').href = `mailto:${company.email}`;
+            document.getElementById('email').innerText = company.email;
+            document.getElementById('phone').href = `tel:${company.phoneNumber}`;
+            document.getElementById('phone').innerText = company.phoneNumber;
+            
+            document.getElementById('facebook').href = company.socialMedia?.facebook || '#';
+            document.getElementById('twitter').href = company.socialMedia?.twitter || '#';
+            document.getElementById('instagram').href = company.socialMedia?.instagram || '#';
+            
+            getLocationName(company.location.latitude.$numberDouble, company.location.longitude.$numberDouble)
+                .then(suburb => document.getElementById('location').innerText = suburb)
+                .catch(() => document.getElementById('location').innerText = 'Unknown');
+            
+            document.getElementById('companyDetails').style.display = 'block';
+        }
 
-<script src="script.js"></script>
+        async function getLocationName(lat, lon) {
+            const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+            const data = await response.json();
+            return data.address.suburb || data.address.city || 'Unknown';
+        }
 
+        fetchCompanies();
+    </script>
 </body>
 </html>
