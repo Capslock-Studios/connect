@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsNext Data Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: auto; padding: 20px; text-align: center; }
+        .data-section { margin-bottom: 20px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; text-align: left; max-height: 300px; overflow-y: auto; }
+        .pagination button { margin: 5px; padding: 8px 12px; cursor: pointer; }
+        .pagination { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WhatsNext Data Test</h1>
+        <p id="ip">Fetching IP...</p>
+
+        <div class="data-section">
+            <h2>Users</h2>
+            <pre id="users"></pre>
+            <div class="pagination">
+                <button onclick="changePage('users', -1)">⬅️ Prev</button>
+                <span id="usersPage">Page 1</span>
+                <button onclick="changePage('users', 1)">Next ➡️</button>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>Companies</h2>
+            <pre id="companies"></pre>
+            <div class="pagination">
+                <button onclick="changePage('companies', -1)">⬅️ Prev</button>
+                <span id="companiesPage">Page 1</span>
+                <button onclick="changePage('companies', 1)">Next ➡️</button>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>Posts</h2>
+            <pre id="posts"></pre>
+            <div class="pagination">
+                <button onclick="changePage('posts', -1)">⬅️ Prev</button>
+                <span id="postsPage">Page 1</span>
+                <button onclick="changePage('posts', 1)">Next ➡️</button>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>Products</h2>
+            <pre id="products"></pre>
+            <div class="pagination">
+                <button onclick="changePage('products', -1)">⬅️ Prev</button>
+                <span id="productsPage">Page 1</span>
+                <button onclick="changePage('products', 1)">Next ➡️</button>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>Savvys</h2>
+            <pre id="savvys"></pre>
+            <div class="pagination">
+                <button onclick="changePage('savvys', -1)">⬅️ Prev</button>
+                <span id="savvysPage">Page 1</span>
+                <button onclick="changePage('savvys', 1)">Next ➡️</button>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>Petitions</h2>
+            <pre id="petitions"></pre>
+            <div class="pagination">
+                <button onclick="changePage('petitions', -1)">⬅️ Prev</button>
+                <span id="petitionsPage">Page 1</span>
+                <button onclick="changePage('petitions', 1)">Next ➡️</button>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>Click Tracking</h2>
+            <pre id="clickTracking"></pre>
+            <div class="pagination">
+                <button onclick="changePage('click-tracking', -1)">⬅️ Prev</button>
+                <span id="click-trackingPage">Page 1</span>
+                <button onclick="changePage('click-tracking', 1)">Next ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apiBaseUrl = "https://dbconn-b837.onrender.com/api"; // Updated API URL
+        const limit = 5; // Number of items per page
+        let pages = {
+            users: 1,
+            companies: 1,
+            posts: 1,
+            products: 1,
+            savvys: 1,
+            petitions: 1,
+            "click-tracking": 1
+        };
+
+        async function fetchData(endpoint) {
+            const page = pages[endpoint];
+            try {
+                let response = await fetch(`${apiBaseUrl}/${endpoint}?page=${page}&limit=${limit}`);
+                let data = await response.json();
+                
+                // Ensure proper data extraction
+                if (Array.isArray(data)) {
+                    document.getElementById(endpoint).textContent = JSON.stringify(data, null, 2);
+                } else if (data[endpoint]) {
+                    document.getElementById(endpoint).textContent = JSON.stringify(data[endpoint], null, 2);
+                } else {
+                    document.getElementById(endpoint).textContent = "No data available.";
+                }
+                
+                document.getElementById(`${endpoint}Page`).textContent = `Page ${page}`;
+            } catch (error) {
+                document.getElementById(endpoint).textContent = "Error fetching data.";
+                console.error("Error fetching", endpoint, error);
+            }
+        }
+
+        function changePage(endpoint, change) {
+            pages[endpoint] = Math.max(1, pages[endpoint] + change);
+            fetchData(endpoint);
+        }
+
+        async function fetchIP() {
+            try {
+                let response = await fetch('https://api64.ipify.org?format=json');
+                let data = await response.json();
+                document.getElementById('ip').innerText = `Your IP: ${data.ip}`;
+            } catch (error) {
+                document.getElementById('ip').innerText = 'Failed to fetch IP';
+                console.error('Error fetching IP:', error);
+            }
+        }
+
+        // Initial fetch
+        fetchIP();
+        fetchData("users");
+        fetchData("companies");
+        fetchData("posts");
+        fetchData("products");
+        fetchData("savvys");
+        fetchData("petitions");
+        fetchData("click-tracking");
+    </script>
+</body>
+</html>
