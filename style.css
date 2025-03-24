@@ -182,7 +182,7 @@ button:hover::after {
    }
    
    .card-img {
-	background-color: #979797;
+	background-color: #0e0e0e;
 	height: 60%;
 	width: 100%;
 	border-radius: .5rem;
