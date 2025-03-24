@@ -545,8 +545,7 @@ button:hover::after {
 	align-items: center;
 	flex-direction: column;
 	margin-bottom:15px ;
-	margin-top: 40px;
-	
+	margin-top: 60px;
 }
 
 .laptab{
@@ -825,6 +824,406 @@ button:hover::after {
 	flex-grow: 1;
 	border: 1px solid #F3F3F3; background: #ECF0F3; box-shadow: 8px 8px 16px #c3c3c3, -5px -5px 5px #ffffff;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+.tiktok-card {
+	width: 320px;
+	height: 560px;
+	background: black;
+	position: relative;
+	border-radius: 15px;
+	overflow: hidden;
+	box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.video-container {
+	width: 100%;
+	height: 100%;
+}
+
+.video-container iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+/* User Info & Caption */
+.tiktok-user-info {
+	position: absolute;
+	bottom: 70px;
+	left: 15px;
+	color: white;
+}
+
+.tiktok-user-info h4 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.tiktok-user-info p {
+	margin: 5px 0;
+	font-size: 14px;
+}
+
+/* Floating Sidebar */
+.floating-actions {
+	position: absolute;
+	right: 10px;
+	bottom: 60px;
+	text-align: center;
+	color: white;
+}
+
+.floating-actions div {
+	margin: 15px 0;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.floating-actions img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 2px solid white;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.user-card {
+	width: 350px;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.cover-photo {
+	width: 100%;
+	height: 120px;
+	background: url('https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg') no-repeat center/cover;
+	position: relative;
+}
+
+.profile-photo {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	border: 4px solid white;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: -45px;
+}
+
+.user-info {
+	padding: 50px 20px 10px;
+}
+
+.user-info h3 {
+	margin: 0;
+	font-size: 20px;
+	color: #333;
+}
+
+.user-info p {
+	color: gray;
+	font-size: 14px;
+	margin: 5px 0;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.formb {
+	background: #faa12c;
+	color: white;
+	border: none;
+	padding: 8px 15px;
+	cursor: pointer;
+	font-size: 14px;
+	border-radius: 18px;
+	border: solid 2px #fff;
+	margin: 5px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.26);
+}
+
+.formb:hover {
+	background: #f5ba6d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.logo {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 50%; /* Makes the image round */
+    object-fit: cover; /* Ensures the image fits well */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.logo:hover {
+    transform: scale(0.5); /* Slightly enlarges on hover */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Increases shadow on hover */
+}
+
+
+.modal { 
+	display: none; 
+	position: fixed; 
+	top: 50%; left: 50%; 
+	transform: translate(-50%, -50%); 
+	background: white; padding: 20px; 
+	border-radius: 15px; 
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
+z-index: 99999;
+	padding: 10px; 
+	border: 1px solid #ccc;
+}
+        .modal.active { display: block; }
+        .modal form { display: flex; 
+			flex-direction: column; 
+			gap: 10px; }
+
+
+.inputs {
+  text-align: left;
+}
+
+label, input, button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+label {
+  margin-bottom: 0px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+.stable {
+	width: 250px; height: 300px;
+	padding: 5px;
+	display: flex;
+	overflow: scroll;
+	justify-content: space-between;
+}
+.form {
+	display: flex;
+	justify-items: center;
+}
+
+
+
+
+
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal { 
+            display: none; 
+            position: fixed; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: #ffffff; 
+            padding: 20px; 
+            border-radius: 18px; 
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
+            z-index: 99999;
+            border: 1px solid #f5f5f5;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        .modal.active { display: block; }
+
+        .stable {
+            width: 330px;
+            height: 480px;
+            padding: 5px;
+            display: flex;
+            overflow: scroll;
+            justify-content: center;
+			align-items: center;
+			background-color: #ffffff;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: red;
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Universal Animation*/
 @keyframes fadeout{
