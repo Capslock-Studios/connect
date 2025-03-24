@@ -294,5 +294,9 @@ async function fetchPosts(companyId) {
 		const data = await response.json();
 		return data.address.suburb || data.address.city || 'Unknown';
 	}
-
+    WhatsNext - Squabble Up T-shirt
 	fetchCompanies();
+
+
+    {
+}
