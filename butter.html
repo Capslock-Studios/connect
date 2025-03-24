@@ -30,7 +30,6 @@
 	border-radius: 15px; 
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
 z-index: 99999;
-
 	padding: 10px; 
 	border: 1px solid #ccc;
 }
@@ -125,24 +124,26 @@ input {
             position: fixed; 
             top: 50%; left: 50%; 
             transform: translate(-50%, -50%); 
-            background: white; 
+            background: #ffffff; 
             padding: 20px; 
-            border-radius: 15px; 
+            border-radius: 18px; 
             box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
             z-index: 99999;
-            border: 1px solid #ccc;
+            border: 1px solid #f5f5f5;
             min-width: 300px;
             max-width: 400px;
         }
         .modal.active { display: block; }
 
         .stable {
-            width: 250px;
-            height: 300px;
+            width: 330px;
+            height: 480px;
             padding: 5px;
             display: flex;
             overflow: scroll;
-            justify-content: space-between;
+            justify-content: center;
+			align-items: center;
+			background-color: #ffffff;
         }
 
         .form {
@@ -174,7 +175,10 @@ input {
 		<!-- Close Button -->
 		<span class="close-btn" id="closeModal">&times;</span>
 		<form id="companyForm" class="form">
-			<h2>Add your company</h2>
+			<label>Add your company</label>
+			<!--<label><input type="text" placeholder="Name:" id="name" required></label>-->
+			<br>
+						<label><h3>Add your company</h3></label>
 			<label><input type="text" placeholder="Name:" id="name" required></label>
 			<label><input type="text" placeholder="Category:" id="categoryInput" required></label>
 			<label><textarea type="text" placeholder="Description:" id="descriptionInput" required></textarea></label>
@@ -904,10 +908,10 @@ input {
       data.forEach(product => {
         const productCard = `
           <div class="card">
-            <div class="card-img" style="background-image: url('${product.image}');"></div>
+            <div class="card-img" style="background-image: url('${product.ProductImage}');"></div>
             <div class="card-info">
               <p class="text-title">${product.title}</p>
-              <p class="text-body">${product.description}</p>
+              <p class="text-body">${product.productDescription}</p>
             </div>
             <div class="card-footer">
               <span class="text-title">${product.price}</span>
@@ -1051,7 +1055,7 @@ try {
 
 				productElement.innerHTML = `
 					<h4>${product.title}</h4>
-					<p>${product.description}</p>
+					<p>${product.productDescription}</p>
 				`;
 
 				productsContainer.appendChild(productElement);
