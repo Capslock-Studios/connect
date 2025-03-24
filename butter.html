@@ -20,24 +20,189 @@
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Increases shadow on hover */
 }
 
+
+.modal { 
+	display: none; 
+	position: fixed; 
+	top: 50%; left: 50%; 
+	transform: translate(-50%, -50%); 
+	background: white; padding: 20px; 
+	border-radius: 15px; 
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
+z-index: 99999;
+
+	padding: 10px; 
+	border: 1px solid #ccc;
+}
+        .modal.active { display: block; }
+        .modal form { display: flex; 
+			flex-direction: column; 
+			gap: 10px; }
+
+
+.inputs {
+  text-align: left;
+}
+
+label, input, button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+label {
+  margin-bottom: 0px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+.stable {
+	width: 250px; height: 300px;
+	padding: 5px;
+	display: flex;
+	overflow: scroll;
+	justify-content: space-between;
+}
+.form {
+	display: flex;
+	justify-items: center;
+}
+
+
+
+
+
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal { 
+            display: none; 
+            position: fixed; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: white; 
+            padding: 20px; 
+            border-radius: 15px; 
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
+            z-index: 99999;
+            border: 1px solid #ccc;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        .modal.active { display: block; }
+
+        .stable {
+            width: 250px;
+            height: 300px;
+            padding: 5px;
+            display: flex;
+            overflow: scroll;
+            justify-content: space-between;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: red;
+        }
     </style>
 </head>
 <body>
+ <!-- Modal -->
+ <div id="addCompanyForm" class="modal">
+	<div class="stable">
+		<!-- Close Button -->
+		<span class="close-btn" id="closeModal">&times;</span>
+		<form id="companyForm" class="form">
+			<h2>Add your company</h2>
+			<label><input type="text" placeholder="Name:" id="name" required></label>
+			<label><input type="text" placeholder="Category:" id="categoryInput" required></label>
+			<label><textarea type="text" placeholder="Description:" id="descriptionInput" required></textarea></label>
+			<label><input type="email" placeholder="Email:" id="emailInput" required></label>
+			<label><input type="tel" placeholder="Phone:" id="phoneInput" required></label>
+			<label><input type="text" placeholder="Logo URL:" id="logoInput" required></label>
+			<label><input type="text" placeholder="Latitude:" id="latitudeInput" required></label>
+			<label><input type="text" placeholder="Longitude:" id="longitudeInput" required></label>
+			<button class="formb" type="submit">Submit</button><br>
+		</form>
+	</div>
+</div>
 
-    <div id="addCompanyForm" style="display: none; margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
-        <h3>Add New Company</h3>
-        <form id="companyForm">
-            <label>Name: <input type="text" id="name" required></label><br>
-            <label>Category: <input type="text" id="categoryInput" required></label><br>
-            <label>Description: <textarea id="descriptionInput" required></textarea></label><br>
-            <label>Email: <input type="email" id="emailInput" required></label><br>
-            <label>Phone: <input type="tel" id="phoneInput" required></label><br>
-            <label>Logo URL: <input type="url" id="logoInput" required></label><br>
-            <label>Latitude: <input type="text" id="latitudeInput" required></label><br>
-            <label>Longitude: <input type="text" id="longitudeInput" required></label><br>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+<script>
+    // Close modal functionality
+    document.getElementById('closeModal').addEventListener('click', function () {
+        document.getElementById('addCompanyForm').classList.remove('active');
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function (e) {
+        let modal = document.getElementById('addCompanyForm');
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+</script>
+
 
 
 
@@ -103,18 +268,21 @@
 			margin-top: 10px;
 		}
 	
-		.buttons button {
-			background: #1877f2;
+		.formb {
+			background: #faa12c;
 			color: white;
 			border: none;
 			padding: 8px 15px;
-			border-radius: 4px;
 			cursor: pointer;
 			font-size: 14px;
+			border-radius: 18px;
+			border: solid 2px #fff;
+			margin: 5px;
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.26);
 		}
 	
-		.buttons button:hover {
-			background: #165dbb;
+		.formb:hover {
+			background: #f5ba6d;
 		}
 	</style>
 		<div class="container">
@@ -130,7 +298,8 @@
 				
 		    	<div  class="a">
 					
-					<div class="rival-boxes" id="logoContainer"><button  id="addCompanyBtn"><img style="float: left;" src="/add-button.png" alt="Add"></button>
+					<div class="rival-boxes" id="logoContainer">
+						<button  id="addCompanyBtn"><img src="/add-button.png" alt="Add"></button>
 						<!----<button class="rival-boxes" onclick="window.location.href='../index.html'">
 						<img src="Img/whatsnext.png" alt="BZ Image">
 					  </button>
@@ -763,11 +932,27 @@
 
     
 <script>
-	//modal
-	document.getElementById("addCompanyBtn").addEventListener("click", function () {
-document.getElementById("addCompanyForm").style.display = "block";
-});
+	//
+	//document.getElementById("addCompanyBtn").addEventListener("click", function () {
+//document.getElementById("addCompanyForm").style.display = "block";
+//});
+        // Open Modal
+        document.getElementById("addCompanyBtn").addEventListener("click", function () {
+            document.getElementById("addCompanyForm").classList.add("active");
+        });
 
+        // Close Modal with Button
+        document.getElementById("closeModal").addEventListener("click", function () {
+            document.getElementById("addCompanyForm").classList.remove("active");
+        });
+
+        // Close Modal when Clicking Outside
+        window.addEventListener("click", function (e) {
+            let modal = document.getElementById("addCompanyForm");
+            if (e.target === modal) {
+                modal.classList.remove("active");
+            }
+        });
 // Handle form submission
 document.getElementById("companyForm").addEventListener("submit", async function (event) {
 event.preventDefault();
@@ -927,10 +1112,4 @@ try {
 <script src="script.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 	</html>
-
-
-
-
-
-
 

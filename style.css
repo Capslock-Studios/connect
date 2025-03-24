@@ -66,6 +66,66 @@ input[type="text"] {
     outline: none; /* Removes default browser focus */
 }
 
+textarea[type="text"]:focus {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgba(116, 116, 116, 0.8);
+}
+
+textarea[type="text"] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border-radius: 18px;
+    border: 1px solid white;
+	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
+    outline: none; /* Removes default browser focus */
+}
+
+
+input[type="tel"]:focus {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgba(116, 116, 116, 0.8);
+}
+
+input[type="tel"] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border-radius: 22px;
+    border: 1px solid white;
+	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
+    outline: none; /* Removes default browser focus */
+}
+
+input[type="email"]:focus {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgba(116, 116, 116, 0.8);
+}
+
+input[type="email"] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border-radius: 22px;
+    border: 1px solid white;
+	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
+    outline: none; /* Removes default browser focus */
+}
+
+input[type="url"]:focus {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgba(116, 116, 116, 0.8);
+}
+
+input[type="url"] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border-radius: 22px;
+    border: 1px solid white;
+	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
+    outline: none; /* Removes default browser focus */
+}
 .loader {
 	background-color:  #ECF0F3;
     align-items: center !important;
