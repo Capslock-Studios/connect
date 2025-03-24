@@ -317,7 +317,7 @@
 
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:5000/api/products")
+  fetch("https://dbconn-b837.onrender.com/api/products?companyId=${companyId}")
     .then(response => response.json())
     .then(data => {
       const productContainer = document.querySelector(".lap-box");
