@@ -171,7 +171,7 @@ button:hover::after {
 
 .card {
 	width: 290px;
-	height:  220px;
+	height:  auto;
 	padding: 10px 10px 40px 10px;
 	background: #f5f5f5;
 	position: relative;
@@ -182,8 +182,15 @@ button:hover::after {
    }
    
    .card-img {
-	background-color: #ffcaa6;
-	height: 40%;
+	background-color: #979797;
+	height: 60%;
+	width: 100%;
+	border-radius: .5rem;
+	transition: .3s ease;
+   }
+   
+   .card-img  img {
+	height: 80%;
 	width: 100%;
 	border-radius: .5rem;
 	transition: .3s ease;
