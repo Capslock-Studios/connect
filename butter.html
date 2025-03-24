@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="style.css"/>
     <title>WhatsNext Companies</title>
 </head>
-
 <body>
  <!-- Modal -->
  <div id="addCompanyForm" class="modal">
@@ -29,9 +28,9 @@
 			<button class="formb" type="submit">Submit</button><br>
 		</form>
 	</div>
-</div>
+ </div>
 
-<script>
+ <script>
     // Close modal functionality
     document.getElementById('closeModal').addEventListener('click', function () {
         document.getElementById('addCompanyForm').classList.remove('active');
@@ -46,9 +45,7 @@
     });
 </script>
 
-
 			<div class="container">
-			
 			<div class="navbar">
 				<a id="swhref" href="#internet"><button data-tooltip="Info from the internet" title="Search with Google"><i class="fab fa-google"></i></button></a>
 				<a id="chref" href="#clock"><button data-tooltip="What they sell" title="Shopping Cart"><i class="fas fa-shopping-cart" ></i></button></a>
@@ -329,8 +326,10 @@
       data.forEach(product => {
         const productCard = `
           <div class="card">
-            <div class="card-img" style="background-image: url('${product.ProductImage}');"></div>
-            <div class="card-info">
+             <div class="card-img product-image">
+                                <img src="${product.ProductImage}" alt="${product.title}">
+                            </div>
+			<div class="card-info">
               <p class="text-title">${product.title}</p>
               <p class="text-body">${product.productDescription}</p>
             </div>
