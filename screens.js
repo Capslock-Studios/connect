@@ -209,7 +209,6 @@ async function fetchPosts(companyId) {
 		try {
 			let response = await fetch(`https://dbconn-b837.onrender.com/api/products?companyId=${companyId}`);
 			let products = await response.json();
-
 			let productsContainer = document.getElementById("products-container");
 			productsContainer.innerHTML = ""; // Clear old products
 
