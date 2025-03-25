@@ -5,10 +5,11 @@ require("dotenv").config();
 
 const app = express();
 
-// ✅ CORS Configuration
+// CORS Configuration
 const allowedOrigins = [
     "https://testmapspulse.netlify.app",
-    "https://mongo-piano.netlify.app"
+    "https://mongo-piano.netlify.app",
+    "http://localhost:3000" // For development
 ];
 
 const corsOptions = {
@@ -21,49 +22,60 @@ const corsOptions = {
         }
     },
     methods: "GET,POST,PUT,DELETE,OPTIONS",
-    allowedHeaders: "Content-Type,Authorization",
+    allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
     credentials: true,
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    maxAge: 86400
 };
 
-app.get("/api/collections", async (req, res) => {
-  try {
-      const collections = await mongoose.connection.db.listCollections().toArray();
-      const collectionNames = collections.map(col => col.name);
-      res.json(collectionNames);
-  } catch (error) {
-      console.error("❌ Error fetching collections:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
-
+// Middleware
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Handle preflight requests globally
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
-// ✅ MongoDB Connection
-mongoose
-  .connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-  })
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => {
-      console.error("❌ MongoDB Connection Error:", err);
-  });
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000
+})
+.then(() => console.log("✅ MongoDB Connected"))
+.catch(err => {
+    console.error("❌ MongoDB Connection Error:", err);
+    process.exit(1);
+});
 
-// Prevent server crash if MongoDB disconnects
 mongoose.connection.on("error", err => {
     console.error("❌ MongoDB Error:", err);
 });
 
-// ✅ API Routes
-const userRoutes = require("./routes/api");
-app.use("/api", userRoutes);
+// Routes
+const apiRoutes = require("./routes/api");
+app.use("/api", apiRoutes);
 
-// ✅ Serve Static Files
+// Admin route (consider moving to separate file)
+app.get("/api/admin/collections", async (req, res) => {
+    try {
+        const collections = await mongoose.connection.db.listCollections().toArray();
+        res.json(collections.map(col => col.name));
+    } catch (error) {
+        console.error("❌ Collections Error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// Static files
 app.use(express.static("public"));
 
+// Error handling
+app.use((err, req, res, next) => {
+    console.error("❌ Server Error:", err.stack);
+    res.status(500).json({ error: "Internal Server Error" });
+});
+
+// Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📄 API Docs: http://localhost:${PORT}/api-docs`);
+});
