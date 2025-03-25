@@ -265,14 +265,9 @@ productsContainer.appendChild(productElement);
 		document.getElementById('companyName').innerText = company.name;
 		document.getElementById('category').innerText = company.category;
 		document.getElementById('description').innerText = company.description;
-		document.getElementById('email').href = `mailto:${company.email}`;
 		document.getElementById('email').innerText = company.email;
-		document.getElementById('phone').href = `tel:${company.phoneNumber}`;
 		document.getElementById('phone').innerText = company.phoneNumber;
 		
-		document.getElementById('facebook').href = company.socialMedia?.facebook || '#';
-		document.getElementById('twitter').href = company.socialMedia?.twitter || '#';
-		document.getElementById('instagram').href = company.socialMedia?.instagram || '#';
 		
 		getLocationName(company.location.latitude.$numberDouble, company.location.longitude.$numberDouble)
 			.then(suburb => document.getElementById('location').innerText = suburb)
