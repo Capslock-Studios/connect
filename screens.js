@@ -267,7 +267,7 @@ productsContainer.appendChild(productElement);
 		document.getElementById('description').innerText = company.description;
 		document.getElementById('email').innerText = company.email;
 		document.getElementById('phone').innerText = company.phoneNumber;
-		
+		document.getElementById('logo').innerText = company.profilePicture;
 		
 		getLocationName(company.location.latitude.$numberDouble, company.location.longitude.$numberDouble)
 			.then(suburb => document.getElementById('location').innerText = suburb)
@@ -288,4 +288,3 @@ productsContainer.appendChild(productElement);
 
 	fetchCompanies();
 
-    
