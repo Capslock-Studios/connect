@@ -1706,7 +1706,7 @@ input {
     font-weight: bold;
     cursor: pointer;
 	padding: 3px;
-	border-radius: 50%;
+	border-radius: 22px;
 	height: 40px;
 	width: 40px;
 	background-color: #ffffff;
