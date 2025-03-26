@@ -1685,10 +1685,10 @@ input {
 	display: flex;
     background-color: #fff;
     margin: 5% auto;
-    padding: 20px;
+    padding: 5px;
     border-radius: 18px;
     width: 100%;
-    max-width: 480px;
+    max-width: 440px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     animation: modalFadeIn 0.3s;
 	overflow: scroll;
