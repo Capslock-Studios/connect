@@ -1591,7 +1591,11 @@ input {
   }
   
   .logoModal-content {
-	  background-color: #e73737;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	  background-color: #ffffff;
+	  display: flex;
 	  margin: 5% auto;
 	  padding: 20px;
 	  border-radius: 8px;
