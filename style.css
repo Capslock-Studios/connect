@@ -430,7 +430,6 @@ button:hover::after {
 	flex-direction: column;
 	margin-bottom:15px ;
 	margin-top: 60px;
-	width: 85%;
 }
 .laptab{
 	display: flex;
