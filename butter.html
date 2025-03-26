@@ -55,41 +55,58 @@
 			<label><input type="text" placeholder="Longitude:" id="longitudeInput" required></label>
 			<button class="formb" type="submit">Submit</button><br>
 		</form>
+		
 		<script>
-document.getElementById("companyForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
-
-    // Extract form data
-    let name = document.getElementById("name").value;
-    let category = document.getElementById("categoryInput").value;
-    let description = document.getElementById("descriptionInput").value;
-    let email = document.getElementById("emailInput").value;
-    let phone = document.getElementById("phoneInput").value;
-    let logo = document.getElementById("logoInput").value;
-    let latitude = document.getElementById("latitudeInput").value;
-    let longitude = document.getElementById("longitudeInput").value;
-
-    // Format the WhatsApp message
-    let message = `*New Company Submission:*\n\n` +
-                  `*Name:* ${name}\n` +
-                  `*Category:* ${category}\n` +
-                  `*Description:* ${description}\n` +
-                  `*Email:* ${email}\n` +
-                  `*Phone:* ${phone}\n` +
-                  `*Logo URL:* ${logo}\n` +
-                  `*Location:* ${latitude}, ${longitude}`;
-
-    // Encode the message for URL
-    let encodedMessage = encodeURIComponent(message);
-
-    // WhatsApp link with pre-filled message
-    let whatsappURL = `https://wa.me/27685090669?text=${encodedMessage}`;
-
-    // Open WhatsApp
-    window.open(whatsappURL, "_blank");
-});
-</script>
-
+			document.getElementById("companyForm").addEventListener("submit", function(event) {
+				event.preventDefault(); // Prevent default form submission
+			
+				// Extract form data
+				let name = document.getElementById("name").value;
+				let category = document.getElementById("categoryInput").value;
+				let description = document.getElementById("descriptionInput").value;
+				let email = document.getElementById("emailInput").value;
+				let phone = document.getElementById("phoneInput").value;
+			
+				// Check if geolocation is available
+				if ("geolocation" in navigator) {
+					navigator.geolocation.getCurrentPosition(
+						function(position) {
+							let latitude = position.coords.latitude;
+							let longitude = position.coords.longitude;
+			
+							// Fill the form fields with updated values
+							document.getElementById("latitudeInput").value = latitude;
+							document.getElementById("longitudeInput").value = longitude;
+			
+							// Format the WhatsApp message
+							let message = `*New Company Submission:*\n\n` +
+										  `*Name:* ${name}\n` +
+										  `*Category:* ${category}\n` +
+										  `*Description:* ${description}\n` +
+										  `*Email:* ${email}\n` +
+										  `*Phone:* ${phone}\n` +
+										  `*Location:* ${latitude}, ${longitude}`;
+			
+							// Encode the message for URL
+							let encodedMessage = encodeURIComponent(message);
+			
+							// WhatsApp link with pre-filled message
+							let whatsappURL = `https://wa.me/27685090669?text=${encodedMessage}`;
+			
+							// Open WhatsApp
+							window.open(whatsappURL, "_blank");
+						},
+						function(error) {
+							alert("Unable to retrieve location. Please allow location access.");
+							console.error("Error getting location:", error);
+						}
+					);
+				} else {
+					alert("Geolocation is not supported by your browser.");
+				}
+			});
+			</script>
+			
 	</div>
  		</div>
 			<div class="container">
