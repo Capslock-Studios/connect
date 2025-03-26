@@ -648,11 +648,10 @@ button:hover::after {
 }
 
 .rival-boxes{	
-	
 	display: flex;
 	justify-content:  start;
 	align-items: center;
-	width: 300px;
+	width: 290px;
 	height: 76px;
 	margin-bottom: 14px;
 	border-radius: 60px;
@@ -675,7 +674,7 @@ button:hover::after {
 	border-radius: 50%;
   	-webkit-overflow-scrolling: touch;
 	border:none;
-	
+	background-color: #ECF0F3 !important; /* Adjust as needed */
 }
   .rival-boxes img {
 	max-width: 100%;
@@ -709,8 +708,8 @@ button:hover::after {
 }
 
 .rival-box button{
-	height: 73px;
-	width: 73px;
+	height: 65px;
+	width: 65px;
 	font-size: 1em;
 	font-weight: bold;
 	text-align: center;
