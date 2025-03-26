@@ -1639,7 +1639,7 @@ input {
   .compModal {
     display: none;
     position: fixed;
-    z-index: 100;
+    z-index: 10000000;
     left: 0;
     top: 0;
     width: 100%;
@@ -1654,7 +1654,7 @@ input {
     padding: 20px;
     border-radius: 8px;
     width: 80%;
-    max-width: 800px;
+    max-width: 480px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     animation: modalFadeIn 0.3s;
 }
