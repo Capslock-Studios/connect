@@ -8,7 +8,7 @@ const app = express();
 // CORS Configuration
 const allowedOrigins = [
     "https://testmapspulse.netlify.app",
-    "https://mongo-piano.netlify.app",
+    "https://whatsnext.joburg",
     "http://localhost:3000" // For development
 ];
 
