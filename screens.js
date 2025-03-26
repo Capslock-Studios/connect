@@ -103,11 +103,8 @@ try {
 	document.getElementById("companyForm").reset();
 	document.getElementById("addCompanyForm").style.display = "none";
 
-} catch (error) {
-	console.error("Error:", error);
-	alert("Error adding company");
-}
-});
+
+    
 
 
 
@@ -118,6 +115,9 @@ try {
 
 
 
+
+
+    //
 // Add new company logo dynamically
 let logoContainer = document.getElementById("logoContainer");
 let img = document.createElement("img");
@@ -165,6 +165,45 @@ function showCompanyModal(company) {
     // Optional: Keep original functionality working
     displayCompanyDetails(company); // If you still want the inline display
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //
+
+
+} catch (error) {
+	console.error("Error:", error);
+	alert("Error adding company");
+}
+});
+
+
+
+
+
+
+
+
+
+
 
 // Fetch products specifically for modal display
 async function fetchModalProducts(companyId) {
