@@ -13,13 +13,10 @@
     <div class="compModal-content">
         <span class="close-company-modal">&times;</span>
         
-        <div class="company-header">
-            
+        <div class="company-header">            
             <div class="company-info">
-				<img id="modalCompanyLogo" class="company-logo-large">
-                <h2 id="modalCompanyName"></h2>
-                <p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
-                <p><strong>Description:</strong> <span id="modalCompanyDescription"></span></p>
+                
+                
                 <p><strong>Contact:</strong> 
                     <a id="modalCompanyEmail"></a> | 
                     <a id="modalCompanyPhone"></a>
@@ -36,16 +33,15 @@
 
 		<div id="posts-section">
 			<!----this is a placeholde, data is populated from the db-->
-			<h3>Recent Posts</h3>
+			<h2 id="modalCompanyName"></h2>
 		<div class="user-card" style=" margin-bottom: 10px;" id="posts-container">
 			<div class="cover-photo">
-				<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+				<img id="modalCompanyLogo" alt="Profile Picture" class="profile-photo">
 			</div>
 			<div class="user-info">
 				<h3>WhatsNext</h3>
-				<p>Our mission is to empower businesses through mentorship, strategic partnerships, and access to vital resources. 
-					 We also keep our community informed with the latest industry news and trends,
-					 while our podcast features in-depth discussions with experts, entrepreneurs, and changemakers shaping the future.</p>
+				<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+				<p id="modalCompanyDescription"></p>
 			</div>
 			<div class="buttons">
 				<button class="cta-btn">Add Friend</button>
