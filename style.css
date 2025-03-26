@@ -424,6 +424,9 @@ button:hover::after {
 	z-index: 100;
 	color: black;
 	text-decoration: none;
+	display: flex;
+	justify-content:  start;
+	align-items: center;
   }
   
 
@@ -644,11 +647,12 @@ button:hover::after {
 	scroll-snap-align: end;
 }
 
-.rival-boxes{
+.rival-boxes{	
+	
 	display: flex;
 	justify-content:  start;
 	align-items: center;
-	width: 400px;
+	width: 300px;
 	height: 76px;
 	margin-bottom: 14px;
 	border-radius: 60px;
@@ -660,7 +664,18 @@ button:hover::after {
 	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
 	background-color: #ECF0F3 !important; /* Adjust as needed */
 }
-
+.rival-box{
+	display: flex;
+	justify-content:  start;
+	align-items: center;
+	width: 76px;
+	height: 76px;
+	margin-bottom: 14px;
+	border-radius: 60px;
+  	-webkit-overflow-scrolling: touch;
+	border: solid 1px #b8b8b8 ;
+	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
+}
   .rival-boxes img {
 	max-width: 100%;
 	max-height: 100%;

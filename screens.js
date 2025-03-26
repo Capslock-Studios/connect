@@ -204,6 +204,9 @@ async function fetchCompanies() {
 fetchCompanies();
 
 
+
+
+
 // Get location name from coordinates
 async function getLocationName(lat, lon) {
     try {
