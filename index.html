@@ -1,128 +1,448 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsNext Data Test</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        .data-section { margin-bottom: 20px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
-
-        /* Header and Navigation */
-        header {
-            background: #333;
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            transition: 0.3s;
-        }
-        nav ul li a:hover {
-            background: #555;
-            border-radius: 5px;
-        }
-    </style>
-
-    <!-- Define API URL globally -->
-    <script>
-        window.API_URL = "https://dbconn-b837.onrender.com/api"; 
-    </script>
+	<link rel="stylesheet" href="style.css"/>
+    <title>WhatsNext Companies</title>
 </head>
 <body>
+<!-- Add this modal to your HTML -->
+<div id="companyModal" class="compModal">
+    <div class="compModal-content">
+		<span class="close-company-modal">&times;</span>       
+        
+        <div class="company-header">     
+            <div class="company-info">
+				<div id="posts-section">
+					<!----this is a placeholde, data is populated from the db-->
+				<div class="user-card" style=" border-radius: 0 18px 18px 18px !important;" id="posts-container">
+					<div class="cover-photo">
+						<img id="modalCompanyLogo" alt="Profile Picture" class="profile-photo">
+					</div>
+					<div class="user-info">
+						<h3  id="modalCompanyName">WhatsNext</h3>
+						<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+						<p id="modalCompanyDescription"></p>
+					</div>
+					
+					<p><strong>Contact:</strong> 
+						<a id="modalCompanyEmail"></a> | 
+						<a id="modalCompanyPhone"></a>
+					</p>
+					<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
+					<div class="social-links">
+						<a id="modalFacebook" target="_blank">Facebook</a>
+						<a id="modalTwitter" target="_blank">Twitter</a>
+						<a id="modalInstagram" target="_blank">Instagram</a>
+					</div>
+					<div class="buttons">
+						<button class="cta-btn">Call</button>
+						<button class="cta-btn">Email</button>
+					</div>
+				</div>
+				</div>
+                
+            </div>
+        </div>
 
-<header>
-    <h1>My Site</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/models/user.html">User</a></li>
-            <li><a href="/models/company.html">Company</a></li>
-            <li><a href="/models/product.html">Product</a></li>
-        </ul>
-    </nav>
-</header>
 
-<div class="container">
-    <h1>WhatsNext Data Test</h1>
-
-    <div class="data-section">
-        <h2>Users</h2>
-        <pre id="users">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Companies</h2>
-        <pre id="companies">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Posts</h2>
-        <pre id="posts">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Products</h2>
-        <pre id="products">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Savvys</h2>
-        <pre id="savvys">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Petitions</h2>
-        <pre id="petitions">Loading...</pre>
-    </div>
-    <div class="data-section">
-        <h2>Click Tracking</h2>
-        <pre id="clickTracking">Loading...</pre>
+	
     </div>
 </div>
 
-<!-- Fetch API Data -->
+ <!-- Modal -->
+ 		<div id="addCompanyForm" class="modal">
+		
+	<div class="stable">
+					<!-- Close Button -->
+		<span class="close-btn" id="closeModal">&times;</span>
+		<form id="companyForm" class="form">
+			<!--<label><input type="text" placeholder="Name:" id="name" required></label>-->
+			<br>
+						<label><h3>Add your company</h3></label>
+			<label><input type="text" placeholder="Name:" id="name" required></label>
+			<label><input type="text" placeholder="Category:" id="categoryInput" required></label>
+			<label><textarea type="text" placeholder="Description:" id="descriptionInput" required></textarea></label>
+			<label><input type="email" placeholder="Email:" id="emailInput" required></label>
+			<label><input type="tel" placeholder="Phone:" id="phoneInput" required></label>
+			<label><input type="text" placeholder="Address" id="Address" required></label>
+			<button class="formb" type="submit">Submit</button><br>
+		</form>
+		
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const apiBaseUrl = window.API_URL; // Uses dynamic API URL
-
-        async function fetchData(endpoint, elementId) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-
-            try {
-                let response = await fetch(`${apiBaseUrl}/${endpoint}`);
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
-                let data = await response.json();
-                element.textContent = JSON.stringify(data, null, 2);
-            } catch (error) {
-                element.textContent = "❌ Error fetching data.";
-                console.error(`❌ Error fetching ${endpoint}:`, error);
+	document.getElementById("companyForm").addEventListener("submit", function(event) {
+		event.preventDefault(); // Prevent form submission
+	    // Auto-fill location
+		if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                document.getElementById("latitudeInput").value = position.coords.latitude;
+                document.getElementById("longitudeInput").value = position.coords.longitude;
+            },
+            function(error) {
+                console.error("Error getting location:", error);
             }
-        }
+        );
+    }
 
-        // Fetch all data
-        fetchData("users", "users");
-        fetchData("companies", "companies");
-        fetchData("posts", "posts");
-        fetchData("products", "products");
-        fetchData("savvys", "savvys");
-        fetchData("petitions", "petitions");
-        fetchData("click-tracking", "clickTracking");
-    });
-</script>
+		// Extract form data
+		let name = document.getElementById("name").value;
+		let category = document.getElementById("categoryInput").value;
+		let description = document.getElementById("descriptionInput").value;
+		let email = document.getElementById("emailInput").value;
+		let phone = document.getElementById("phoneInput").value;
+		let Address = document.getElementById("Address").value;
+	
+		// Format the WhatsApp message
+		let message = `*New Company Submission:*\n\n` +
+					  `*Name:* ${name}\n` +
+					  `*Category:* ${category}\n` +
+					  `*Description:* ${description}\n` +
+					  `*Email:* ${email}\n` +
+					  `*Phone:* ${phone}\n` +
+					  `*Address:* ${Address}\n`;
+	
+		// Encode the message for URL
+		let encodedMessage = encodeURIComponent(message);
+	
+		// WhatsApp link with pre-filled message
+		let whatsappURL = `https://wa.me/27685090669?text=${encodedMessage}`;
+	
+		// Open WhatsApp
+		window.open(whatsappURL, "_blank");
+	});
+	</script>
+	</div>
+ 		</div>
+			<div class="container">
+			<div class="navbar">
+				<a id="swhref" href="#internet"><button data-tooltip="Go to Home" title="Home"><i class="fas fa-home"></i></button></a>				
+				<a id="chref" href="#clock"><button data-tooltip="What they sell" title="Shopping Cart"><i class="fas fa-shopping-cart" ></i></button></a>
+				<a id="thref" href="#timer"><button data-tooltip="What they post" title="Social Media"><i class="fas fa-users"></i></button></a>
+				<a id="thref" href="#social"><button data-tooltip="talk to them" title="Messages"><i class="fas fa-comment-alt"></i></button></a>
+			</div>
+		
+			<div class="content-wrapper">
+				<div  class="a">
+					<div class="rival-box">
+						<button  id="addCompanyBtn"><img src="/add-button.png" alt="Add"></button>
+					</div>
+					<div class="rival-boxes" id="logoContainer">
+						
+					</div>
+				</div>
+			<div class="stopw-section" id="internet">
+				<!-- There is a bug with overlow -->
+			<div class="lap-box-fixer">
+				<div class="lap-boxes">
+						<br>
+						<h3>WELCOME TO</h3>
+					<h1>WhatsNext</h1>
+					<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+					
+					<div class="row height d-flex justify-content-center align-items-center">
+					<div class="col-md-6">
+					<div class="form">
+				<!-- Search Bar -->
+<div class="search-container">
+	</span><i id="searchButton"class="fa fa-search search-icon"></i>
+    <input type="text" id="searchInput" class="form-control form-input" placeholder="Search Companies...">
+	<span class="right-icon"><i class="fa fa-microphone"></i>
+</div>
 
-<script src="script.js"></script>
+<!-- Modal -->
+<div id="searchModal" class="modal">
+    <div class="modal-content stable">
+        <span class="close">&times;</span>
+        <div id="modalBody">
+            <h3>Search Results: "<span id="queryText"></span>"</h3>
+            <p id="responseText"></p>
+            <div id="resultsContainer"></div>
+        </div>
+		
 
-</body>
-</html>
+
+			<!-- Company Details Modal -->
+			<div id="companyModal" class="logoModal">
+				<div class="logoModal-content">
+					<span class="close-modal">&times;</span>
+					
+					<div class="company-header">
+						<img id="modalCompanyLogo" class="company-logo-large" src="" alt="Company Logo">
+						<div class="company-info">
+							<h2 id="modalCompanyName"></h2>
+							<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+							<p><strong>Description:</strong> <span id="modalCompanyDescription"></span></p>
+							<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
+							<div class="social-links">
+								<a id="modalFacebook" target="_blank">Facebook</a>
+								<a id="modalTwitter" target="_blank">Twitter</a>
+								<a id="modalInstagram" target="_blank">Instagram</a>
+							</div>
+						</div>
+					</div>
+					
+					<h3>Products</h3>
+					<div class="products-grid" id="modalProductsContainer">
+						<!-- Products will be loaded here -->
+					</div>
+					
+					<h3>Posts</h3>
+					<div id="modalPostsContainer">
+						<!-- Posts will be loaded here -->
+					</div>
+				</div>
+			</div>
+		
+			<!-- Your existing add company form -->
+			<div id="addCompanyForm" style="display: none;">
+				<!-- Existing form content -->
+			</div>
+    </div>
+	<script>
+		document.getElementById("searchButton").addEventListener("click", function () {
+    let query = document.getElementById("searchInput").value.trim();
+    if (!query) {
+        showModal("Error", "Please enter a company name to search.");
+        return;
+    }
+
+    fetch(`/search-category?company=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                showModal("Error", data.error);
+            } else {
+                displayResults(data);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            showModal("Error", "Something went wrong. Please try again.");
+        });
+});
+
+function showModal(title, message) {
+    document.getElementById("queryText").textContent = title;
+    document.getElementById("responseText").textContent = message;
+    document.getElementById("resultsContainer").innerHTML = "";
+    document.getElementById("searchModal").style.display = "flex";
+    
+}
+
+function displayResults(data) {
+    let resultsDiv = document.getElementById("resultsContainer");
+    let companyHTML = data.companies.map(category => `
+        <h4>${category.category}</h4>
+        <ul>
+            ${category.companies.map(c => `
+                <li>
+                    <strong>${c.name}</strong> - ${c.head_office} <br>
+                    Email: <a href="mailto:${c.email}">${c.email}</a> <br>
+                    Phone: <a href="tel:${c.phone}">${c.phone}</a> <br>
+                    <a href="${c.fb}" target="_blank">Facebook</a> | 
+                    <a href="${c.linkedin}" target="_blank">LinkedIn</a> | 
+                    <a href="websitesearch.html?company=${encodeURIComponent(c.name)}">Website</a>
+                </li>
+            `).join('')}
+        </ul>
+    `).join('');
+
+    document.getElementById("queryText").textContent = data.query;
+    document.getElementById("responseText").innerHTML = `<p>Here are proudly South African companies similar to <b>${data.query}</b>.</p>`;
+    resultsDiv.innerHTML = companyHTML;
+    document.getElementById("searchModal").style.display = "flex";
+}
+
+// Close Modal
+document.querySelector(".close").addEventListener("click", function () {
+    document.getElementById("searchModal").style.display = "none";
+});
+
+// Close Modal on Click Outside
+window.onclick = function (event) {
+    let modal = document.getElementById("searchModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+	</script>
+</div>
+
+  					</div>
+					</div>
+					</div>
+					<br>
+
+					<div id="companyModal" class="compModal">
+							<h3>Products</h3>
+							<div class="products-grid" id="modalProductsContainer"></div>
+							
+							<h3>Posts</h3>
+							<div id="modalPostsContainer"></div>
+					</div>
+					<div id="posts-section">
+						<!----this is a placeholde, data is populated from the db-->
+						<h3>Recent Posts</h3>
+					<div class="user-card" style=" margin-bottom: 0px !important; padding-bottom: 0px !important; margin-bottom: 10px;"  id="posts-container">
+						<div class="cover-photo">
+							<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+						</div>
+						<div class="user-info">
+							<h3>WhatsNext</h3>
+							<p>Our mission is to empower businesses through mentorship, strategic partnerships, and access to vital resources. 
+								 We also keep our community informed with the latest industry news and trends,
+								 while our podcast features in-depth discussions with experts, entrepreneurs, and changemakers shaping the future.</p>
+						</div>
+						<div class="buttons">
+							<button class="cta-btn">Add Friend</button>
+							<button class="cta-btn">Message</button>
+						</div>
+					</div>
+					</div>
+
+
+					<div class="tiktok-card">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0" allowfullscreen></iframe>
+						</div><!-- Floating User Info -->
+						<div class="tiktok-user-info">
+							<h4>@WhatsNext</h4>
+							<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+						</div>
+						<!-- Floating Action Buttons -->
+						<div class="floating-actions">
+							<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+							<div>❤️ 1.2K</div>
+							<div>💬 324</div>
+							<div>↪️ 89</div>
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+				</div>
+				<div class="post-content">
+					No more posts to see
+				</div>
+			</div>
+			</div>
+			<div class="clock-section" id="clock">
+			<div class="lap-box-fixer">
+				<div class="lap-box">
+					<div id="posts-section"></div>
+					<div class="sec">
+					<div style="padding-top: 15px; ">
+						<h1></h1>
+						<h3></h3>
+						<p>This is where you get products by company.</p> 
+						<br>
+					</div>
+					<div id="products-section">
+						<h3>Company Products</h3>
+					</div>
+					</div>
+					<br><br><br>
+					<div class="post-content">
+						No products to see
+				</div>
+				</div>
+			</div>
+				<!-- There is a bug with overlow -->
+			</div>
+	<div class="timer-section" id="timer">
+			<div class="lap-box-fixer">
+				<div class="lap-box" style="margin-top: 130px;">
+					<div class="post-card" id="posts-container">
+						<div class="post-header">
+							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
+							<div class="user-info">
+								<h4>WhatsNext</h4>
+								<p>2 hrs ago · 🌍</p>
+							</div>
+						</div>
+						<div class="post-content">
+							Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.
+						</div>
+						
+						<div class="pic-image-grid">
+							<img src="siya-whatsnext.jpg" alt="Large Post Image" class="pic-large-image">
+							<div class="pic-small-images">
+								<img src="group-whatsnext.jpg" alt="Small Image 1" class="pic-small-image">
+								<img src="madness-whatsnext.jpg" alt="Small Image 2" class="pic-small-image">
+								<div class="pic-small-image" style="position: relative;">
+									<div class="pic-overlay">+1</div>
+								</div>
+							</div>
+						</div>
+						<div class="post-actions">
+							<div>👍 Like</div>
+							<div>💬 Comment</div>
+							<div>↪️ Share</div>
+						</div>
+					</div>
+
+				<div class="post-card">
+				<div class="post-content">
+					No more posts to see
+				</div>
+				</div>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
+	</div>
+				<div class="social-section" id="social">
+					<div class="lap-box-fixer">
+						<div class="lap-box" style="padding-top: 30px;">
+						<div class="post-card details" id="companyDetails" id="posts-container">
+						<div class="post-header">
+							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
+							<div class="user-info">
+								<h4 id="companyName">WhatsNext</h4>
+								<p  id="category">2 hrs ago · 🌍</p>
+							</div>
+						</div>
+						<div class="post-content" id="description">
+							Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.
+						</div>
+					
+						<div class="post-actions">
+							<div id="facebook" target="_blank">👍 Like</div>
+							<div id="twitter" target="_blank">💬 Comment</div>
+							<div id="instagram" target="_blank">↪️ Share</div>
+						</div>
+						</div>
+						<br><br>
+						<div class="post-content">
+							No more posts to see
+						</div>
+						</div>
+					</div>
+				</div>
+
+				
+				<div class="post-card details"id="posts-container"></div>
+		</div>
+		</div>
+		</div>
+
+
+
+
+
+
+
+
+
+    
+<script></script>
+<script src="screens.js"></script>
+<script src="script.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+	</html>
+
