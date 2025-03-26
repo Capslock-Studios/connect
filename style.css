@@ -423,6 +423,14 @@ button:hover::after {
 	margin-top: 60px;
 }
 
+.lap-boxes{
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom:15px ;
+	margin-top: 60px;
+}
 .laptab{
 	display: flex;
 	flex-shrink: 0;
