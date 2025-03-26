@@ -411,7 +411,7 @@ button:hover::after {
 	flex-direction: column;
 	overflow-y: scroll;
 	margin-top: 10px;
-	width: 300px;
+	width: 380px;
 	height: 100%;
 	padding: 20px;
 	background-color: #2d1eb3;
