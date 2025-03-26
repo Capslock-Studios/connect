@@ -72,6 +72,51 @@
             <p id="responseText"></p>
             <div id="resultsContainer"></div>
         </div>
+		
+
+
+			<div class="a">
+				<div class="rival-boxes" id="logoContainer">
+					<button id="addCompanyBtn"><img src="/add-button.png" alt="Add"></button>
+				</div>
+			</div>
+		
+			<!-- Company Details Modal -->
+			<div id="companyModal" class="logoModal">
+				<div class="logoModal-content">
+					<span class="close-modal">&times;</span>
+					
+					<div class="company-header">
+						<img id="modalCompanyLogo" class="company-logo-large" src="" alt="Company Logo">
+						<div class="company-info">
+							<h2 id="modalCompanyName"></h2>
+							<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+							<p><strong>Description:</strong> <span id="modalCompanyDescription"></span></p>
+							<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
+							<div class="social-links">
+								<a id="modalFacebook" target="_blank">Facebook</a>
+								<a id="modalTwitter" target="_blank">Twitter</a>
+								<a id="modalInstagram" target="_blank">Instagram</a>
+							</div>
+						</div>
+					</div>
+					
+					<h3>Products</h3>
+					<div class="products-grid" id="modalProductsContainer">
+						<!-- Products will be loaded here -->
+					</div>
+					
+					<h3>Posts</h3>
+					<div id="modalPostsContainer">
+						<!-- Posts will be loaded here -->
+					</div>
+				</div>
+			</div>
+		
+			<!-- Your existing add company form -->
+			<div id="addCompanyForm" style="display: none;">
+				<!-- Existing form content -->
+			</div>
     </div>
 	<script>
 		document.getElementById("searchButton").addEventListener("click", function () {
