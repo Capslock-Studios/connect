@@ -675,6 +675,7 @@ button:hover::after {
   	-webkit-overflow-scrolling: touch;
 	border:none;
 	background-color: #ECF0F3 !important; /* Adjust as needed */
+	border: solid 1px #ff7504 ;
 }
   .rival-boxes img {
 	max-width: 100%;
