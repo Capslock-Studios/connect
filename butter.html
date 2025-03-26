@@ -40,7 +40,7 @@
 	<div class="stable">
 		<!-- Close Button -->
 		<span class="close-btn" id="closeModal">&times;</span>
-		<form id="companyForm" class="form">
+		<form id="companyForms" class="form">
 			<label>Add your company</label>
 			<!--<label><input type="text" placeholder="Name:" id="name" required></label>-->
 			<br>
@@ -57,7 +57,7 @@
 		</form>
 		
 		<script>
-			document.getElementById("companyForm").addEventListener("submit", function(event) {
+			document.getElementById("companyForms").addEventListener("submit", function(event) {
 				event.preventDefault(); // Prevent default form submission
 			
 				// Extract form data
@@ -97,12 +97,12 @@
 							window.open(whatsappURL, "_blank");
 						},
 						function(error) {
-							alert("Unable to retrieve location. Please allow location access.");
+							echo("Unable to retrieve location. Please allow location access.");
 							console.error("Error getting location:", error);
 						}
 					);
 				} else {
-					alert("Geolocation is not supported by your browser.");
+					echo("Geolocation is not supported by your browser.");
 				}
 			});
 			</script>
