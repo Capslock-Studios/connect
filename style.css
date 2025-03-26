@@ -402,7 +402,6 @@ button:hover::after {
 	align-items: center;
 	flex-direction: column;
 	scroll-snap-align: start;
-	background-color: #1eb337;
 }
 
 .lap-box-fixer{
@@ -411,10 +410,9 @@ button:hover::after {
 	flex-direction: column;
 	overflow-y: scroll;
 	margin-top: 10px;
-	width: 380px;
+	width: 330px;
 	height: 100%;
 	padding: 20px;
-	background-color: #2d1eb3;
 }
 
 .lap-box{
@@ -831,11 +829,12 @@ button:hover::after {
 .user-card {
 	width: 350px;
 	background: white;
-	border-radius: 8px;
+	border-radius: 14px;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	text-align: center;
 	padding-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .cover-photo {
