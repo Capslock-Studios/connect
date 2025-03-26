@@ -92,7 +92,7 @@ body{
 #searchButton:hover {
 	border: solid 1px #ffffff;
 	transform: scale(0.8); /* Slightly enlarges on hover */
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); /* Increases shadow on hover */
+	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
 	background-color: #fffcfc;
 }
 
@@ -670,10 +670,11 @@ button:hover::after {
 	align-items: center;
 	width: 76px;
 	height: 76px;
-	margin-bottom: 14px;
-	border-radius: 60px;
+	margin: 10px;
+	border-radius: 50%;
   	-webkit-overflow-scrolling: touch;
 	border: solid 1px #b8b8b8 ;
+	
 	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
 }
   .rival-boxes img {
@@ -708,8 +709,8 @@ button:hover::after {
 }
 
 .rival-box button{
-	height: 57px;
-	width: 57px;
+	height: 60px;
+	width: 60px;
 	font-size: 1em;
 	font-weight: bold;
 	text-align: center;
