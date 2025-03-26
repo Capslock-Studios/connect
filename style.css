@@ -670,7 +670,7 @@ button:hover::after {
 	width: 76px;
 	height: 76px;
 	margin: 10px;
-	margin-bottom: 14px;
+	margin: 14px;
 	border-radius: 50%;
   	-webkit-overflow-scrolling: touch;
 	border:none;
@@ -722,6 +722,10 @@ button:hover::after {
 }
 
 .rival-boxes button:hover{
+	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
+}
+
+.rival-box button:hover{
 	box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px 3px white;
 }
 
@@ -1587,7 +1591,7 @@ input {
   }
   
   .logoModal-content {
-	  background-color: #fefefe;
+	  background-color: #e73737;
 	  margin: 5% auto;
 	  padding: 20px;
 	  border-radius: 8px;
