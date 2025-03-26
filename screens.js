@@ -103,19 +103,127 @@ try {
 	document.getElementById("companyForm").reset();
 	document.getElementById("addCompanyForm").style.display = "none";
 
-	// Add new company logo dynamically
-	let logoContainer = document.getElementById("logoContainer");
-	let img = document.createElement("img");
-	img.src = createdCompany.logo;
-	img.className = "logo";
-	img.onclick = () => displayCompanyDetails(createdCompany);
-	logoContainer.appendChild(img);
-
 } catch (error) {
 	console.error("Error:", error);
 	alert("Error adding company");
 }
 });
+
+
+
+
+
+
+
+
+
+
+// Add new company logo dynamically
+let logoContainer = document.getElementById("logoContainer");
+let img = document.createElement("img");
+img.src = createdCompany.logo;
+img.className = "logo";
+img.onclick = () => showCompanyModal(createdCompany); // Changed to use modal
+logoContainer.appendChild(img);
+
+// New function to show company details in modal
+function showCompanyModal(company) {
+    // Populate modal with company data
+    document.getElementById('modalCompanyName').textContent = company.name;
+    document.getElementById('modalCompanyCategory').textContent = company.category;
+    document.getElementById('modalCompanyDescription').textContent = company.description;
+    document.getElementById('modalCompanyLogo').src = company.logo;
+    
+    // Set contact info
+    document.getElementById('modalCompanyEmail').href = `mailto:${company.email}`;
+    document.getElementById('modalCompanyEmail').textContent = company.email;
+    document.getElementById('modalCompanyPhone').href = `tel:${company.phoneNumber}`;
+    document.getElementById('modalCompanyPhone').textContent = company.phoneNumber;
+    
+    // Set social media links
+    document.getElementById('modalFacebook').href = company.socialMedia?.facebook || '#';
+    document.getElementById('modalTwitter').href = company.socialMedia?.twitter || '#';
+    document.getElementById('modalInstagram').href = company.socialMedia?.instagram || '#';
+    
+    // Get and display location
+    getLocationName(company.location.latitude, company.location.longitude)
+        .then(location => {
+            document.getElementById('modalCompanyLocation').textContent = location;
+        })
+        .catch(() => {
+            document.getElementById('modalCompanyLocation').textContent = 
+                `${company.location.latitude}, ${company.location.longitude}`;
+        });
+    
+    // Load products and posts for this company
+    fetchModalProducts(company._id);
+    fetchModalPosts(company._id);
+    
+    // Show the modal
+    document.getElementById('companyModal').style.display = 'block';
+    
+    // Optional: Keep original functionality working
+    displayCompanyDetails(company); // If you still want the inline display
+}
+
+// Fetch products specifically for modal display
+async function fetchModalProducts(companyId) {
+    try {
+        const response = await fetch(`https://dbconn-b837.onrender.com/api/products?companyId=${companyId}`);
+        const products = await response.json();
+        const container = document.getElementById('modalProductsContainer');
+        
+        container.innerHTML = products.map(product => `
+            <div class="product-card">
+                <img src="${product.ProductImage}" alt="${product.title}">
+                <h4>${product.title}</h4>
+                <p>${product.description}</p>
+                <span class="price">${product.price || ''}</span>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        document.getElementById('modalProductsContainer').innerHTML = 
+            '<p>Error loading products</p>';
+    }
+}
+
+// Fetch posts specifically for modal display
+async function fetchModalPosts(companyId) {
+    try {
+        const response = await fetch(`https://dbconn-b837.onrender.com/api/posts?companyId=${companyId}`);
+        const posts = await response.json();
+        const container = document.getElementById('modalPostsContainer');
+        
+        container.innerHTML = posts.length === 0 ? '<p>No posts available</p>' : 
+            posts.map(post => `
+                <div class="post">
+                    <p class="post-date">${new Date(post.createdAt).toLocaleDateString()}</p>
+                    <p class="post-content">${post.content}</p>
+                    ${post.media?.length > 0 ? 
+                        `<img src="${post.media[0]}" alt="Post image" class="post-image">` : ''}
+                </div>
+            `).join('');
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+        document.getElementById('modalPostsContainer').innerHTML = 
+            '<p>Error loading posts</p>';
+    }
+}
+
+// Close modal when clicking X
+document.querySelector('.close-modal').addEventListener('click', function() {
+    document.getElementById('companyModal').style.display = 'none';
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('companyModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
 ///
 // Fetch and display posts for a company
 async function fetchPosts(companyId) {
