@@ -1683,11 +1683,11 @@ input {
 
 .compModal-content {
 	display: flex;
-    background-color: #772e2e;
+    background-color: #fff;
     margin: 5% auto;
     padding: 20px;
     border-radius: 18px;
-    width: 80%;
+    width: 100%;
     max-width: 480px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     animation: modalFadeIn 0.3s;
