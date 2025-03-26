@@ -402,6 +402,7 @@ button:hover::after {
 	align-items: center;
 	flex-direction: column;
 	scroll-snap-align: start;
+	background-color: #1eb337;
 }
 
 .lap-box-fixer{
@@ -412,7 +413,6 @@ button:hover::after {
 	margin-top: 10px;
 	width: 300px;
 	height: 100%;
-	background-color: #1eb337;
 }
 
 .lap-box{
