@@ -1707,6 +1707,7 @@ input {
     cursor: pointer;
 	padding: 3px;
 	border-radius: 10px;
+	height: 10px;
 	background-color: #ffffff;
 }
 
