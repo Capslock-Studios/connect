@@ -55,6 +55,41 @@
 			<label><input type="text" placeholder="Longitude:" id="longitudeInput" required></label>
 			<button class="formb" type="submit">Submit</button><br>
 		</form>
+		<script>
+			document.getElementById("companyForm").addEventListener("submit", function(event) {
+				event.preventDefault(); // Prevent form submission
+			
+				// Extract form data
+				let name = document.getElementById("name").value;
+				let category = document.getElementById("categoryInput").value;
+				let description = document.getElementById("descriptionInput").value;
+				let email = document.getElementById("emailInput").value;
+				let phone = document.getElementById("phoneInput").value;
+				let logo = document.getElementById("logoInput").value;
+				let latitude = document.getElementById("latitudeInput").value;
+				let longitude = document.getElementById("longitudeInput").value;
+			
+				// Format the WhatsApp message
+				let message = `*New Company Submission:*\n\n` +
+							  `*Name:* ${name}\n` +
+							  `*Category:* ${category}\n` +
+							  `*Description:* ${description}\n` +
+							  `*Email:* ${email}\n` +
+							  `*Phone:* ${phone}\n` +
+							  `*Logo URL:* ${logo}\n` +
+							  `*Location:* ${latitude}, ${longitude}`;
+			
+				// Encode the message for URL
+				let encodedMessage = encodeURIComponent(message);
+			
+				// WhatsApp link with pre-filled message
+				let whatsappURL = `https://wa.me/27685090669?text=${encodedMessage}`;
+			
+				// Open WhatsApp
+				window.open(whatsappURL, "_blank");
+			});
+			</script>
+			
 	</div>
  		</div>
 			<div class="container">
