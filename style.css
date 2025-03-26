@@ -1682,7 +1682,6 @@ input {
 }
 
 .compModal-content {
-	display: flex;
     background-color: #ffffff00;
     margin: 5% auto;
     padding: 20px;
