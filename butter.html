@@ -8,6 +8,39 @@
     <title>WhatsNext Companies</title>
 </head>
 <body>
+<!---logo modals-->
+<!-- Add this modal to your HTML -->
+<div id="companyModal" class="compModal">
+    <div class="modal-content">
+        <span class="close-company-modal">&times;</span>
+        
+        <div class="company-header">
+            <img id="modalCompanyLogo" class="company-logo-large">
+            <div class="company-info">
+                <h2 id="modalCompanyName"></h2>
+                <p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+                <p><strong>Description:</strong> <span id="modalCompanyDescription"></span></p>
+                <p><strong>Contact:</strong> 
+                    <a id="modalCompanyEmail"></a> | 
+                    <a id="modalCompanyPhone"></a>
+                </p>
+                <p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
+                <div class="social-links">
+                    <a id="modalFacebook" target="_blank">Facebook</a>
+                    <a id="modalTwitter" target="_blank">Twitter</a>
+                    <a id="modalInstagram" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Products</h3>
+        <div class="products-grid" id="modalProductsContainer"></div>
+        
+        <h3>Posts</h3>
+        <div id="modalPostsContainer"></div>
+    </div>
+</div>
+
  <!-- Modal -->
  		<div id="addCompanyForm" class="modal">
 	<div class="stable">
