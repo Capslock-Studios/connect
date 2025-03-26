@@ -172,11 +172,19 @@ window.addEventListener('click', function(event) {
 
 // Fetch and display companies
 async function fetchCompanies() {
+    const logoContainer = document.getElementById('logoContainer');
+    
+    // Show loading message
+    logoContainer.innerHTML = `<p id="loadingText">Loading companies...</p>`;
+    
     try {
         const response = await fetch('https://dbconn-b837.onrender.com/api/companies');
         const companies = await response.json();
-        const logoContainer = document.getElementById('logoContainer');
-        
+
+        // Clear loading message
+        logoContainer.innerHTML = '';
+
+        // Display companies
         companies.forEach(company => {
             const img = document.createElement('img');
             img.src = company.logo;
@@ -186,9 +194,15 @@ async function fetchCompanies() {
         });
     } catch (error) {
         console.error("Error fetching companies:", error);
-        alert("Failed to load companies. Please try again later.");
+        
+        // Show an error message inside the container instead of an alert
+        logoContainer.innerHTML = `<p style="color: red;">Failed to load companies. Please try again later.</p>`;
     }
 }
+
+// Call function to load companies when the page loads
+fetchCompanies();
+
 
 // Get location name from coordinates
 async function getLocationName(lat, lon) {
