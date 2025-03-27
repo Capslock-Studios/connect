@@ -335,14 +335,96 @@ window.onclick = function (event) {
 				<div class="lap-box">
 					<div id="posts-section"></div>
 					<div class="sec">
-					<div style="padding-top: 15px; ">
-						<h1></h1>
-						<h3></h3>
-						<p>This is where you get products by company.</p> 
-						<br>
-					</div>
 					<div id="products-section">
-						<h3>Company Products/Services</h3>
+                        <div class="savvy-cover-photo">
+							
+						</div>
+                        <div class="post-content" id="description">
+                            <h1 class="text-center my-4">Community Savvy</h1>
+                            <p class="text-center">We are taking this mandate to the municipality. Show your support by signing up below.</p>
+                            
+                            <div class="scroll-box mb-4">
+                                <h3 class="text-center">Mandate Overview</h3>
+                                <p>We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. <span class="highlight">A community Trust.</span></p>
+                                <p>The <span class="highlight">Community Trust</span> will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring <span class="highlight">transparency</span>, <span class="highlight">accountability</span>, and <span class="highlight">community-driven decision-making</span> to budget spending.</p>
+                                <P>"Being part of the Trust means giving a little time each week to make big changes in how our city works."
+                    
+                                </p><p>
+                                    ✅ Commitment
+                                    
+                                    Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making.
+                                    
+                                </p><p>
+                                    📊 Reviewing Finances
+                                    
+                                    The Financial Oversight Team will present budget details every week.
+                                    Members will discuss where funds should go and flag any suspicious spending.
+                                    
+                                </p><p>🗳️ Voting on Community Needs
+                                    
+                                    Each member votes on which projects need urgent funding.
+                                    Votes are counted and submitted to the municipality.
+                                </p><p>
+                                    📢 Making Your Voice Heard
+                                    
+                                    Community representatives gather input from their neighborhoods.
+                                    They present concerns and priorities at weekly meetings.
+                                    👀 Tracking Progress
+                                    
+                                    The Project Monitoring Team tracks projects from start to finish.
+                                    Updates are shared online and at meetings so everyone knows what’s happening.
+                                    </P>
+                            </div>
+
+                            <div class="mt-4">
+                                <h5>💡 Life Cycle of the Trust</h5>
+                                <p>The decision-making process follows a structured cycle:</p>
+                                <ul>
+                                    <li>📢 Community submits concerns & budget suggestions</li>
+                                    <li>🗳️ Weekly review & voting on financial needs</li>
+                                    <li>✅ Trust finalizes allocations & submits decisions</li>
+                                    <li>📊 Transparency reports shared with the community</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>📊 Community Engagement</h5>
+                                <p><strong>Number of supporters so far:</strong> <span id="response-count">37</span></p>
+                            </div>
+                            
+                            <h4>📜 Sign the Mandate</h4>
+                      <!-- FORM 1: WhatsApp Sign-Up -->
+<form id="registrationForm">
+<div class="mb-3">
+    <input type="text" class="form-control" id="signupName" placeholder="Full Name" required>
+</div>
+<div class="mb-3">
+    <input type="email" class="form-control" id="signupEmail" placeholder="Email" required>
+</div>
+<div class="mb-3">
+    <input type="tel" class="form-control" id="signupPhone" placeholder="Phone Number" required>
+</div>
+<button type="button" id="whatsappLink" class="formb">Sign & Support</button>
+</form>
+
+<script>
+// WhatsApp Sign-Up Form Submission
+document.getElementById("whatsappLink").addEventListener("click", function() {
+const name = document.getElementById("signupName").value.trim();
+const email = document.getElementById("signupEmail").value.trim();
+const phone = document.getElementById("signupPhone").value.trim();
+
+if (!name || !email || !phone) {
+    alert("Please fill in all fields before proceeding.");
+    return;
+}
+
+const message = `Community Savvy\n\nWe are taking this mandate to the municipality...\n\n👤 Supporter Details:\n- Name: ${name}\n- Email: ${email}\n- Phone: ${phone}`;
+const whatsappURL = `https://wa.me/2685090669?text=${encodeURIComponent(message)}`;
+window.open(whatsappURL, "_blank");
+});
+</script>                
+                        </div>
 					</div>
 					</div>
 					<br><br><br>
@@ -429,17 +511,7 @@ window.onclick = function (event) {
 				<div class="post-card details"id="posts-container"></div>
 		</div>
 		</div>
-		</div>
-
-
-
-
-
-
-
-
-
-    
+		</div>    
 <script></script>
 <script src="screens.js"></script>
 <script src="script.js" type="text/javascript" charset="utf-8"></script>
