@@ -238,7 +238,7 @@ const companies = [
         name: "BoniZulu",
         logo: "https://1pulse.online/images/bonizluu-fav.png",
         about: {
-            description: "Sustainable energy solutions provider.",
+            description: "BoniZulu is a woman-centric fashion brand created by women, for women, celebrating the unique roles women play in society.",
             website: "https://greenenergy.com",
             contact: {
                 email: "contact@greenenergy.com",
@@ -248,8 +248,8 @@ const companies = [
         posts: [
             {
                 id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
+                title: "The new Designs in line",
+                content: "Our focus extends beyond fashion into lifestyle and natural health products that support a woman’s journey. We design inclusive, empowering fashion choices that highlight strength, beauty, and diversity.",
                 date: "2025-03-20"
             }
         ],
@@ -284,8 +284,8 @@ const companies = [
             }
         ],
         products: [
-            { id: "pr3", name: "Solar Panel", price: 500 },
-            { id: "pr4", name: "Wind Turbine", price: 1200 }
+            { id: "pr3", name: "WhatsNext - Crop-Top from BoniZulu", product_img:"", price: 500 },
+            { id: "pr4", name: "WhatsNext - T-shirtp from BoniZulu", product_img:"", price: 1200 }
         ],
         services: [
             { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }

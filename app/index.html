@@ -123,7 +123,6 @@
 				<a id="thref" href="#timer"><button data-tooltip="What they post" title="Social Media"><i class="fas fa-users"></i></button></a>
 				<a id="thref" href="#social"><button data-tooltip="talk to them" title="Messages"><i class="fas fa-comment-alt"></i></button></a>
 			</div>
-		
 			<div class="content-wrapper">
 				<div  class="a">
 					<div class="rival-box">
@@ -132,13 +131,7 @@
 					<div class="rival-boxes header" id="logoContainer">
 					</div>
 				</div>
-
-                
-                
-
-
-                
-			<div class="stopw-section" id="internet">
+		<div class="stopw-section" id="internet">
 				<!-- There is a bug with overlow -->
 			<div class="lap-box-fixer">
 				<div class="lap-boxes" id="companyAbout">
@@ -155,14 +148,14 @@
 					<div class="col-md-6">
 					<div class="form">
 				<!-- Search Bar -->
-<div class="search-container">
-	</span><i id="searchButton"class="fa fa-search search-icon"></i>
-    <input type="text" id="searchInput" class="form-control form-input" placeholder="Search Companies...">
-	<span class="right-icon"><i class="fa fa-microphone"></i>
-</div>
+				<div class="search-container">
+					</span><i id="searchButton"class="fa fa-search search-icon"></i>
+				    <input type="text" id="searchInput" class="form-control form-input" placeholder="Search Companies...">
+					<span class="right-icon"><i class="fa fa-microphone"></i>
+				</div>
 
-<!-- Modal -->
-<div id="searchModal" class="modal">
+					<!-- Modal -->
+					<div id="searchModal" class="modal">
     <div class="modal-content stable">
         <span class="close">&times;</span>
         <div id="modalBody">
@@ -279,24 +272,25 @@ window.onclick = function (event) {
 };
 
 	</script>
-</div>
-
-  					</div>
 					</div>
 					</div>
+					</div>
+					</div>
+					
+					<div id="companyModal" class="compModal">
+						<h3>Products</h3>
+						<div class="products-grid" id="modalProductsContainer"></div>
+						
+						<h3>Posts</h3>
+						<div id="modalPostsContainer"></div>
+					</div>	
 					<br>
 
-					<div id="companyModal" class="compModal">
-							<h3>Products</h3>
-							<div class="products-grid" id="modalProductsContainer"></div>
-							
-							<h3>Posts</h3>
-							<div id="modalPostsContainer"></div>
-					</div>
+					<h3>Recent Posts</h3>
+					
 					<div id="posts-section">
 						<!----this is a placeholde, data is populated from the db-->
-						<h3>Recent Posts</h3>
-					<div class="user-card" style=" margin-bottom: 0px !important; padding-bottom: 0px !important; margin-bottom: 10px;"  id="posts-container">
+					<div class="user-card" style=" margin-bottom: 0px !important; padding-bottom: 0px !important; margin-bottom: 10px;"  >
 						<div class="cover-photo">
 							<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
 						</div>
@@ -314,7 +308,9 @@ window.onclick = function (event) {
 					</div>
 					</div>
 
-
+					<div id="posts-container"></div>
+					
+					<div id="companyVideo_Posts" class="company-section"></div>
 					<div class="tiktok-card">
 						<div class="video-container">
 							<iframe src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0" allowfullscreen></iframe>
@@ -331,7 +327,6 @@ window.onclick = function (event) {
 							<div>↪️ 89</div>
 						</div>
 					</div>
-					<br>
 					<br>
 					<br>
 				</div>
@@ -362,7 +357,7 @@ window.onclick = function (event) {
 			<div class="lap-box-fixer">
 				<div class="lap-box" style="margin-top: 130px;">
 					<div class="post-card" id="posts-container">
-                        <div id="companyPicture_Posts" class="company-section"></div>
+                <div id="companyPicture_Posts" class="company-section"></div>
                 <div id="companySavvies" class="company-section"></div>
 						<div class="post-header">
 							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
@@ -409,7 +404,6 @@ window.onclick = function (event) {
 						<div class="post-card details" id="companyDetails" id="posts-container">
                             
                             <div id="companyPetitions" class="company-section"></div>
-                            <div id="companyVideo_Posts" class="company-section"></div>
 						<div class="post-header">
 							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
 							<div class="user-info">
