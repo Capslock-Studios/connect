@@ -407,6 +407,7 @@ window.onclick = function (event) {
 						<div class="post-card details" id="companyDetails" id="posts-container">
                             
                             <div id="companyPetitions" class="company-section"></div>
+							
 						<div class="post-header">
 							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
 							<div class="user-info">
@@ -425,6 +426,98 @@ window.onclick = function (event) {
 						</div>
 						</div>
 						<br><br>
+						<div class="post-card " style="width: 100%;">
+							<style>
+								h2 {
+									text-align: center;
+									color: #2c3e50;
+								}
+								.faq-container {
+									margin-top: 20px;
+								}
+								.faq-item {
+									background: #a54343;
+									border-radius: 8px;
+									margin-bottom: 10px;
+									box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+									overflow: hidden;
+								}
+								.faq-title {
+									width: 100%;
+									background: #ec892d;
+									color: white;
+									padding: 15px;
+									cursor: pointer;
+									font-size: 18px;
+									font-weight: bold;
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+								}
+								.faq-title span {
+									font-size: 22px;
+								}
+								.faq-content {
+									display: none;
+									padding: 15px;
+									font-size: 14px;
+									background: #f9f9f9;
+									border-top: 1px solid #ddd;
+								}
+								.petition-container img {
+									width: 100%;
+									border-radius: 8px;
+									margin-bottom: 10px;
+								}
+								.petition-container strong {
+									display: block;
+									margin-top: 10px;
+								}
+							</style>
+								<h2>Community Voices</h2>
+						
+								<div class="faq-container">
+									<!-- Savvies Section -->
+									<div class="faq-item">
+										<div class="faq-title" onclick="toggleFAQ(this)">
+											Savvies <span>+</span>
+										</div>
+										<div class="faq-content">
+											<p>No Savvy data available yet.</p>
+										</div>
+									</div>
+						
+									<!-- Petitions Section -->
+									<div class="faq-item">
+										<div class="faq-title" onclick="toggleFAQ(this)">
+											Petitions <span>+</span>
+										</div>
+										<div class="faq-content petition-container">
+											<img src="https://mongo-piano.netlify.app/1pulse-cover.jpg" alt="Petition Cover">
+											<h3 id="petition-title">Community Petition</h3>
+											<p id="petition-description">We would like you to be a part of a constitutional community structure that is responsible for holding the municipality accountable. A community Trust...</p>
+											<strong>Signatures: <span id="petition-signatures">67</span></strong>
+											<strong>Date: <span id="petition-date">Not provided</span></strong>
+											<strong>Time: <span id="petition-time">Not provided</span></strong>
+											<strong>Location: <span id="petition-location">Not provided</span></strong>
+										</div>
+									</div>
+								</div>
+								<script>
+									function toggleFAQ(element) {
+										let content = element.nextElementSibling;
+										let icon = element.querySelector("span");
+							
+										if (content.style.display === "block") {
+											content.style.display = "none";
+											icon.textContent = "+";
+										} else {
+											content.style.display = "block";
+											icon.textContent = "−";
+										}
+									}
+								</script>
+							</div>
 						<div class="post-content">
 							No more posts to see
 						</div>
