@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             company.products.map(product => `  
                 <div class="card">
                    <div class="card-img product-image">
-                                      <img src="${product.ProductImage}" alt="${product.title}">
+                                      <img src="${product.product_img}" alt="${product.title}">
                                   </div>
                   <div class="card-info">
                     <p class="text-title">${product.name}</p>
