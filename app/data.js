@@ -111,8 +111,10 @@ const companies = [
             }
         ],
         products: [
-            { id: "pr3", name: "WhatsNext T-shirt", purchaseLink:"", description:"Promotional T-shirt for the whatsnext movement.", price: 450 },
-            { id: "pr4", name: "WhatsNext Crop-Top", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", price: 600 }
+            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 },
+            { id: "pr3", name: "WhatsNext - Squabbleup Promotions T-shirt", purchaseLink:"", description:"Promotional T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
+            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
+            { id: "pr4", name: "WhatsNext - Mastaard T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 }
         ],
         services: [
             { id: "sv2", name: "Energy Audits",  purchaseLink:"", description: "Evaluate your energy efficiency and optimize costs.", price: 1500 }
@@ -403,8 +405,8 @@ const companies = [
             }
         ],
         products: [
-            { id: "pr3", name: "Solar Panel", price: 500 },
-            { id: "pr4", name: "Wind Turbine", price: 1200 }
+            { id: "pr3", name: "Solar Panel", product_img:"https://mongo-piano.netlify.app/BoniZulu_Over-Sezed-T.png", price: 500 },
+            { id: "pr4", name: "Wind Turbine", product_img:"https://mongo-piano.netlify.app/BoniZulu_Over-Sezed-T.png", price: 1200 }
         ],
         services: [
             { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
