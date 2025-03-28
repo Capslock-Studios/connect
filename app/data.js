@@ -31,7 +31,7 @@ const companies = [
             {
                 id: "v2",
                 title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
+                video_url: "https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0",
                 thumbnail: "https://via.placeholder.com/150"
             }
         ],
@@ -358,11 +358,11 @@ const companies = [
         name: "Auko Designs",
         logo: "https://whatsnext.joburg/app/Auko.png",
         about: {
-            description: "Community collaboration platform with tools.",
-            website: "https://1pulse-online-beta.netlify.app/",
+            description: "AUKODesigns is a leading 3D Industrial Design, R&D, and Manufacturing Company based in Johannesburg, South Africa. We specialize in turning ideas into reality using cutting-edge 3D Computer-Aided Design (CAD) software and advanced manufacturing technologies.",
+            website: "https://www.aukodesigns.co.za/",
             contact: {
-                email: "contact@1pulse.online",
-                phone: "+9876543210"
+                email: "info@aukodesigns.co.za",
+                phone: " +26 60 615 7687"
             }
         },
         posts: [
@@ -405,8 +405,9 @@ const companies = [
             }
         ],
         products: [
-            { id: "pr3", name: "Solar Panel", product_img:"https://mongo-piano.netlify.app/BoniZulu_Over-Sezed-T.png", price: 500 },
-            { id: "pr4", name: "Wind Turbine", product_img:"https://mongo-piano.netlify.app/BoniZulu_Over-Sezed-T.png", price: 1200 }
+            { id: "pr3", name: "AUKODesigns Chef Apron", product_img:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR4OKPVGw7a3Cqyk4MXrRTKXvFFeWd5e2L8UXTEjnsZqdIg3s4XUokIlGDUhtei0AOHvssfpFT7zXFYY9N7oh_RMNQHL8OR24G0ELVvPPHKEA7yUPETwmqI&usqp=CAE", description:"AUKODesigns gives you a locally designed and manufactured high-end customisable Chef Apron.", price: 850.00},   
+            { id: "pr3", name: "AUKO Designs", product_img:"https://media.takealot.com/covers_images/1cba16b478104528972390ff552bf758/s-zoom.file", description:"Auko Designs South Africa Map Puzzle.", price: 250.00},
+        
         ],
         services: [
             { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
@@ -475,6 +476,65 @@ const companies = [
         id: "c2",
         name: "The governing of national unity",
         logo: "https://i.ibb.co/YwWPCP8/G20-logo.png",
+        about: {
+            description: "Community collaboration platform with tools.",
+            website: "https://1pulse-online-beta.netlify.app/",
+            contact: {
+                email: "contact@1pulse.online",
+                phone: "+9876543210"
+            }
+        },
+        posts: [
+            {
+                id: "p2",
+                title: "New Solar Panels Launched!",
+                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
+                date: "2025-03-20"
+            }
+        ],
+        petitions: [
+            {
+                id: "pt2",
+                title: "Community Savvy",
+                cover_img: "https://mongo-piano.netlify.app/1pulse-cover.jpg",
+                description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
+                signatures: 67
+            }
+        ],
+        video_posts: [
+            {
+                id: "v2",
+                title: "Green Tech Innovations",
+                video_url: "https://example.com/green-tech.mp4",
+                thumbnail: "https://via.placeholder.com/150"
+            }
+        ],
+        picture_posts: [
+            {
+                id: "pic2",
+                title: "Solar Farms Expansion",
+                image_url: "https://via.placeholder.com/200"
+            }
+        ],
+        savvies: [
+            {
+                id: "s2",
+                topic: "How Can We Achieve 100% Renewable Energy?",
+                votes: 800
+            }
+        ],
+        products: [
+            { id: "pr3", name: "Solar Panel", price: 500 },
+            { id: "pr4", name: "Wind Turbine", price: 1200 }
+        ],
+        services: [
+            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+        ]
+    },
+    {
+        id: "c2",
+        name: "The Angle",
+        logo: "https://theangle.africa/wp-content/uploads/2024/09/Logo-2___3-removebg-preview.png",
         about: {
             description: "Community collaboration platform with tools.",
             website: "https://1pulse-online-beta.netlify.app/",
