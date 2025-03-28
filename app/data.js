@@ -108,14 +108,19 @@ const companies = [
             {
                 id: "pic2",
                 title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
+                description:"Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.",
+                image_url: "siya-whatsnext.jpg",
+                image_url2: "group-whatsnext.jpg",
+                image_url3: "madness-whatsnext.jpg"
             }
         ],
         savvies: [
             {
                 id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
+                topic: "How Can We Achieve 100% Renewable Energy?", 
+                details:"Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.",
+                votes: 80,
+                date: "02.03.25"
             }
         ],
         products: [

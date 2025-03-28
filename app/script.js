@@ -81,11 +81,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 
             `).join("");
 
-        companyPicture_Posts.innerHTML = `<h3>🖼️ Picture Posts</h3>` + 
-            company.picture_posts.map(pic => `<div><h4>${pic.title}</h4><img src="${pic.image_url}" width="150"></div>
-                
+        companyPicture_Posts.innerHTML = `` + 
+            company.picture_posts.map(pic => `
                              
-                
+						<div class="post-header">
+							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
+							<div class="user-info">
+								<h4>${pic.title}</h4>
+								<p>2 hrs ago · 🌍</p>
+							</div>
+						</div>
+						<div class="post-content">
+						${pic.description}
+                        </div>
+						<div class="pic-image-grid">
+							<img src="${pic.image_url}" alt="Large Post Image" class="pic-large-image">
+							<div class="pic-small-images">
+								<img src="${pic.image_url2}" alt="Small Image 1" class="pic-small-image">
+								<img src="${pic.image_url3}" alt="Small Image 2" class="pic-small-image">
+								<div class="pic-small-image" style="position: relative;">
+									<div class="pic-overlay">+1</div>
+								</div>
+							</div>
+						</div>
+						<div class="post-actions">
+							<div>👍 Like</div>
+							<div>💬 Comment</div>
+							<div>↪️ Share</div>
+						</div>
                 
                 
                 `).join("");
