@@ -55,12 +55,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         companyVideo_Posts.innerHTML = `<h3>📹 Video Posts</h3>` + 
             company.video_posts.map(video => `
-                <div>
-                    <h4>${video.title}</h4>
-                    <a href="${video.video_url}" target="_blank">
-                        <img src="${video.thumbnail}" width="150">
-                    </a>
-                </div>
+               
+                    <div class="tiktok-card">
+						<div class="video-container">
+							<iframe src="${video.video_url}" allowfullscreen></iframe>
+						</div><!-- Floating User Info -->
+						<div class="tiktok-user-info">
+							<h4>${video.title}</h4>
+							<p>${video.description}</p>
+						</div>
+						<!-- Floating Action Buttons -->
+						<div class="floating-actions">
+							<img src="${video.thumbnail}" alt="Profile Picture" class="profile-photo">
+							<div>❤️ 1.2K</div>
+							<div>💬 324</div>
+							<div>↪️ 89</div>
+						</div>
+					</div>
+              
 
 
 
@@ -72,24 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         companyPicture_Posts.innerHTML = `<h3>🖼️ Picture Posts</h3>` + 
             company.picture_posts.map(pic => `<div><h4>${pic.title}</h4><img src="${pic.image_url}" width="150"></div>
                 
-                
-                <div class="tiktok-card">
-						<div class="video-container">
-							<iframe src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0" allowfullscreen></iframe>
-						</div><!-- Floating User Info -->
-						<div class="tiktok-user-info">
-							<h4>@WhatsNext</h4>
-							<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
-						</div>
-						<!-- Floating Action Buttons -->
-						<div class="floating-actions">
-							<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
-							<div>❤️ 1.2K</div>
-							<div>💬 324</div>
-							<div>↪️ 89</div>
-						</div>
-					</div>
-
+                             
                 
                 
                 

@@ -30,9 +30,10 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
+                title: "Buy Local Conference",
+                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             }
         ],
         picture_posts: [
