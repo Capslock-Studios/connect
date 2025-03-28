@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 <div class="tiktok-card">
 						<div class="video-container">
-							<iframe src="${video_posts.video_url}" allowfullscreen></iframe>
+							<iframe src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0" allowfullscreen></iframe>
 						</div><!-- Floating User Info -->
 						<div class="tiktok-user-info">
 							<h4>@WhatsNext</h4>
