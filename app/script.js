@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         companyVideo_Posts.innerHTML = `<h3>📹 Video Posts</h3>` + 
             company.video_posts.map(video => `
                
-                    <div class="tiktok-card">
+                    <div class="tiktok-card" style="margin-bottom: 30px; float: left;">
 						<div class="video-container">
 							<iframe src="${video.video_url}" allowfullscreen></iframe>
 						</div><!-- Floating User Info -->

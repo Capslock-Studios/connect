@@ -34,6 +34,13 @@ const companies = [
                 description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
                 video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            },
+            {
+                id: "v2",
+                title: "Buy Local Conference",
+                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             }
         ],
         picture_posts: [
