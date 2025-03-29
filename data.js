@@ -12,20 +12,10 @@ const companies = [
             }
         },
         posts: [
-            {
-                id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
-                date: "2025-03-20"
-            }
+         
         ],
         petitions: [
-            {
-                id: "pt2",
-                title: "Ban Plastic Waste",
-                description: "Support our movement to eliminate single-use plastics.",
-                signatures: 5000
-            }
+          
         ],
         video_posts: [
             {
@@ -44,11 +34,7 @@ const companies = [
             }
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+           
         ],
         savvies: [
             {
@@ -64,7 +50,7 @@ const companies = [
             { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 }
         ],
         services: [
-            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+          
         ]
     },
     {
@@ -99,15 +85,23 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
+                title: "Buy Local Conference",
+                description: "Proudly South African hosted a protest during our buy local conference in Sandton Convention Center.",
+                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
+            },
+            {
+                id: "v2",
+                title: "1 pulse online",
+                description: "For Community engagement and government accountability, hear out 1Pulse online.",
+                video_url: "https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
             }
         ],
         picture_posts: [
             {
                 id: "pic2",
-                title: "Solar Farms Expansion",
+                title: "The Birth of WhatsNext!",
                 description:"Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.",
                 image_url: "siya-whatsnext.jpg",
                 image_url2: "group-whatsnext.jpg",
@@ -117,8 +111,8 @@ const companies = [
         savvies: [
             {
                 id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?", 
-                details:"Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.",
+                topic: "Where would you like us to go next?", 
+                details:"We are a movement therefore we would like to know where some of our people are at.",
                 votes: 80,
                 date: "02.03.25"
             }
@@ -130,7 +124,7 @@ const companies = [
             { id: "pr4", name: "WhatsNext - Mastaard T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 }
         ],
         services: [
-            { id: "sv2", name: "Energy Audits",  purchaseLink:"", description: "Evaluate your energy efficiency and optimize costs.", price: 1500 }
+            { id: "sv2", name: "Networking",  purchaseLink:"", description: "We host Networking sessions at Tshimologong.", price: 0 }
         ]
     },
     {
@@ -146,37 +140,19 @@ const companies = [
             }
         },
         posts: [
-            {
-                id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
-                date: "2025-03-20"
-            }
+          
         ],
         petitions: [
-            {
-                id: "pt2",
-                title: "Ban Plastic Waste",
-                description: "Support our movement to eliminate single-use plastics.",
-                signatures: 5000
-            }
+         
         ],
         video_posts: [
-            {
-             
-            }
+           
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+         
         ],
         savvies: [
-            {
-                
-            }
+           
         ],
         products: [
             
@@ -191,19 +167,14 @@ const companies = [
         logo: "https://i.ibb.co/Q35sd45k/1pulse-online-logo-CRc-L2.png",
         about: {
             description: "Community collaboration platform with tools.",
-            website: "https://1pulse-online-beta.netlify.app/",
+            website: "https://1pulse.online/",
             contact: {
                 email: "contact@1pulse.online",
                 phone: "+9876543210"
             }
         },
         posts: [
-            {
-                id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
-                date: "2025-03-20"
-            }
+          
         ],
         petitions: [
             {
@@ -217,23 +188,20 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
+                title: "1 pulse online",
+                description: "One heart beat! For Community engagement and government accountability, hear out 1Pulse online.",
+                video_url: "https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
             }
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+        
         ],
         savvies: [
             {
                 id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
+                topic: "What fucntions would you liek to add the App?",
+                votes: 0
             }
         ],
         products: [
@@ -241,7 +209,7 @@ const companies = [
         
         ],
         services: [
-            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+            { id: "sv2", name: "We provide civic engagement resources and tool like the 1pulse oline platform and the CRM for case management.", description: "Evaluate your energy efficiency and optimize costs." }
         ]
     },
     {
@@ -265,41 +233,23 @@ const companies = [
             }
         ],
         petitions: [
-            {
-                id: "pt2",
-                title: "Ban Plastic Waste",
-                description: "Support our movement to eliminate single-use plastics.",
-                signatures: 5000
-            }
+         
         ],
         video_posts: [
-            {
-                id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
-            }
+            
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+           
         ],
         savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
+           
         ],
         products: [
             { id: "pr3", name: "WhatsNext - Crop-Top from BoniZulu", product_img:"https://mongo-piano.netlify.app/Bonizulu-cropTop.png", price: 500 },
             { id: "pr4", name: "WhatsNext - T-shirtp from BoniZulu", product_img:"https://mongo-piano.netlify.app/BoniZulu_Over-Sezed-T.png", price: 1200 }
         ],
         services: [
-            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+            { id: "sv2", name: "Fashion Design", description: "We design bespoke wear for people in all walks of life" }
         ]
     },
     {
@@ -315,49 +265,30 @@ const companies = [
             }
         },
         posts: [
-            {
-                id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
-                date: "2025-03-20"
-            }
         ],
         petitions: [
-            {
-                id: "pt2",
-                title: "Ban Plastic Waste",
-                description: "Support our movement to eliminate single-use plastics.",
-                signatures: 5000
-            }
+          
+            
         ],
         video_posts: [
-            {
-                id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
-            }
+           
+            
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+          
+            
         ],
         savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
+            
+            
         ],
         products: [
-            { id: "pr3", name: "Solar Panel", price: 500 },
-            { id: "pr4", name: "Wind Turbine", price: 1200 }
+         
+            
         ],
         services: [
-            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+       
+            
         ]
     },
     {
@@ -373,12 +304,7 @@ const companies = [
             }
         },
         posts: [
-            {
-                id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
-                date: "2025-03-20"
-            }
+        
         ],
         petitions: [
             {
@@ -393,26 +319,13 @@ const companies = [
             }
         ],
         video_posts: [
-            {
-                id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
-            }
+          
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+           
         ],
         savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
+           
         ],
         products: [
             { id: "pr3", name: "AUKODesigns Chef Apron", product_img:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR4OKPVGw7a3Cqyk4MXrRTKXvFFeWd5e2L8UXTEjnsZqdIg3s4XUokIlGDUhtei0AOHvssfpFT7zXFYY9N7oh_RMNQHL8OR24G0ELVvPPHKEA7yUPETwmqI&usqp=CAE", description:"AUKODesigns gives you a locally designed and manufactured high-end customisable Chef Apron.", price: 850.00},   
@@ -436,50 +349,26 @@ const companies = [
             }
         },
         posts: [
-            {
-                id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
-                date: "2025-03-20"
-            }
+           
         ],
         petitions: [
-            {
-                id: "pt2",
-                title: "Community Savvy",
-                cover_img: "https://mongo-piano.netlify.app/1pulse-cover.jpg",
-                description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
-                signatures: 67
-            }
+            
+            
         ],
         video_posts: [
-            {
-                id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
-            }
+           
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+            
         ],
         savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
+           
         ],
         products: [
-            { id: "pr3", name: "Solar Panel", price: 500 },
-            { id: "pr4", name: "Wind Turbine", price: 1200 }
+          
         ],
         services: [
-            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+           
         ]
     },
     {
@@ -495,50 +384,25 @@ const companies = [
             }
         },
         posts: [
-            {
-                id: "p2",
-                title: "New Solar Panels Launched!",
-                content: "Introducing our most efficient solar panels yet, with 30% more power output.",
-                date: "2025-03-20"
-            }
+           
         ],
         petitions: [
-            {
-                id: "pt2",
-                title: "Community Savvy",
-                cover_img: "https://mongo-piano.netlify.app/1pulse-cover.jpg",
-                description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
-                signatures: 67
-            }
+           
         ],
         video_posts: [
-            {
-                id: "v2",
-                title: "Green Tech Innovations",
-                video_url: "https://example.com/green-tech.mp4",
-                thumbnail: "https://via.placeholder.com/150"
-            }
+           
         ],
         picture_posts: [
-            {
-                id: "pic2",
-                title: "Solar Farms Expansion",
-                image_url: "https://via.placeholder.com/200"
-            }
+           
         ],
         savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
+            
         ],
         products: [
-            { id: "pr3", name: "Solar Panel", price: 500 },
-            { id: "pr4", name: "Wind Turbine", price: 1200 }
+           
         ],
         services: [
-            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+         
         ]
     },
     

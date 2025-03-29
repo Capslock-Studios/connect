@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `).join("");
 
-        companyPicture_Posts.innerHTML = `<h3>Picture Posts</h3>` + 
+        companyPicture_Posts.innerHTML = `<h3></h3>` + 
             company.picture_posts.map(pic => `
                 <div class="pic-post">
                     <div class="post-header">
@@ -178,8 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Function to send WhatsApp message
     function sendWhatsAppMessage(name, email, phone, petitionTitle) {
-        const phoneNumber = "0685090669"; // Target WhatsApp number
-        const message = `Hello, I am signing the petition: "${petitionTitle}".\n\nMy Details:\n- Name: ${name}\n- Email: ${email}\n- Phone: ${phone}`;
+        const phoneNumber = "27685090669"; // Target WhatsApp number
+        const message = `Hello 1pulse, I am signing the petition: "${petitionTitle}".\n\nMy Details:\n- Name: ${name}\n- Email: ${email}\n- Phone: ${phone}`;
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
         // Open WhatsApp link
