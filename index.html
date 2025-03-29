@@ -127,7 +127,40 @@
 			<div class="content-wrapper">
 				<div  class="a">
 					<div class="rival-box">
-						<button  id="addCompanyBtn" data-tooltip="Add you company"><img src="https://mongo-piano.netlify.app/add-button.png" alt="Add"></button>
+						<style>/* Tooltip container */
+							button[data-tooltip] {
+								position: relative;
+								display: inline-block;
+								cursor: pointer;
+							}
+							
+							/* Tooltip text (hidden by default) */
+							button[data-tooltip]:hover::after {
+								content: attr(data-tooltip); /* Use the tooltip text from the data-tooltip attribute */
+								position: absolute;
+								top: 125%; /* Position above the button */
+								left: 50%;
+								transform: translateX(-50%);
+								padding: 8px;
+								background-color: rgba(0, 0, 0, 0.75);
+								color: white;
+								border-radius: 4px;
+								font-size: 12px;
+								white-space: nowrap;
+								opacity: 0;
+								transition: opacity 0.2s;
+								pointer-events: none;
+								height: 10px;
+							}
+							
+							/* Show tooltip when hovering over the button */
+							button[data-tooltip]:hover::after {
+								opacity: 1;
+							}
+							</style>
+						<button id="addCompanyBtn" data-tooltip="Add your company">
+							<img src="https://mongo-piano.netlify.app/add-button.png" alt="Add">
+						</button>					
 					</div>
 					<div class="rival-boxes header" id="logoContainer">
 					</div>
