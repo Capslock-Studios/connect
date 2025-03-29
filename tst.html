@@ -1,0 +1,59 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Ensure companyPetitions is defined before modifying innerHTML
+        if (typeof company !== "undefined" && company.petitions) {
+            companyPetitions.innerHTML = `<h3></h3>` +
+                company.petitions.map(petition => `
+                    <img src="https://mongo-piano.netlify.app/1pulse-cover.jpg" alt="Petition Cover">
+                    <h3 id="petition-title">${petition.title}</h3>
+                    <p id="petition-description">${petition.description}</p>
+                    <strong>Signatures: <span id="petition-signatures">${petition.signatures}</span></strong>
+                    <strong>Date: <span id="petition-date">Not provided</span></strong>
+                    <strong>Time: <span id="petition-time">Not provided</span></strong>
+                    <strong>Location: <span id="petition-location">Not provided</span></strong>
+                    <form class="registrationForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control name" placeholder="Full Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control email" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control phone" placeholder="Phone Number" required>
+                        </div>
+                        <button type="button" class="whatsappLink formb" data-title="${petition.title}">Sign & Support</button>
+                    </form>
+                `).join("");
+        }
+    
+        // Function to send WhatsApp message
+        function sendWhatsAppMessage(name, email, phone, petitionTitle) {
+            const phoneNumber = "0685090669"; // Target WhatsApp number
+            const message = `Hello, I am signing the petition: "${petitionTitle}".\n\nMy Details:\n- Name: ${name}\n- Email: ${email}\n- Phone: ${phone}`;
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+            // Open WhatsApp link
+            window.open(whatsappURL, "_blank");
+        }
+    
+        // Attach event listeners to dynamically added buttons
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("whatsappLink")) {
+                const form = event.target.closest(".registrationForm");
+                const name = form.querySelector(".name").value.trim();
+                const email = form.querySelector(".email").value.trim();
+                const phone = form.querySelector(".phone").value.trim();
+                const petitionTitle = event.target.getAttribute("data-title");
+    
+                if (name && email && phone) {
+                    sendWhatsAppMessage(name, email, phone, petitionTitle);
+                } else {
+                    alert("Please fill in all fields before signing.");
+                }
+            }
+        });
+    });
+    
+    </script>
+                                <div id="companyPetitions" class="company-section"></div>
+                            

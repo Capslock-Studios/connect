@@ -172,7 +172,7 @@ window.addEventListener('click', function(event) {
 
 // Fetch and display companies
 async function fetchCompanies() {
-    const logoContainer = document.getElementById('logoContainer');
+    const logoContainer = document.getElementById('logo--Container');
     
     // Show loading message
     logoContainer.innerHTML = `<p id="loadingText">Loading companies...</p>`;

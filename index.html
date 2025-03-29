@@ -127,223 +127,235 @@
 			<div class="content-wrapper">
 				<div  class="a">
 					<div class="rival-box">
-						<button  id="addCompanyBtn"><img src="/add-button.png" alt="Add"></button>
+						<button  id="addCompanyBtn"><img src="https://mongo-piano.netlify.app/add-button.png" alt="Add"></button>
 					</div>
-					<div class="rival-boxes" id="logoContainer">
-						
+					<div class="rival-boxes header" id="logoContainer">
 					</div>
 				</div>
-			<div class="stopw-section" id="internet">
-				<!-- There is a bug with overlow -->
-			<div class="lap-box-fixer">
-				<div class="lap-boxes">
-						<br>
-						<h3>WELCOME TO</h3>
-					<h1>WhatsNext</h1>
-					<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
-					
-					<div class="row height d-flex justify-content-center align-items-center">
-					<div class="col-md-6">
-					<div class="form">
-				<!-- Search Bar -->
-<div class="search-container">
-	</span><i id="searchButton"class="fa fa-search search-icon"></i>
-    <input type="text" id="searchInput" class="form-control form-input" placeholder="Search Companies...">
-	<span class="right-icon"><i class="fa fa-microphone"></i>
-</div>
 
-<!-- Modal -->
-<div id="searchModal" class="modal">
-    <div class="modal-content stable">
-        <span class="close">&times;</span>
-        <div id="modalBody">
-            <h3>Search Results: "<span id="queryText"></span>"</h3>
-            <p id="responseText"></p>
-            <div id="resultsContainer"></div>
-        </div>
+                
+                
+
+
+                
+				<div class="stopw-section" id="internet">
+					<!-- There is a bug with overlow -->
+				<div class="lap-box-fixer">
+					<div class="lap-boxes" id="companyAbout">
+						
+					<div id="companyPosts" class="company-section"></div>
+							<br>
+							  <!-- Company Details Section -->
 		
-
-
-			<!-- Company Details Modal -->
-			<div id="companyModal" class="logoModal">
-				<div class="logoModal-content">
-					<span class="close-modal">&times;</span>
-					
-					<div class="company-header">
-						<img id="modalCompanyLogo" class="company-logo-large" src="" alt="Company Logo">
-						<div class="company-info">
-							<h2 id="modalCompanyName"></h2>
-							<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
-							<p><strong>Description:</strong> <span id="modalCompanyDescription"></span></p>
-							<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
-							<div class="social-links">
-								<a id="modalFacebook" target="_blank">Facebook</a>
-								<a id="modalTwitter" target="_blank">Twitter</a>
-								<a id="modalInstagram" target="_blank">Instagram</a>
+							<h3>WELCOME TO</h3>
+						<h1>WhatsNext</h1>
+						<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+						
+						<div class="row height d-flex justify-content-center align-items-center">
+						<div class="col-md-6">
+						<div class="form">
+					<!-- Search Bar -->
+					<div class="search-container">
+						</span><i id="searchButton"class="fa fa-search search-icon"></i>
+						<input type="text" id="searchInput" class="form-control form-input" placeholder="Search Companies...">
+						<span class="right-icon"><i class="fa fa-microphone"></i>
+					</div>
+	
+						<!-- Modal -->
+						<div id="searchModal" class="modal">
+		<div class="modal-content stable">
+			<span class="close">&times;</span>
+			<div id="modalBody">
+				<h3>Search Results: "<span id="queryText"></span>"</h3>
+				<p id="responseText"></p>
+				<div id="resultsContainer"></div>
+			</div>
+			
+	
+	
+				<!-- Company Details Modal -->
+				<div id="companyModal" class="logoModal">
+					<div class="logoModal-content">
+						<span class="close-modal">&times;</span>
+						
+						<div class="company-header">
+							<img id="modalCompanyLogo" class="company-logo-large" src="" alt="Company Logo">
+							<div class="company-info">
+								<h2 id="modalCompanyName"></h2>
+								<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+								<p><strong>Description:</strong> <span id="modalCompanyDescription"></span></p>
+								<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
+								<div class="social-links">
+									<a id="modalFacebook" target="_blank">Facebook</a>
+									<a id="modalTwitter" target="_blank">Twitter</a>
+									<a id="modalInstagram" target="_blank">Instagram</a>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<h3>Products</h3>
-					<div class="products-grid" id="modalProductsContainer">
-						<!-- Products will be loaded here -->
-					</div>
-					
-					<h3>Posts</h3>
-					<div id="modalPostsContainer">
-						<!-- Posts will be loaded here -->
+						
+						<h3>Products</h3>
+						<div class="products-grid" id="modalProductsContainer">
+							<!-- Products will be loaded here -->
+						</div>
+						
+						<h3>Posts</h3>
+						<div id="modalPostsContainer">
+							<!-- Posts will be loaded here -->
+						</div>
 					</div>
 				</div>
-			</div>
+			
+				<!-- Your existing add company form -->
+				<div id="addCompanyForm" style="display: none;">
+					<!-- Existing form content -->
+				</div>
+		</div>
+		<script>
+			document.getElementById("searchButton").addEventListener("click", function () {
+		let query = document.getElementById("searchInput").value.trim();
+		if (!query) {
+			showModal("Error", "Please enter a company name to search.");
+			return;
+		}
+	
+		fetch(`/search-category?company=${encodeURIComponent(query)}`)
+			.then(response => response.json())
+			.then(data => {
+				if (data.error) {
+					showModal("Error", data.error);
+				} else {
+					displayResults(data);
+				}
+			})
+			.catch(error => {
+				console.error("Error:", error);
+				showModal("Error", "Something went wrong. Please try again.");
+			});
+	});
+	
+	function showModal(title, message) {
+		document.getElementById("queryText").textContent = title;
+		document.getElementById("responseText").textContent = message;
+		document.getElementById("resultsContainer").innerHTML = "";
+		document.getElementById("searchModal").style.display = "flex";
 		
-			<!-- Your existing add company form -->
-			<div id="addCompanyForm" style="display: none;">
-				<!-- Existing form content -->
-			</div>
-    </div>
-	<script>
-		document.getElementById("searchButton").addEventListener("click", function () {
-    let query = document.getElementById("searchInput").value.trim();
-    if (!query) {
-        showModal("Error", "Please enter a company name to search.");
-        return;
-    }
-
-    fetch(`/search-category?company=${encodeURIComponent(query)}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                showModal("Error", data.error);
-            } else {
-                displayResults(data);
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            showModal("Error", "Something went wrong. Please try again.");
-        });
-});
-
-function showModal(title, message) {
-    document.getElementById("queryText").textContent = title;
-    document.getElementById("responseText").textContent = message;
-    document.getElementById("resultsContainer").innerHTML = "";
-    document.getElementById("searchModal").style.display = "flex";
-    
-}
-
-function displayResults(data) {
-    let resultsDiv = document.getElementById("resultsContainer");
-    let companyHTML = data.companies.map(category => `
-        <h4>${category.category}</h4>
-        <ul>
-            ${category.companies.map(c => `
-                <li>
-                    <strong>${c.name}</strong> - ${c.head_office} <br>
-                    Email: <a href="mailto:${c.email}">${c.email}</a> <br>
-                    Phone: <a href="tel:${c.phone}">${c.phone}</a> <br>
-                    <a href="${c.fb}" target="_blank">Facebook</a> | 
-                    <a href="${c.linkedin}" target="_blank">LinkedIn</a> | 
-                    <a href="websitesearch.html?company=${encodeURIComponent(c.name)}">Website</a>
-                </li>
-            `).join('')}
-        </ul>
-    `).join('');
-
-    document.getElementById("queryText").textContent = data.query;
-    document.getElementById("responseText").innerHTML = `<p>Here are proudly South African companies similar to <b>${data.query}</b>.</p>`;
-    resultsDiv.innerHTML = companyHTML;
-    document.getElementById("searchModal").style.display = "flex";
-}
-
-// Close Modal
-document.querySelector(".close").addEventListener("click", function () {
-    document.getElementById("searchModal").style.display = "none";
-});
-
-// Close Modal on Click Outside
-window.onclick = function (event) {
-    let modal = document.getElementById("searchModal");
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-};
-
-	</script>
-</div>
-
-  					</div>
-					</div>
-					</div>
-					<br>
-
-					<div id="companyModal" class="compModal">
+	}
+	
+	function displayResults(data) {
+		let resultsDiv = document.getElementById("resultsContainer");
+		let companyHTML = data.companies.map(category => `
+			<h4>${category.category}</h4>
+			<ul>
+				${category.companies.map(c => `
+					<li>
+						<strong>${c.name}</strong> - ${c.head_office} <br>
+						Email: <a href="mailto:${c.email}">${c.email}</a> <br>
+						Phone: <a href="tel:${c.phone}">${c.phone}</a> <br>
+						<a href="${c.fb}" target="_blank">Facebook</a> | 
+						<a href="${c.linkedin}" target="_blank">LinkedIn</a> | 
+						<a href="websitesearch.html?company=${encodeURIComponent(c.name)}">Website</a>
+					</li>
+				`).join('')}
+			</ul>
+		`).join('');
+	
+		document.getElementById("queryText").textContent = data.query;
+		document.getElementById("responseText").innerHTML = `<p>Here are proudly South African companies similar to <b>${data.query}</b>.</p>`;
+		resultsDiv.innerHTML = companyHTML;
+		document.getElementById("searchModal").style.display = "flex";
+	}
+	
+	// Close Modal
+	document.querySelector(".close").addEventListener("click", function () {
+		document.getElementById("searchModal").style.display = "none";
+	});
+	
+	// Close Modal on Click Outside
+	window.onclick = function (event) {
+		let modal = document.getElementById("searchModal");
+		if (event.target === modal) {
+			modal.style.display = "none";
+		}
+	};
+	
+		</script>
+						</div>
+						</div>
+						</div>
+						</div>
+						
+						<div id="companyModal" class="compModal">
 							<h3>Products</h3>
 							<div class="products-grid" id="modalProductsContainer"></div>
 							
 							<h3>Posts</h3>
 							<div id="modalPostsContainer"></div>
-					</div>
-					<div id="posts-section">
-						<!----this is a placeholde, data is populated from the db-->
+						</div>	
+						<br>
+	
 						<h3>Recent Posts</h3>
-					<div class="user-card" style=" margin-bottom: 0px !important; padding-bottom: 0px !important; margin-bottom: 10px;"  id="posts-container">
-						<div class="cover-photo">
-							<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+						
+						<div id="posts-section">
+							<!----this is a placeholde, data is populated from the db-->
+						<div class="user-card" style=" margin-bottom: 0px !important; padding-bottom: 0px !important; margin-bottom: 10px;"  >
+							<div class="cover-photo">
+								<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+							</div>
+							<div class="user-info">
+								<h3>WhatsNext</h3>
+								<p>Our mission is to empower businesses through mentorship, strategic partnerships, and access to vital resources. 
+									 We also keep our community informed with the latest industry news and trends,
+									 while our podcast features in-depth discussions with experts, entrepreneurs, and changemakers shaping the future.
+									</p>
+							</div>
+							
+							<div class="buttons">
+								<button class="cta-btn">Contact</button>
+								<button class="cta-btn">Message</button>
+							</div>
+							<br>
 						</div>
-						<div class="user-info">
-							<h3>WhatsNext</h3>
-							<p>Our mission is to empower businesses through mentorship, strategic partnerships, and access to vital resources. 
-								 We also keep our community informed with the latest industry news and trends,
-								 while our podcast features in-depth discussions with experts, entrepreneurs, and changemakers shaping the future.</p>
 						</div>
-						<div class="buttons">
-							<button class="cta-btn">Contact</button>
-							<button class="cta-btn">Message</button>
+	
+						<div id="posts-container"></div>
+						
+						<div id="companyServices" class="company-section"></div>
+	<br>
+						<div class="tiktok-card">
+							<div class="video-container">
+								<iframe src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0" allowfullscreen></iframe>
+							</div><!-- Floating User Info -->
+							<div class="tiktok-user-info">
+								<h4>@WhatsNext</h4>
+								<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+							</div>
+							<!-- Floating Action Buttons -->
+							<div class="floating-actions">
+								<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+								<div>❤️ 1.2K</div>
+								<div>💬 324</div>
+								<div>↪️ 89</div>
+							</div>
 						</div>
+						<br>
+						<br>
 					</div>
+					<div id="companyVideo_Posts" class="" ></div>
+					<div class="post-content">
+						No more posts to see
 					</div>
-
-
-					<div class="tiktok-card">
-						<div class="video-container">
-							<iframe src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0" allowfullscreen></iframe>
-						</div><!-- Floating User Info -->
-						<div class="tiktok-user-info">
-							<h4>@WhatsNext</h4>
-							<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
-						</div>
-						<!-- Floating Action Buttons -->
-						<div class="floating-actions">
-							<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
-							<div>❤️ 1.2K</div>
-							<div>💬 324</div>
-							<div>↪️ 89</div>
-						</div>
-					</div>
-					<br>
-					<br>
-					<br>
+					<br><br>
 				</div>
-				<div class="post-content">
-					No more posts to see
 				</div>
-			</div>
-			</div>
 			<div class="clock-section" id="clock">
 			<div class="lap-box-fixer">
 				<div class="lap-box">
 					<div id="posts-section"></div>
+                    
+                <div id="companyProducts" class="company-section"></div>
+                <div id="companyServices" class="company-section"></div>
 					<div class="sec">
-					<div style="padding-top: 15px; ">
-						<h1></h1>
-						<h3></h3>
-						<p>This is where you get products by company.</p> 
-						<br>
-					</div>
-					<div id="products-section">
-						<h3>Company Products/Services</h3>
-					</div>
+				
 					</div>
 					<br><br><br>
 					<div class="post-content">
@@ -355,8 +367,10 @@ window.onclick = function (event) {
 			</div>
 	<div class="timer-section" id="timer">
 			<div class="lap-box-fixer">
-				<div class="lap-box" style="margin-top: 130px;">
+				<div class="lap-box" style="margin-top: 130px;"> <div id="companyPicture_Posts" class="company-section"></div>
 					<div class="post-card" id="posts-container">
+                       
+                
 						<div class="post-header">
 							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
 							<div class="user-info">
@@ -397,9 +411,102 @@ window.onclick = function (event) {
 		</div>
 	</div>
 				<div class="social-section" id="social">
+					
 					<div class="lap-box-fixer">
+						
 						<div class="lap-box" style="padding-top: 30px;">
+							<div class="post-card " style="width: 100%;">
+								<style>
+									h2 {
+										text-align: center;
+										color: #2c3e50;
+									}
+									.faq-container {
+										margin-top: 20px;
+									}
+									.faq-item {
+										background: #a54343;
+										border-radius: 8px;
+										margin-bottom: 10px;
+										box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+										overflow: hidden;
+									}
+									.faq-title {
+										width: 100%;
+										background: #ec892d;
+										color: white;
+										padding: 15px;
+										cursor: pointer;
+										font-size: 18px;
+										font-weight: bold;
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+									}
+									.faq-title span {
+										font-size: 22px;
+									}
+									.faq-content {
+										display: none;
+										padding: 15px;
+										font-size: 14px;
+										background: #f9f9f9;
+										border-top: 1px solid #ddd;
+									}
+									.petition-container img {
+										width: 100%;
+										border-radius: 8px;
+										margin-bottom: 10px;
+									}
+									.petition-container strong {
+										display: block;
+										margin-top: 10px;
+									}
+								</style>
+									<h2>Community Voices</h2>
+							
+									<div class="faq-container">
+										<!-- Savvies Section -->
+										<div class="faq-item">
+											<div class="faq-title" onclick="toggleFAQ(this)">
+												Savvies <span>+</span>
+											</div>
+											<div class="faq-content">
+												<div id="companySavvies" class="company-section"></div>
+												<p>No New Savvies.</p>
+											</div>
+										</div>
+							
+										<!-- Petitions Section -->
+										<div class="faq-item">
+											<div class="faq-title" onclick="toggleFAQ(this)">
+												📝 Petitions <span>+</span>
+											</div>
+											<div class="faq-content petition-container">
+												<div id="companyPetitions" class="company-section"></div>
+												<p>No Petitions.</p>
+											</div>
+										</div>
+									</div>
+									<script>
+										function toggleFAQ(element) {
+											let content = element.nextElementSibling;
+											let icon = element.querySelector("span");
+								
+											if (content.style.display === "block") {
+												content.style.display = "none";
+												icon.textContent = "+";
+											} else {
+												content.style.display = "block";
+												icon.textContent = "−";
+											}
+										}
+									</script>
+								</div>
 						<div class="post-card details" id="companyDetails" id="posts-container">
+                            
+                        
+                         
 						<div class="post-header">
 							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
 							<div class="user-info">
@@ -408,7 +515,7 @@ window.onclick = function (event) {
 							</div>
 						</div>
 						<div class="post-content" id="description">
-							Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.
+							A picture post. Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.
 						</div>
 					
 						<div class="post-actions">
@@ -430,19 +537,12 @@ window.onclick = function (event) {
 		</div>
 		</div>
 		</div>
-
-
-
-
-
-
-
-
-
-    
 <script></script>
 <script src="screens.js"></script>
 <script src="script.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
 	</body>
 	</html>
 
