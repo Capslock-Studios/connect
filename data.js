@@ -1,60 +1,6 @@
 const companies = [
     {
         id: "c2",
-        name: "Proudly South African",
-        logo: "https://whatsnextgp.netlify.app/Img/psa.png",
-        about: {
-            description: "Proudly South African, the country’s national buy local campaign, seeks to influence local procurement in the public and private sectors and to influence consumers to buy local, thereby stimulating local production and manufacturing which in turn leads to job creation.",
-            website: "https://proudlysa.co.za/",
-            contact: {
-                email: "info@proudlysa.co.za",
-                phone: "+27 (11) 327 7778"
-            }
-        },
-        posts: [
-         
-        ],
-        petitions: [
-          
-        ],
-        video_posts: [
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            },
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            }
-        ],
-        picture_posts: [
-           
-        ],
-        savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
-        ],
-        products: [
-            { id: "pr3", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 }
-        ],
-        services: [
-          
-        ]
-    },
-    {
-        id: "c2",
         name: "WhatsNext",
         logo: "https://i.ibb.co/1Yj76MQW/whatsnext.png",
         about: {
@@ -129,6 +75,60 @@ const companies = [
     },
     {
         id: "c2",
+        name: "Proudly South African",
+        logo: "https://whatsnextgp.netlify.app/Img/psa.png",
+        about: {
+            description: "Proudly South African, the country’s national buy local campaign, seeks to influence local procurement in the public and private sectors and to influence consumers to buy local, thereby stimulating local production and manufacturing which in turn leads to job creation.",
+            website: "https://proudlysa.co.za/",
+            contact: {
+                email: "info@proudlysa.co.za",
+                phone: "+27 (11) 327 7778"
+            }
+        },
+        posts: [
+         
+        ],
+        petitions: [
+          
+        ],
+        video_posts: [
+            {
+                id: "v2",
+                title: "Buy Local Conference",
+                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            },
+            {
+                id: "v2",
+                title: "Buy Local Conference",
+                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            }
+        ],
+        picture_posts: [
+           
+        ],
+        savvies: [
+            {
+                id: "s2",
+                topic: "How Can We Achieve 100% Renewable Energy?",
+                votes: 800
+            }
+        ],
+        products: [
+            { id: "pr3", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
+            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
+            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 },
+            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 }
+        ],
+        services: [
+          
+        ]
+    },
+     {
+        id: "c2",
         name: "Tshimologong",
         logo: "https://i.ibb.co/jPG8vdF4/Tshimologong.png",
         about: {
@@ -182,7 +182,7 @@ const companies = [
                 title: "Community Savvy",
                 cover_img: "https://mongo-piano.netlify.app/1pulse-cover.jpg",
                 description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
-                signatures: 67
+                signatures: 1
             }
         ],
         video_posts: [

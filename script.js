@@ -57,9 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
             <span><strong>Website:</strong> <p>${company.about.website}</p></span>
             <span><strong>Contact:</strong> ${company.about.contact.email} | ${company.about.contact.phone}</span>
             
-            <div class="buttons">
+          <!--  <div class="buttons">
                 <button class="cta-btn">Contact</button>
                 <button class="cta-btn">Message</button>
+                -->
+                <br><br>
             </div>
         </div>`;
 
@@ -135,11 +137,11 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                         </div>
                     </div>
-                    <div class="post-actions">
+                  <!---  <div class="post-actions">
                         <div>👍 Like</div>
                         <div>💬 Comment</div>
                         <div>↪️ Share</div>
-                    </div>
+                    </div>-->
                 </div>
             `).join("");
 
