@@ -127,40 +127,72 @@
 			<div class="content-wrapper">
 				<div  class="a">
 					<div class="rival-box">
-						<style>/* Tooltip container */
-							button[data-tooltip] {
-								position: relative;
-								display: inline-block;
-								cursor: pointer;
-							}
-							
-							/* Tooltip text (hidden by default) */
-							button[data-tooltip]:hover::after {
-								content: attr(data-tooltip); /* Use the tooltip text from the data-tooltip attribute */
-								position: absolute;
-								top: 125%; /* Position above the button */
-								left: 50%;
-								transform: translateX(-50%);
-								padding: 8px;
-								background-color: rgba(0, 0, 0, 0.75);
-								color: white;
-								border-radius: 4px;
-								font-size: 12px;
-								white-space: nowrap;
-								opacity: 0;
-								transition: opacity 0.2s;
-								pointer-events: none;
-								height: 10px;
-							}
-							
-							/* Show tooltip when hovering over the button */
-							button[data-tooltip]:hover::after {
-								opacity: 1;
-							}
-							</style>
-						<button id="addCompanyBtn" data-tooltip="Add your company">
+						<style>
+							/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text (hidden by default) */
+.tooltip span {
+    content: attr(data-tooltip); /* Use the tooltip text from the data-tooltip attribute */
+    position: absolute;
+    top: 125%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    border-radius: 4px;
+    font-size: 9px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    height: 25px;
+}
+
+/* Show tooltip when hovering over the button */
+.tooltip:hover span {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px); /* Tooltip scrolls upwards */
+}
+
+/* Tooltip fade-out effect */
+.tooltip span.fade-out {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-15px); /* Tooltip scrolls further up */
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+						</style>
+						<button id="addCompanyBtn" class="tooltip">
 							<img src="https://mongo-piano.netlify.app/add-button.png" alt="Add">
-						</button>					
+							<span>Add your company</span>
+						</button>
+						
+						
+						<script>document.addEventListener("DOMContentLoaded", () => {
+							const addCompanyBtn = document.getElementById("addCompanyBtn");
+						
+							// Function to hide tooltip after interaction on mobile
+							function hideTooltipOnInteraction(event) {
+								if (window.innerWidth <= 767) { // Mobile view
+									addCompanyBtn.classList.add('interacted');
+									document.removeEventListener('touchstart', hideTooltipOnInteraction);
+									document.removeEventListener('click', hideTooltipOnInteraction);
+								}
+							}
+						
+							// Listen for touch or click to hide tooltip on mobile
+							if (window.innerWidth <= 767) {
+								document.addEventListener('touchstart', hideTooltipOnInteraction);
+								document.addEventListener('click', hideTooltipOnInteraction);
+							}
+						});
+						</script>
 					</div>
 					<div class="rival-boxes header" id="logoContainer">
 					</div>

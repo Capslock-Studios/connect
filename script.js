@@ -54,13 +54,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h3>${company.name}</h3>
                 <p>${company.about.description}</p>
             </div>
-            <span><strong>Website:</strong> <p>${company.about.website}</p></span>
-            <span><strong>Contact:</strong> ${company.about.contact.email} | ${company.about.contact.phone}</span>
+            <span><strong>Website:</strong>${company.about.website}<p></p></span>
+            <span><strong>Email:</strong> ${company.about.contact.email}</span>
             
-          <!--  <div class="buttons">
-                <button class="cta-btn">Contact</button>
-                <button class="cta-btn">Message</button>
-                -->
+            <div class="buttons">
+                <button onclick="window.open('https://wa.me/${company.about.contact.phone}', '_blank')" class="cta-btn">WhatsApp</button>
+                <button onclick="window.location.href = 'mailto:${company.about.contact.email}'" class="cta-btn">Email</button>
+                <button onclick="window.open('${company.about.website}', '_blank')" class="cta-btn">Website</button>
                 <br><br>
             </div>
         </div>`;
