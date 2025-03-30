@@ -1,59 +1,106 @@
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Ensure companyPetitions is defined before modifying innerHTML
-        if (typeof company !== "undefined" && company.petitions) {
-            companyPetitions.innerHTML = `<h3></h3>` +
-                company.petitions.map(petition => `
-                    <img src="https://mongo-piano.netlify.app/1pulse-cover.jpg" alt="Petition Cover">
-                    <h3 id="petition-title">${petition.title}</h3>
-                    <p id="petition-description">${petition.description}</p>
-                    <strong>Signatures: <span id="petition-signatures">${petition.signatures}</span></strong>
-                    <strong>Date: <span id="petition-date">Not provided</span></strong>
-                    <strong>Time: <span id="petition-time">Not provided</span></strong>
-                    <strong>Location: <span id="petition-location">Not provided</span></strong>
-                    <form class="registrationForm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control name" placeholder="Full Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control email" placeholder="Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="tel" class="form-control phone" placeholder="Phone Number" required>
-                        </div>
-                        <button type="button" class="whatsappLink formb" data-title="${petition.title}">Sign & Support</button>
-                    </form>
-                `).join("");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Menu Bar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
-    
-        // Function to send WhatsApp message
-        function sendWhatsAppMessage(name, email, phone, petitionTitle) {
-            const phoneNumber = "0685090669"; // Target WhatsApp number
-            const message = `Hello, I am signing the petition: "${petitionTitle}".\n\nMy Details:\n- Name: ${name}\n- Email: ${email}\n- Phone: ${phone}`;
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    
-            // Open WhatsApp link
-            window.open(whatsappURL, "_blank");
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #ff69b4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: grab;
+            z-index: 1000;
+            user-select: none;
         }
-    
-        // Attach event listeners to dynamically added buttons
-        document.addEventListener("click", function (event) {
-            if (event.target.classList.contains("whatsappLink")) {
-                const form = event.target.closest(".registrationForm");
-                const name = form.querySelector(".name").value.trim();
-                const email = form.querySelector(".email").value.trim();
-                const phone = form.querySelector(".phone").value.trim();
-                const petitionTitle = event.target.getAttribute("data-title");
-    
-                if (name && email && phone) {
-                    sendWhatsAppMessage(name, email, phone, petitionTitle);
-                } else {
-                    alert("Please fill in all fields before signing.");
-                }
+        .floating-menu {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+            overflow: hidden;
+            width: 150px;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease-in-out;
+        }
+        .floating-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+        .floating-menu a:last-child {
+            border-bottom: none;
+        }
+        .floating-menu a:hover {
+            background: #f3f3f3;
+        }
+        .open-menu {
+            transform: scaleY(1);
+        }
+    </style>
+</head>
+<body>
+    <div id="floatingContainer" style="position: fixed; bottom: 20px; right: 20px;">
+        <div id="floatingBtn" class="floating-button">☰</div>
+        <div id="menu" class="floating-menu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Petitions</a>
+            <a href="#">Shops</a>
+        </div>
+    </div>
+    <script>
+        const floatingContainer = document.getElementById("floatingContainer");
+        const btn = document.getElementById("floatingBtn");
+        const menu = document.getElementById("menu");
+        let isDragging = false;
+
+        btn.addEventListener("click", () => {
+            if (!isDragging) {
+                menu.classList.toggle("open-menu");
             }
         });
-    });
-    
+
+        btn.addEventListener("mousedown", (e) => {
+            isDragging = false;
+            let shiftX = e.clientX - floatingContainer.getBoundingClientRect().left;
+            let shiftY = e.clientY - floatingContainer.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                floatingContainer.style.left = pageX - shiftX + "px";
+                floatingContainer.style.top = pageY - shiftY + "px";
+            }
+
+            function onMouseMove(event) {
+                isDragging = true;
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener("mousemove", onMouseMove);
+
+            btn.addEventListener("mouseup", () => {
+                document.removeEventListener("mousemove", onMouseMove);
+                setTimeout(() => (isDragging = false), 100);
+            }, { once: true });
+        });
     </script>
-                                <div id="companyPetitions" class="company-section"></div>
-                            
+</body>
+</html>
