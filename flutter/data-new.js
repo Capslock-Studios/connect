@@ -1,6 +1,7 @@
+// data.js - Contains all the company data
 const companies = [
     {
-        id: "c2",
+        id: "c1",
         name: "WhatsNext",
         logo: "https://i.ibb.co/1Yj76MQW/whatsnext.png",
         about: {
@@ -14,7 +15,7 @@ const companies = [
         },
         posts: [
             {
-                id: "p2",
+                id: "p1",
                 title: "Introducing WhatsNext",
                 content: "Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.",
                 date: "2025-03-20",
@@ -22,7 +23,7 @@ const companies = [
         ],
         petitions: [
             {
-                id: "pt2",
+                id: "pt1",
                 title: "Ban Plastic Waste",
                 description: "Support our movement to eliminate single-use plastics.",
                 signatures: 5000
@@ -30,7 +31,7 @@ const companies = [
         ],
         video_posts: [
             {
-                id: "v2",
+                id: "v1",
                 title: "Justice for Cwecwe | Bureaucracy should not stand in our way: Themba Masango",
                 description: "Civil rights movement, Not in My Name has called for an overhaul on how schools and officials handle the rape of learners at school. This is after a public outrage at the lack of cooperation by school officials, following the rape of a seven- year old girl on school premises in the Eastern Cape.",
                 video_url: "https://www.youtube.com/embed/cm_vs93GJgs",
@@ -42,49 +43,11 @@ const companies = [
                 description: "The Eastern Cape department of Education has deregistered a Matatiele based private school following the refusal of the school management to cooperate in the rape investigation of a seven year old learner.",
                 video_url: "https://www.youtube.com/embed/3NB0alyk_8o",
                 thumbnail: "https://yt3.googleusercontent.com/x5Bgc7UBYZvOHvp3UG91lZbV6ND0YCOi2a026vLPDGIU5GF2qp5JnHnCeLyPegWhEjM5njpN=s900-c-k-c0x00ffffff-no-rj"
-            },
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "Proudly South African hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
-            },
-            {
-                id: "v2",
-                title: "1 pulse online",
-                description: "For Community engagement and government accountability, hear out 1Pulse online.",
-                video_url: "https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
-            }
-        ],
-        picture_posts: [
-            {
-                id: "pic2",
-                title: "The Birth of WhatsNext!",
-                description:"Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.",
-                image_url: "siya-whatsnext.jpg",
-                image_url2: "group-whatsnext.jpg",
-                image_url3: "madness-whatsnext.jpg"
-            }
-        ],
-        savvies: [
-            {
-                id: "s2",
-                topic: "Where would you like us to go next?", 
-                details:"We are a movement therefore we would like to know where some of our people are at.",
-                votes: 80,
-                date: "02.03.25"
             }
         ],
         products: [
-            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 },
-            { id: "pr3", name: "WhatsNext - Squabbleup Promotions T-shirt", purchaseLink:"", description:"Promotional T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
-            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
-            { id: "pr4", name: "WhatsNext - Mastaard T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 }
-        ],
-        services: [
-            { id: "sv2", name: "Networking",  purchaseLink:"", description: "We host Networking sessions at Tshimologong.", price: 0 }
+            { id: "pr1", name: "WhatsNext - NotLikeUs T-shirt", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 },
+            { id: "pr2", name: "WhatsNext - Squabbleup Promotions T-shirt", description:"Promotional T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 }
         ]
     },
     {
@@ -92,114 +55,24 @@ const companies = [
         name: "Proudly South African",
         logo: "https://whatsnextgp.netlify.app/Img/psa.png",
         about: {
-            description: "Proudly South African, the country’s national buy local campaign, seeks to influence local procurement in the public and private sectors and to influence consumers to buy local, thereby stimulating local production and manufacturing which in turn leads to job creation.",
+            description: "Proudly South African, the country's national buy local campaign, seeks to influence local procurement in the public and private sectors and to influence consumers to buy local, thereby stimulating local production and manufacturing which in turn leads to job creation.",
             website: "https://proudlysa.co.za/",
             contact: {
                 email: "info@proudlysa.co.za",
                 phone: "+27 (11) 327 7778"
             }
         },
-        posts: [
-         
-        ],
-        petitions: [
-          
-        ],
         video_posts: [
             {
-                id: "v2",
+                id: "v1",
                 title: "Marchers demand justice for Cwecwe",
                 description: "Over 100 people including activists and students marched across Johannesburg on Sunday calling for justice for a 7-year-old girl who was raped at her Eastern Cape school.",
                 video_url: "https://www.youtube.com/embed/4il1KHB_pnU",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            },
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            },
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            }
-        ],
-        picture_posts: [
-           
-        ],
-        savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
             }
         ],
         products: [
-            { id: "pr3", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 }
-        ],
-        services: [
-          
-        ]
-    },
-    {
-        id: "c2",
-        name: "Proudly South African",
-        logo: "https://whatsnextgp.netlify.app/Img/psa.png",
-        about: {
-            description: "Proudly South African, the country’s national buy local campaign, seeks to influence local procurement in the public and private sectors and to influence consumers to buy local, thereby stimulating local production and manufacturing which in turn leads to job creation.",
-            website: "https://proudlysa.co.za/",
-            contact: {
-                email: "info@proudlysa.co.za",
-                phone: "+27 (11) 327 7778"
-            }
-        },
-        posts: [
-         
-        ],
-        petitions: [
-          
-        ],
-        video_posts: [
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            },
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            }
-        ],
-        picture_posts: [
-           
-        ],
-        savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
-        ],
-        products: [
-            { id: "pr3", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 }
-        ],
-        services: [
-          
+            { id: "pr1", name: "PSA Promotional T-shirt", description:"Official Proudly South African merchandise", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 300 }
         ]
     },
      {
@@ -480,5 +353,4 @@ const companies = [
          
         ]
     },
-    
 ];
