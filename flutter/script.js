@@ -431,13 +431,19 @@
         },
     ];
 
-    // App State
-    const state = {
-        currentCompany: null,
-        currentSection: 'home',
-        darkMode: false,
-        scrollPosition: 0
-    };
+
+    // In your existing state object, add these properties:
+const state = {
+    currentCompany: null,
+    currentSection: 'home',
+    darkMode: false,
+    scrollPosition: 0,
+    // Add these new properties:
+    videoViewMode: 'youtube', // 'youtube' or 'tiktok'
+    fullscreenVideo: null,
+    // Add any other existing state properties you already have
+};
+
 
     // DOM Elements
     const topNav = document.getElementById('topNav');
@@ -585,6 +591,8 @@ function loadCompanyHomeContent(company) {
             </div>
             
             <div class="tab-content" id="videos-tab" style="display: none;">
+        ${createVideoFeed(company)}
+    </div>
     `;
     
     // Videos tab content
@@ -938,3 +946,122 @@ function loadCompanyHomeContent(company) {
 
     // Initialize the app when DOM is loaded
     document.addEventListener('DOMContentLoaded', init);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function createVideoFeed(company) {
+        if (!company.video_posts || company.video_posts.length === 0) {
+            return '<p>No videos available</p>';
+        }
+    
+        let html = `
+            <div class="video-view-toggle ${state.darkMode ? 'dark' : ''}">
+                <button class="video-view-btn ${state.videoViewMode === 'youtube' ? 'active' : ''} ${state.darkMode ? 'dark' : ''}" data-view="youtube">
+                    YouTube Style
+                </button>
+                <button class="video-view-btn ${state.videoViewMode === 'tiktok' ? 'active' : ''} ${state.darkMode ? 'dark' : ''}" data-view="tiktok">
+                    TikTok Style
+                </button>
+            </div>
+        `;
+    
+        if (state.videoViewMode === 'youtube') {
+            // YouTube style view implementation...
+            // (Keep the existing YouTube view code)
+        } else {
+            // TikTok style view implementation...
+            // (Keep the existing TikTok view code)
+        }
+    
+        return html;
+    }
+    
+    function setupVideoInteractions() {
+        // View mode toggle
+        document.querySelectorAll('.video-view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                state.videoViewMode = btn.dataset.view;
+                if (state.currentCompany) {
+                    loadCompanyContent(state.currentCompany.id);
+                }
+            });
+        });
+    
+        // Fullscreen buttons
+        document.querySelectorAll('.fullscreen-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showFullscreenVideo(btn.dataset.videoUrl);
+            });
+        });
+    
+        // Video feed interactions
+        const videoFeed = document.getElementById('video-feed');
+        if (videoFeed) {
+            // Auto-play videos when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('video');
+                    if (entry.isIntersecting) {
+                        video.play().catch(e => console.log("Autoplay prevented:", e));
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.8 });
+    
+            document.querySelectorAll('.video-feed-item').forEach(item => {
+                observer.observe(item);
+            });
+    
+            // Like/comment/share buttons
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const count = btn.querySelector('.video-action-count');
+                    count.textContent = parseInt(count.textContent) + 1;
+                });
+            });
+        }
+    }
+    
+    function showFullscreenVideo(videoUrl) {
+        // Remove any existing fullscreen video
+        const existing = document.querySelector('.video-fullscreen');
+        if (existing) existing.remove();
+    
+        const fullscreenHtml = `
+            <div class="video-fullscreen">
+                <iframe src="${videoUrl}?autoplay=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <button class="close-fullscreen">×</button>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', fullscreenHtml);
+        document.body.style.overflow = 'hidden';
+        
+        document.querySelector('.close-fullscreen').addEventListener('click', () => {
+            document.querySelector('.video-fullscreen').remove();
+            document.body.style.overflow = '';
+        });
+    }
