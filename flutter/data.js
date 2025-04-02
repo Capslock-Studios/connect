@@ -50,32 +50,7 @@ const companies = [
             { id: "pr2", name: "WhatsNext - Squabbleup Promotions T-shirt", description:"Promotional T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 }
         ]
     },
-    {
-        id: "c2",
-        name: "Proudly South African",
-        logo: "https://whatsnextgp.netlify.app/Img/psa.png",
-        about: {
-            description: "Proudly South African, the country's national buy local campaign, seeks to influence local procurement in the public and private sectors and to influence consumers to buy local, thereby stimulating local production and manufacturing which in turn leads to job creation.",
-            website: "https://proudlysa.co.za/",
-            contact: {
-                email: "info@proudlysa.co.za",
-                phone: "+27 (11) 327 7778"
-            }
-        },
-        video_posts: [
-            {
-                id: "v1",
-                title: "Marchers demand justice for Cwecwe",
-                description: "Over 100 people including activists and students marched across Johannesburg on Sunday calling for justice for a 7-year-old girl who was raped at her Eastern Cape school.",
-                video_url: "https://www.youtube.com/embed/4il1KHB_pnU",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            }
-        ],
-        products: [
-            { id: "pr1", name: "PSA Promotional T-shirt", description:"Official Proudly South African merchandise", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 300 }
-        ]
-    },
-        {
+     {
         id: "c2",
         name: "Proudly South African",
         logo: "https://whatsnextgp.netlify.app/Img/psa.png",
