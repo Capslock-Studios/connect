@@ -108,67 +108,6 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
-                title: "Marchers demand justice for Cwecwe",
-                description: "Over 100 people including activists and students marched across Johannesburg on Sunday calling for justice for a 7-year-old girl who was raped at her Eastern Cape school.",
-                video_url: "https://www.youtube.com/embed/4il1KHB_pnU",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            },
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            },
-            {
-                id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
-            }
-        ],
-        picture_posts: [
-           
-        ],
-        savvies: [
-            {
-                id: "s2",
-                topic: "How Can We Achieve 100% Renewable Energy?",
-                votes: 800
-            }
-        ],
-        products: [
-            { id: "pr3", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 }
-        ],
-        services: [
-          
-        ]
-    },
-    {
-        id: "c2",
-        name: "Proudly South African",
-        logo: "https://whatsnextgp.netlify.app/Img/psa.png",
-        about: {
-            description: "Proudly South African, the country’s national buy local campaign, seeks to influence local procurement in the public and private sectors and to influence consumers to buy local, thereby stimulating local production and manufacturing which in turn leads to job creation.",
-            website: "https://proudlysa.co.za/",
-            contact: {
-                email: "info@proudlysa.co.za",
-                phone: "+27 (11) 327 7778"
-            }
-        },
-        posts: [
-         
-        ],
-        petitions: [
-          
-        ],
-        video_posts: [
-            {
-                id: "v2",
                 title: "Buy Local Conference",
                 description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
                 video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
