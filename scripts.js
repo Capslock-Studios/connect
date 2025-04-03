@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         companyPetitions.innerHTML = `<h3>📝 Petitions</h3>` + 
             company.petitions.map(petition => `
-                <img src="https://mongo-piano.netlify.app/1pulse-cover.jpg" alt="Petition Cover">
+                <img src="https://whatsnext.joburg/1pulse-cover.jpg" alt="Petition Cover">
 												<h3 id="petition-title">${petition.title}</h3>
 												<p id="petition-description">${petition.description}</p>
 												<strong>Signatures: <span id="petition-signatures">${petition.signatures}</span></strong>

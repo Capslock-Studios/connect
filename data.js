@@ -78,10 +78,10 @@ const companies = [
             }
         ],
         products: [
-            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 },
-            { id: "pr3", name: "WhatsNext - Squabbleup Promotions T-shirt", purchaseLink:"", description:"Promotional T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
-            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
-            { id: "pr4", name: "WhatsNext - Mastaard T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 }
+            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://whatsnext.joburg/WhatsNext-T-shirt.png", price: 250 },
+            { id: "pr3", name: "WhatsNext - Squabbleup Promotions T-shirt", purchaseLink:"", description:"Promotional T-shirt for the whatsnext movement.", product_img:"https://whatsnext.joburg/t-shirt-squabbleup.png", price: 250 },
+            { id: "pr4", name: "WhatsNext - NotLikeUs T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://whatsnext.joburg/t-shirt-NotLikeUs.png", price: 250 },
+            { id: "pr4", name: "WhatsNext - Mastaard T-shirt", purchaseLink:"", description:"Promotional Crop top T-shirt for the whatsnext movement.", product_img:"https://whatsnext.joburg/t-shirt-Mastard.png", price: 250 }
         ],
         services: [
             { id: "sv2", name: "Networking",  purchaseLink:"", description: "We host Networking sessions at Tshimologong.", price: 0 }
@@ -132,10 +132,10 @@ const companies = [
             }
         ],
         products: [
-            { id: "pr3", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-squabbleup.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-NotLikeUs.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/t-shirt-Mastard.png", price: 250 },
-            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://mongo-piano.netlify.app/WhatsNext-T-shirt.png", price: 250 }
+            { id: "pr3", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://whatsnext.joburg/t-shirt-squabbleup.png", price: 250 },
+            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://whatsnext.joburg/t-shirt-NotLikeUs.png", price: 250 },
+            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://whatsnext.joburg/t-shirt-Mastard.png", price: 250 },
+            { id: "pr4", name: "WhatsNext Promotional - T-shirt - ", product_img:"https://whatsnext.joburg/WhatsNext-T-shirt.png", price: 250 }
         ],
         services: [
           
@@ -194,7 +194,7 @@ const companies = [
             {
                 id: "pt2",
                 title: "Community Petition",
-                cover_img: "https://mongo-piano.netlify.app/1pulse-cover.jpg",
+                cover_img: "https://whatsnext.joburg/1pulse-cover.jpg",
                 description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
                 signatures: 1
             }
@@ -219,7 +219,7 @@ const companies = [
             }
         ],
         products: [
-            { id: "pr4", name: "WhatsNext Promotional - 1pulse T-shirt - ", product_img:"https://mongo-piano.netlify.app/1pulse-T-shirt.png", price: 250 }
+            { id: "pr4", name: "WhatsNext Promotional - 1pulse T-shirt - ", product_img:"https://whatsnext.joburg/1pulse-T-shirt.png", price: 250 }
         
         ],
         services: [
@@ -259,8 +259,8 @@ const companies = [
            
         ],
         products: [
-            { id: "pr3", name: "WhatsNext - Crop-Top from BoniZulu", product_img:"https://mongo-piano.netlify.app/Bonizulu-cropTop.png", price: 500 },
-            { id: "pr4", name: "WhatsNext - T-shirtp from BoniZulu", product_img:"https://mongo-piano.netlify.app/BoniZulu_Over-Sezed-T.png", price: 1200 }
+            { id: "pr3", name: "WhatsNext - Crop-Top from BoniZulu", product_img:"https://whatsnext.joburg/Bonizulu-cropTop.png", price: 500 },
+            { id: "pr4", name: "WhatsNext - T-shirtp from BoniZulu", product_img:"https://whatsnext.joburg/BoniZulu_Over-Sezed-T.png", price: 1200 }
         ],
         services: [
             { id: "sv2", name: "Fashion Design", description: "We design bespoke wear for people in all walks of life" }
@@ -324,7 +324,7 @@ const companies = [
             {
                 id: "pt2",
                 title: "Community Petittion.",
-                cover_img: "https://mongo-piano.netlify.app/1pulse-cover.jpg",
+                cover_img: "https://whatsnext.joburg/1pulse-cover.jpg",
                 description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
                 signatures: 67,
                 date:"",

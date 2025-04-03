@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             companyPetitions.innerHTML = `<h3>Petitions</h3>` + 
             company.petitions.map(petition => `
                 <div class="petition-card">
-                    <img src="https://mongo-piano.netlify.app/1pulse-cover.jpg" alt="Petition Cover">
+                    <img src="https://whatsnext.joburg/1pulse-cover.jpg" alt="Petition Cover">
                     <h3>${petition.title}</h3>
                     <p>${petition.description}</p>
                     <strong>Signatures: <span>${petition.signatures}</span></strong>
