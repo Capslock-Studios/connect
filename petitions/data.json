@@ -1,0 +1,98 @@
+{
+    "companies": [
+      {
+        "id": "unique_company_id",
+        "name": "Company Name",
+        "logo": "company_logo_url",
+        "about": {
+          "description": "Brief company description",
+          "website": "https://companywebsite.com",
+          "contact": {
+            "email": "contact@company.com",
+            "phone": "+1234567890",
+            "address": "123 Business St, City, Country"
+          },
+          "socials": {
+            "facebook": "https://facebook.com/company",
+            "twitter": "https://twitter.com/company",
+            "instagram": "https://instagram.com/company"
+          }
+        },
+        "posts": [
+          {
+            "id": "unique_post_id",
+            "title": "Post Title",
+            "content": "Post content goes here...",
+            "author": "Author Name",
+            "timestamp": "2025-03-27T12:00:00Z",
+            "likes": 10,
+            "comments": [
+              {
+                "user": "User1",
+                "comment": "Great post!",
+                "timestamp": "2025-03-27T12:30:00Z"
+              }
+            ]
+          }
+        ],
+        "petitions": [
+          {
+            "id": "unique_petition_id",
+            "title": "Petition Title",
+            "description": "Why this petition matters...",
+            "signatures": 100,
+            "goal": 500,
+            "created_at": "2025-03-27T14:00:00Z"
+          }
+        ],
+        "video_posts": [
+          {
+            "id": "unique_video_id",
+            "title": "Video Title",
+            "video_url": "https://video.com/video.mp4",
+            "thumbnail": "https://video.com/thumbnail.jpg",
+            "views": 1000,
+            "likes": 200
+          }
+        ],
+        "picture_posts": [
+          {
+            "id": "unique_picture_id",
+            "image_url": "https://image.com/picture.jpg",
+            "caption": "Image caption",
+            "likes": 50
+          }
+        ],
+        "savvies": [
+          {
+            "id": "unique_savvy_id",
+            "title": "Savvy Title",
+            "description": "Savvy details...",
+            "votes": 300,
+            "category": "Technology"
+          }
+        ],
+        "products": [
+          {
+            "id": "unique_product_id",
+            "name": "Product Name",
+            "description": "Product details...",
+            "price": 49.99,
+            "currency": "USD",
+            "image_url": "https://product.com/image.jpg",
+            "stock": 20
+          }
+        ],
+        "services": [
+          {
+            "id": "unique_service_id",
+            "name": "Service Name",
+            "description": "Service details...",
+            "price": "Starting at $100",
+            "booking_url": "https://service.com/book"
+          }
+        ]
+      }
+    ]
+  }
+  

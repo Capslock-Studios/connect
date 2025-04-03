@@ -1,0 +1,39 @@
+{
+    "companies": [
+      {
+        "id": "c1",
+        "name": "Tech Corp",
+        "logo": "https://via.placeholder.com/50",
+        "about": {
+          "description": "Leading tech solutions provider.",
+          "website": "https://techcorp.com",
+          "contact": {
+            "email": "info@techcorp.com",
+            "phone": "+1234567890"
+          }
+        },
+        "products": [
+          { "name": "Smartphone X", "price": 999 },
+          { "name": "Laptop Pro", "price": 1499 }
+        ]
+      },
+      {
+        "id": "c2",
+        "name": "Green Energy",
+        "logo": "https://via.placeholder.com/50",
+        "about": {
+          "description": "Sustainable energy solutions.",
+          "website": "https://greenenergy.com",
+          "contact": {
+            "email": "contact@greenenergy.com",
+            "phone": "+9876543210"
+          }
+        },
+        "products": [
+          { "name": "Solar Panel", "price": 500 },
+          { "name": "Wind Turbine", "price": 1200 }
+        ]
+      }
+    ]
+  }
+  

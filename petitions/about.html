@@ -490,7 +490,7 @@
 										background: #f9f9f9;
 										border-top: 1px solid #ddd;
 									}
-									.petition-container img {
+									.post-card img {
 										width: 100%;
 										border-radius: 8px;
 										margin-bottom: 10px;
@@ -502,56 +502,9 @@
 								</style>
 									<h2>Community Voices</h2>
 							
-									<div class="faq-container">
-										<!-- Savvies Section -->
-										<div class="faq-item">
-											<div class="faq-title" onclick="toggleFAQ(this)">
-												Savvies <span>+</span>
-											</div>
-											<div class="faq-content">
-												<div id="companySavvies" class="company-section"></div>
-												<p>No New Savvies.</p>
-											</div>
-										</div>
-							
-										<!-- Petitions Section -->
-										<div class="faq-item">
-											<div class="faq-title" onclick="toggleFAQ(this)">
-												📝 Petitions <span>+</span>
-											</div>
-											<div class="faq-content petition-container">
-												<div id="companyPetitions" class="company-section"></div>
-												<p>No Petitions.</p>
-											</div>
-										</div>
-									</div>
-									<script>
-										function toggleFAQ(element) {
-											let content = element.nextElementSibling;
-											let icon = element.querySelector("span");
-								
-											if (content.style.display === "block") {
-												content.style.display = "none";
-												icon.textContent = "+";
-											} else {
-												content.style.display = "block";
-												icon.textContent = "−";
-											}
-										}
-									</script>
-								</div>
-						<div class="post-card details" id="companyDetails" id="posts-container">
-                            
-                        
-                         
-						<div class="post-header">
-							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
-							<div class="user-info">
-								<h4 id="companyName">WhatsNext</h4>
-								<p  id="category">2 hrs ago · 🌍</p>
-							</div>
-						</div>
-						<img src="https://mongo-piano.netlify.app/1pulse-cover.jpg" alt="Petition Cover">
+									   
+                      
+						<img src="https://whatsnext.joburg/1pulse-cover.jpg" alt="Petition Cover">
 						<h3>Save the Forests</h3>
 						<p>Join us in protecting endangered forests from deforestation.</p>
 						<strong>Signatures: <span>1245</span></strong>
@@ -578,12 +531,24 @@
 				
 							<button type="submit" class="formb">Sign & Support</button>
 						</form>
-					
-						<div class="post-actions">
-							<div id="facebook" target="_blank">👍 Like</div>
-							<div id="twitter" target="_blank">💬 Comment</div>
-							<div id="instagram" target="_blank">↪️ Share</div>
-						</div>
+									<script>
+										function toggleFAQ(element) {
+											let content = element.nextElementSibling;
+											let icon = element.querySelector("span");
+								
+											if (content.style.display === "block") {
+												content.style.display = "none";
+												icon.textContent = "+";
+											} else {
+												content.style.display = "block";
+												icon.textContent = "−";
+											}
+										}
+									</script>
+								</div>
+						<div class="post-card details" id="companyDetails" id="posts-container">
+                            
+                     
 						</div>
 						<br><br>
 						<div class="post-content">
