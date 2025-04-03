@@ -70,27 +70,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div><h4>${post.title}</h4><p>${post.content}</p><small>${post.date}</small></div>
             `).join("");
 
-        companyPetitions.innerHTML = `<h3>Petitions</h3>` + 
+            companyPetitions.innerHTML = `<h3>Petitions</h3>` + 
             company.petitions.map(petition => `
                 <div class="petition-card">
                     <img src="https://mongo-piano.netlify.app/1pulse-cover.jpg" alt="Petition Cover">
-                    <h3 id="petition-title">${petition.title}</h3>
-                    <p id="petition-description">${petition.description}</p>
-                    <strong>Signatures: <span id="petition-signatures">${petition.signatures}</span></strong>
-                    <strong>Date: <span id="petition-date">Not provided</span></strong>
-                    <strong>Time: <span id="petition-time">Not provided</span></strong>
-                    <strong>Location: <span id="petition-location">Not provided</span></strong>
-                    <form class="registration-form" data-title="${petition.title}">
+                    <h3>${petition.title}</h3>
+                    <p>${petition.description}</p>
+                    <strong>Signatures: <span>${petition.signatures}</span></strong>
+                    <strong>Date: <span>${petition.date || 'Not provided'}</span></strong>
+                    <strong>Time: <span>${petition.time || 'Not provided'}</span></strong>
+                    <strong>Location: <span>${petition.location || 'Not provided'}</span></strong>
+                    
+                    <form name="petition-signup" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="petition-signup">
+                        <input type="hidden" name="petition-title" value="${petition.title}">
+        
                         <div class="mb-3">
-                            <input type="text" class="form-control name-input" placeholder="Full Name" required>
+                            <input type="text" class="form-control" name="full-name" placeholder="Full Names" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control email-input" placeholder="Email" required>
+                            <input type="text" class="form-control" name="surname" placeholder="Surname" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" class="form-control phone-input" placeholder="Phone Number" required>
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
                         </div>
-                        <button type="button" class="whatsapp-btn formb">Sign & Support</button>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                        </div>
+        
+                        <button type="submit" class="formb">Sign & Support</button>
                     </form>
                 </div>
             `).join("");
@@ -204,4 +212,25 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+});
+
+// Attach event listener to handle form submission dynamically
+document.addEventListener("submit", async function(event) {
+    if (event.target.matches('form[name="petition-signup"]')) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+
+        const response = await fetch("/", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (response.ok) {
+            alert("Thank you for signing the petition!");
+            form.reset();
+        } else {
+            alert("Error submitting petition. Please try again.");
+        }
+    }
 });
