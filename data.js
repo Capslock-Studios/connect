@@ -105,17 +105,63 @@ const companies = [
             
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+                title: "Tshimologong",
+                description: "A 2 sec free-style from Siya Percy and a presentation of his innovation Tae-Trax!",
+                video_url: "cObkS3f8I2I",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
             },
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
-                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+                title: "The World Café 2022 Recap",
+                description: "Unboxing Mayibuye: Preserving South Africa’s Heritage Robben Island Museum (RIM), the French National Audiovisual Institute (INA), and lAgence Française de Développement (AFD), have joined forces to safeguard and enhance access to South Africa..",
+                video_url: "QFi7kxmJgAg",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
+            }, {
+                id: "v2",
+                title: "Irish Tech Challenge 2024 Recap Video",
+                description: "Hear from the #IrishTech7 as they share their experiences, insights, and the impact the programme has had on their businesses and lives. ",
+                video_url: "rh6-12cXUWw",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
+            },
+            {
+                id: "v2",
+                title: "Irish Tech Challenge 2024 Information Session",
+                description: "This video provides key details on The Irish Tech Challenge, a one-of-a-kind startup support programme by the Embassy of Ireland in South Africa in collaboration with the...",
+                video_url: "D0NDyKgGgVM",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
+            }, {
+                id: "v2",
+                title: "Professor Barry Dwolatzky on the Tshimologong Precinct",
+                description: "One technology writer has described it as as potentially (the coolest place for tech in Africa and aims to encourage innovation, business ideas and skills development in Braamfontein. ",
+                video_url: "X0DYG1qBriQ",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
+            },
+            {
+                id: "v2",
+                title: "TECH ",
+                description: "Tshimologong Digital Skills calls for entries for Digital Twin Hackathon.",
+                video_url: "RS_ItrTzh6s",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
+            },
+            {
+                id: "v2",
+                title: "Lesley Donna Williams,",
+                description: "CEO of Tshimologong Precinct sat down with Expertise France for an interview.",
+                video_url: "nz6XN7QN8RM",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
+            }, {
+                id: "v2",
+                title: "Wits Tshimologong Digital Innovation Precinct",
+                description: "The Wits Tshimologong Digital Innovation Precinct in Braamfontein, Johannesburg - a partnership between University of the Witwatersrand, government, business and industry.",
+                video_url: "_JwXl8rCpB4",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
+            },
+            {
+                id: "v2",
+                title: "A strategic partnership",
+                description: "The Tshimologong Precinct and Telkom.",
+                video_url: "40nBsDTNRPA",
+                thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
             }
            
         ],
@@ -159,28 +205,28 @@ const companies = [
                 title: "60th Werner Kapp: ",
                 description: " Altron's partnership with Jozi My Jozi & other Stakeholders",
                 video_url: "mOylGdp0y7A",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "https://i.ibb.co/39Z55ry2/JmJ.png"
             },
             {
             id: "v2",
             title: "JOZI MY JOZI GATEWAY CLEANUP",
             description: " 'Jozi My Jozi in action - Cleaning up gateways as main entry points into the city of Johannesburg.",
             video_url: "uX2suLZ5B80",
-            thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            thumbnail: "https://i.ibb.co/39Z55ry2/JmJ.png"
         },
         {
             id: "v2",
             title: "BUSINESS - JOZI MY JOZI ",
             description: " There is a new collaborative movement in Johannesburg that aims to unlock the city's potential through sheer determination.",
             video_url: "wgmYredys4o",
-            thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            thumbnail: "https://i.ibb.co/39Z55ry2/JmJ.png"
         },
         {
         id: "v2",
         title: "JOBURGTODAY - JOZI MY JOZI SECURITY",
         description: " 'Collaboration between the City of Joburg and the Jozi My Jozi movement is actively engaged in bringing much-needed change to the city, which is showing the scars of time, crime, and crumbling infrastructure.",
         video_url: "uX2suLZ5B80",
-        thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+        thumbnail: "https://i.ibb.co/39Z55ry2/JmJ.png"
     },
         ],
         picture_posts: [
