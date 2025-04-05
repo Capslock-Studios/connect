@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsNext - Details</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    .details-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    .product, .video {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .product img, .video img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .video iframe {
+      width: 100%;
+      height: 315px;
+    }
+    .back-btn {
+      margin-bottom: 20px;
+      display: inline-block;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="details-container">
+    <a href="index.html" class="back-btn">&larr; Back to Search</a>
+    <div id="detailsContent">
+      <!-- Company or Product or Video Details Loaded Here -->
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    // Helper to get query params
+    function getQueryParams() {
+      const params = {};
+      location.search.substring(1).split("&").forEach(pair => {
+        const [key, value] = pair.split("=");
+        params[key] = decodeURIComponent(value);
+      });
+      return params;
+    }
+
+    function renderCompanyDetails(company) {
+      const container = document.getElementById("detailsContent");
+      container.innerHTML = `
+        <img src="${company.logo}" class="logo" alt="${company.name}" />
+        <h1>${company.name}</h1>
+        <p>${company.about.description}</p>
+        <p><strong>Website:</strong> <a href="${company.about.website}" target="_blank">${company.about.website}</a></p>
+        <p><strong>Email:</strong> <a href="mailto:${company.about.contact.email}">${company.about.contact.email}</a></p>
+        <p><strong>Phone:</strong> <a href="tel:${company.about.contact.phone}">${company.about.contact.phone}</a></p>
+
+        <div class="section">
+          <h2>Products</h2>
+          ${company.products.map(p => `
+            <div class="product">
+              <img src="${p.product_img}" alt="${p.name}" />
+              <div>
+                <h4>${p.name}</h4>
+                <p>R${p.price}</p>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="section">
+          <h2>Video Posts</h2>
+          ${company.video_posts.map(v => `
+            <div class="video">
+              <iframe src="${v.video_url}" frameborder="0" allowfullscreen></iframe>
+              <div>
+                <h4>${v.title}</h4>
+                <p>${v.description}</p>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderProductDetails(product) {
+      const container = document.getElementById("detailsContent");
+      container.innerHTML = `
+        <img src="${product.product_img}" class="logo" />
+        <h1>${product.name}</h1>
+        <p><strong>Price:</strong> R${product.price}</p>
+      `;
+    }
+
+    function renderVideoDetails(video) {
+      const container = document.getElementById("detailsContent");
+      container.innerHTML = `
+        <h1>${video.title}</h1>
+        <iframe src="${video.video_url}" frameborder="0" allowfullscreen></iframe>
+        <p>${video.description}</p>
+      `;
+    }
+
+    // Load appropriate details based on type and id
+    const params = getQueryParams();
+    const { type, id } = params;
+
+    if (!type || !id) {
+      document.getElementById("detailsContent").innerHTML = "<p>Error: Missing details.</p>";
+    } else {
+      const company = window.companyData.find(c => c.id === id || c.products.find(p => p.id === id) || c.video_posts.find(v => v.id === id));
+      if (!company) {
+        document.getElementById("detailsContent").innerHTML = "<p>Not found.</p>";
+      } else {
+        if (type === "company") {
+          renderCompanyDetails(company);
+        } else if (type === "product") {
+          const product = company.products.find(p => p.id === id);
+          renderProductDetails(product);
+        } else if (type === "video") {
+          const video = company.video_posts.find(v => v.id === id);
+          renderVideoDetails(video);
+        } else {
+          document.getElementById("detailsContent").innerHTML = "<p>Unsupported type.</p>";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
