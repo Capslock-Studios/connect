@@ -47,23 +47,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to display full company details
     function showCompanyInfo(company) {
         companyAbout.innerHTML = `
-        <div class="user-card" style=" margin-bottom: 0px !important; padding-bottom: 0px !important; margin-bottom: 10px;"  id="posts-container">
-            <div class="cover-photo">
-                <img src="${company.logo}" alt="Profile Picture" class="profile-photo">
-            </div><div class="user-info">
+        <div class="user-card" style="margin-bottom: 10px;" id="posts-container">
+           <div class="cover-photo-wrapper">
+    <img src="${company["cover_img"] || 'default-wallpaper.jpg'}" onerror="this.src='default-wallpaper.jpg'" class="cover-background-img" />
+    <div class="cover-overlay">
+        <img src="${company.logo}" onerror="this.src='default-logo.jpg'" class="profile-photo" />
+    </div>
+</div>
+
+            <div class="user-info">
                 <h3>${company.name}</h3>
                 <p>${company.about.description}</p>
             </div>
-            <span><strong>Website:</strong>${company.about.website}<p></p></span>
+            <span><strong>Website:</strong> ${company.about.website}<p></p></span>
             <span><strong>Email:</strong> ${company.about.contact.email}</span>
-            
+    
             <div class="buttons">
                 <button onclick="window.open('https://wa.me/${company.about.contact.phone}', '_blank')" class="cta-btn">WhatsApp</button>
                 <button onclick="window.location.href = 'mailto:${company.about.contact.email}'" class="cta-btn">Email</button>
                 <button onclick="window.open('${company.about.website}', '_blank')" class="cta-btn">Website</button>
                 <br><br>
             </div>
-        </div>`;
+        </div>
+    `;
+    
 
         companyPosts.innerHTML = `<h3>📌 Posts</h3>` + 
             company.posts.map(post => `
