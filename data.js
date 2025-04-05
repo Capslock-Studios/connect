@@ -74,6 +74,21 @@ const companies = [
          
         ],
         video_posts: [
+            
+            {
+                id: "v2",
+                title: "Buy Local Conference",
+                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                video_url: "https://www.youtube.com/embed/1Po6yjmkG-Q?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            },
+            {
+                id: "v2",
+                title: "Buy Local Conference",
+                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            }
            
         ],
         picture_posts: [
@@ -131,11 +146,11 @@ const companies = [
         logo: "https://i.ibb.co/YwWPCP8/G20-logo.png",
         cover_img: "https://www.sagoodnews.co.za/wp-content/uploads/2024/06/Agreement-signed-in-the-GNU-1.jpg",
         about: {
-            description: "Community collaboration platform with tools.",
-            website: "https://1pulse-online-beta.netlify.app/",
+            description: "A national unity government, government of national unity (GNU), or national union government is a broad coalition government consisting of all parties (or all major parties) in the legislature, usually formed during a time of war or other national emergency.",
+            website: "https://www.sanews.gov.za/features-south-africa/gnu-new-era-sa",
             contact: {
-                email: "contact@1pulse.online",
-                phone: "+9876543210"
+                email: "newsfiles@gcis.gov.za ",
+                phone: "012 473 0213"
             }
         },
         posts: [
@@ -146,6 +161,41 @@ const companies = [
         ],
         video_posts: [
            
+            {
+                id: "v2",
+                title: "Mark Burke:",
+                description: " 'On GNU', SA Budget, VAT increase, DA, ANC, SA economy, Action SA, MK Party, Parliament.",
+                video_url: "https://www.youtube.com/embed/SdQ868cF9Ms?autoplay=1&mute=1&loop=1&controls=0&playlist=SdQ868cF9Ms",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "End of the GNU! | DA leaving the GNU?",
+                description: "If you like our content and want to support us, buy us a Coffee at:",
+                video_url: "https://www.youtube.com/embed/wLAxOeI6oCc?autoplay=1&mute=1&loop=1&controls=0&playlist=wLAxOeI6oCc",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "Chaos AND Drama Parliament ",
+                description: "Budget 25 Fiscal Framework and Revenue Report.",
+                video_url: "https://www.youtube.com/embed/lUuMQr_6XsE?autoplay=1&mute=1&loop=1&controls=0&playlist=lUuMQr_6XsE",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "GNU implosion on the cards - Harvey",
+                description: "Political analyst Dr Ebrahim Harvey believes the GNU is going to (implode) due to the dispute between the ANC and the DA over the proposed VAT increase",
+                video_url: "https://www.youtube.com/embed/GIOLjM0G6bA?autoplay=1&mute=1&loop=1&controls=0&playlist=GIOLjM0G6bA",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "What’s SHAKING South African politics in 2025?",
+                description: " ‘GNU’, ANC v DA v EFF v MK.",
+                video_url: "https://www.youtube.com/embed/UwMU2Qj_E7E?autoplay=1&mute=1&loop=1&controls=0&playlist=UwMU2Qj_E7E",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            }
         ],
         picture_posts: [
            
