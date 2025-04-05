@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             company.video_posts.map(video => `
                 <div class="tiktok-card" style="margin-bottom: 30px; float: left;">
                     <div class="video-container">
-                        <iframe src="${video.video_url}" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/${video.video_url}?autoplay=1&mute=1&controls=1&playlist=${video.video_url}" allowfullscreen></iframe>
                     </div>
                     <div class="tiktok-user-info">
                         <h4>${video.title}</h4>
