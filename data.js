@@ -351,9 +351,9 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
-                title: "The Angle Podcast EP 14",
-                description: "Hands-On Learning: Kopano Makino on Revolutionising Education.",
-                video_url: "Z4ky1VO30Hg",
+                title: "Unlocking Minds:  AUKO Puzzles Transforming 3D Education",
+                description: " In this episode, we dive into the innovative world of 3D design and educational tools with The AUKO Designs.",
+                video_url: "IRXpnQXPkrU",
                 thumbnail: "Auko-designs.png"
             },{
                 id: "v2",
