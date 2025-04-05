@@ -154,6 +154,34 @@ const companies = [
         ],
         video_posts: [
            
+            {
+                id: "v2",
+                title: "60th Werner Kapp: ",
+                description: " Altron's partnership with Jozi My Jozi & other Stakeholders",
+                video_url: "mOylGdp0y7A",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+            id: "v2",
+            title: "JOZI MY JOZI GATEWAY CLEANUP",
+            description: " 'Jozi My Jozi in action - Cleaning up gateways as main entry points into the city of Johannesburg.",
+            video_url: "uX2suLZ5B80",
+            thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+        },
+        {
+            id: "v2",
+            title: "BUSINESS - JOZI MY JOZI ",
+            description: " There is a new collaborative movement in Johannesburg that aims to unlock the city's potential through sheer determination.",
+            video_url: "wgmYredys4o",
+            thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+        },
+        {
+        id: "v2",
+        title: "JOBURGTODAY - JOZI MY JOZI SECURITY",
+        description: " 'Collaboration between the City of Joburg and the Jozi My Jozi movement is actively engaged in bringing much-needed change to the city, which is showing the scars of time, crime, and crumbling infrastructure.",
+        video_url: "uX2suLZ5B80",
+        thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+    },
         ],
         picture_posts: [
             
@@ -189,7 +217,15 @@ const companies = [
         ],
         video_posts: [
            
-            {
+            
+                {
+                    id: "v2",
+                    title: "South African Parliament approves budget fiscal framework",
+                    description: "Political analyst Sandile Swana delves into the budget row days after South Africa's National Assembly approved the 2025 fiscal framework, which establishes economic policy, revenue projections, and limits on government spending.",
+                    video_url: "xiG24Ks83tg",
+                    thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                },
+                {
                 id: "v2",
                 title: "Mark Burke:",
                 description: " 'On GNU', SA Budget, VAT increase, DA, ANC, SA economy, Action SA, MK Party, Parliament.",
