@@ -322,6 +322,114 @@ const companies = [
     },
     {
         id: "c2",
+        name: "Mpho Robotics",
+        logo: "mpho-robotics.png",
+        cover_img: "mpho-robotics-cover.jpg",
+        about: {
+            description: "Mphorobotics, based in Johannesburg, is a leading South African innovator specializing in professional and affordable 3D printing and Laser Cutting services. Our swift turnaround time empowers customers to seamlessly transform digital designs into tangible objects using cutting-edge 3D printing technology. ",
+            website: "https://www.mphorobotics.co.za/",
+            contact: {
+                email: "mpho@mphorobotics.co.za",
+                phone: " +27794117949"
+            }
+        },
+        posts: [
+        
+        ],
+        petitions: [
+            {
+                id: "pt2",
+                title: "Community Petittion.",
+                cover_img: "https://whatsnext.joburg/1pulse-cover.jpg",
+                description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
+                signatures: 67,
+                date:"",
+                time:"",
+                location:""
+            }
+        ],
+        video_posts: [
+            {
+                id: "v2",
+                title: "MPHOROBOTICS: Making Robots for Education | @mystartuptvregional",
+                description: "#MPHOROBOTICS #EducationalRobots #STEMEducation #TechInnovation #Robotics #MphoMakutu #MyStartupTV #LiveBroadcast #TechInAfrica #EdTech #RoboticsEducation #mystartuptv #mystartupott #majorsunilshetty #mystartuplife  #mystartuptvregional #mystartuptvmediahouse",
+                video_url: "I078qbHRuko",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },
+            {
+                id: "v2",
+                title: "Unlimit Your Life - The Unlimited: Mpho Makhutu",
+                description: "When you think “small village”, the last thing you think of is “big idea”. That is until you meet Mpho – a robotics technology student at Wits University, whose story started in a dusty township...",
+                video_url: "yKl4dQJxLBg",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "How To Make A Robot // Mpho The Invetor",
+                description: " In this video we look at the process Mpho goes through with his innovations",
+                video_url: "HrIT1VIoLOg",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },
+            {
+                id: "v2",
+                title: "Mpho Makutu the South African Inventor",
+                description: "Mpho Makutu the South African Inventor makes a grass trimmer from trash. I made this Grass Trimmer from old drill motor. It is powered by 12v battery.",
+                video_url: "Z4ky1VO30Hg",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho, Mr Robot.",
+                description: "This South African inventor is turning trash to luxury and fortune.This is the story of Mpho, a.k.a Mr Robot, from South Africa.",
+                video_url: "bZun8IAA2xY",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho Makutu South African Inventor Tells his story!",
+                description: "South African Inventor tells his story of how he grew up and how was it.He grew up with no enough enough tools and materials to build stuff. He was taking his fathers music system to get the parts.",
+                video_url: "Ctd6P40El5w",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "A young inventor from Soweto in Johannesburg has built a 'robot entirely out of trash and old parts.",
+                description: "South African inventor builds 'robot' from reclaimed parts Mpho Makutu took two weeks to construct his creative machine, now he's hoping his invention brings him fame and fortune.",
+                video_url: "Z_tEfJLtcMU",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho Makutu the South African Inventor.",
+                description: "The South African Inventor makes robots for education. Ladies assisting him to assemble them.",
+                video_url: "XkEu7JMakaU",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "What happened to Mpho?",
+                description: "🇿🇦- The man who builds robots from trash✔",
+                video_url: "co2e1x2ubDU",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho Makutu the South African Inventor makes Robot From Trash!!",
+                description: "South African Inventor makes robot from waste materials. I collect waste to turn it into a trassure. ",
+                video_url: "ckIBzom2Jg0",
+                thumbnail: "mpho-robotics-cover.jpg"
+            }
+        ],
+        picture_posts: [
+           
+        ],
+        savvies: [
+           
+        ],
+        products: [
+            { id: "pr3", name: "AUKODesigns Chef Apron", product_img:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR4OKPVGw7a3Cqyk4MXrRTKXvFFeWd5e2L8UXTEjnsZqdIg3s4XUokIlGDUhtei0AOHvssfpFT7zXFYY9N7oh_RMNQHL8OR24G0ELVvPPHKEA7yUPETwmqI&usqp=CAE", description:"AUKODesigns gives you a locally designed and manufactured high-end customisable Chef Apron.", price: 850.00},   
+            { id: "pr3", name: "AUKO Designs", product_img:"https://media.takealot.com/covers_images/1cba16b478104528972390ff552bf758/s-zoom.file", description:"Auko Designs South Africa Map Puzzle.", price: 250.00},
+        
+        ],
+        services: [
+            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+        ]
+    },
+    {
+        id: "c2",
         name: "Auko Designs",
         logo: "Auko-designs.png",
         cover_img: "https://i.ytimg.com/vi/dIpocj891lU/maxresdefault.jpg",
