@@ -1141,8 +1141,8 @@ input {
 }
 
 .stable {
-	width: 250px; height: 300px;
-	padding: 5px;
+	width: 250px; height: 350px;
+	padding: 15px;
 	display: flex;
 	overflow: scroll;
 	justify-content: space-between;
