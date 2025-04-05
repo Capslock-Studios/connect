@@ -420,9 +420,9 @@ const companies = [
            
         ],
         products: [
-            { id: "pr3", name: "AUKODesigns Chef Apron", product_img:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR4OKPVGw7a3Cqyk4MXrRTKXvFFeWd5e2L8UXTEjnsZqdIg3s4XUokIlGDUhtei0AOHvssfpFT7zXFYY9N7oh_RMNQHL8OR24G0ELVvPPHKEA7yUPETwmqI&usqp=CAE", description:"AUKODesigns gives you a locally designed and manufactured high-end customisable Chef Apron.", price: 850.00},   
-            { id: "pr3", name: "AUKO Designs", product_img:"https://media.takealot.com/covers_images/1cba16b478104528972390ff552bf758/s-zoom.file", description:"Auko Designs South Africa Map Puzzle.", price: 250.00},
-        
+            { id: "pr3", name: "4 Axis Robot Arm with Sensor", product_img:"https://www.mphorobotics.co.za/images/catalog_pics/image0.jpeg", description:"This educational 4 axis robot arm is equipped with a precision sensor to pick up objects. ", price: 1350.00},   
+            { id: "pr3", name: "Customized Blue Lighting Trophy", product_img:"https://www.mphorobotics.co.za/images/catalog_pics/jonny%20walker.jpg", description:"This customized trophy features stunning blue lights that illuminate its elegant design. ", price: 1350.00},
+            { id: "pr3", name: "Customized Color-Changing Lighting Trophy", product_img:"https://www.mphorobotics.co.za/images/catalog_pics/Fakugesi.jpg", description:"This customized lighting trophy features an elegant design that changes colors to create a dynamic display. ", price: 1350.00},
         ],
         services: [
             { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
