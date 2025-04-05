@@ -88,11 +88,11 @@ const companies = [
         logo: "https://i.ibb.co/jPG8vdF4/Tshimologong.png",
         cover_img: "https://founderssauce.com/wp-content/uploads/2020/03/DU4r0d9WkAE2vU2.jpg",
         about: {
-            description: "Sustainable energy solutions provider.",
-            website: "https://greenenergy.com",
+            description: "The University of the Witwatersrand’s B-BBBEE Level 1 Entity, Tshimologong Digital Innovation Precinct, is a hub where the incubation of startups and SMEs takes place and aims to create world-leading African digital entrepreneurs.",
+            website: "https://tshimologong.joburg/",
             contact: {
-                email: "contact@greenenergy.com",
-                phone: "+9876543210"
+                email: "community@tshimologong.joburg",
+                phone: "011 717 8156"
             }
         },
         posts: [
@@ -184,10 +184,10 @@ const companies = [
         logo: "https://i.ibb.co/39Z55ry2/JmJ.png",
         cover_img: "https://i0.wp.com/www.dailymaverick.co.za/wp-content/uploads/2024/06/Wayne-Dawson-Project-Lead-Safety-Security_Jozi-My-Jozi-1.jpg?fit=1280%2C720&quality=89&ssl=1",
         about: {
-            description: "Community collaboration platform with tools.",
-            website: "https://1pulse-online-beta.netlify.app/",
+            description: "Jozi My Jozi is a movement for the people, by the people. We are committed to uniting individuals from all walks of life—whether from the private or public sector, or the everyday citizens of Johannesburg—to make a meaningful difference.",
+            website: "https://www.jozimyjozi.com/",
             contact: {
-                email: "contact@1pulse.online",
+                email: "contactus@jozimyjozi.com",
                 phone: "+9876543210"
             }
         },
@@ -322,6 +322,77 @@ const companies = [
     },
     {
         id: "c2",
+        name: "Auko Designs",
+        logo: "Auko-designs.png",
+        cover_img: "https://i.ytimg.com/vi/dIpocj891lU/maxresdefault.jpg",
+        about: {
+            description: "AUKODesigns is a leading 3D Industrial Design, R&D, and Manufacturing Company based in Johannesburg, South Africa. We specialize in turning ideas into reality using cutting-edge 3D Computer-Aided Design (CAD) software and advanced manufacturing technologies.",
+            website: "https://www.aukodesigns.co.za/",
+            contact: {
+                email: "contact@aukodesigns.co.za",
+                phone: " +26 60 615 7687"
+            }
+        },
+        posts: [
+        
+        ],
+        petitions: [
+            {
+                id: "pt2",
+                title: "Community Petittion.",
+                cover_img: "https://whatsnext.joburg/1pulse-cover.jpg",
+                description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
+                signatures: 67,
+                date:"",
+                time:"",
+                location:""
+            }
+        ],
+        video_posts: [
+            {
+                id: "v2",
+                title: "The Angle Podcast EP 14",
+                description: "Hands-On Learning: Kopano Makino on Revolutionising Education.",
+                video_url: "Z4ky1VO30Hg",
+                thumbnail: "Auko-designs.png"
+            },{
+                id: "v2",
+                title: "Auko Designs: Youth Month Focus",
+                description: "We’re inspired by Kopano Makino, the talented entrepreneur behind Auko Designs. From the classroom to the business world, this journey shows that young people are leading the way in building a better sustainable tomorrow",
+                video_url: "wFGMtU1DeJI",
+                thumbnail: "Auko-designs.png"
+            },
+            {
+                id: "v2",
+                title: "what is industrial design in auko designs",
+                description: "do data",
+                video_url: "Z4ky1VO30Hg",
+                thumbnail: "Auko-designs.png"
+            },{
+                id: "v2",
+                title: "Episode 15",
+                description: "Kopano Makino Founder of Auko Designs.",
+                video_url: "8-JlK_CnyKY",
+                thumbnail: "Auko-designs.png"
+            }
+        ],
+        picture_posts: [
+           
+        ],
+        savvies: [
+           
+        ],
+        products: [
+            { id: "pr3", name: "AUKODesigns Chef Apron", product_img:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR4OKPVGw7a3Cqyk4MXrRTKXvFFeWd5e2L8UXTEjnsZqdIg3s4XUokIlGDUhtei0AOHvssfpFT7zXFYY9N7oh_RMNQHL8OR24G0ELVvPPHKEA7yUPETwmqI&usqp=CAE", description:"AUKODesigns gives you a locally designed and manufactured high-end customisable Chef Apron.", price: 850.00},   
+            { id: "pr3", name: "AUKO Designs", product_img:"https://media.takealot.com/covers_images/1cba16b478104528972390ff552bf758/s-zoom.file", description:"Auko Designs South Africa Map Puzzle.", price: 250.00},
+        
+        ],
+        services: [
+            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
+        ]
+    },
+    {
+        id: "c2",
         name: "1Pulse online",
         logo: "https://i.ibb.co/Q35sd45k/1pulse-online-logo-CRc-L2.png",
         cover_img: "https://whatsnext.joburg/1pulse-cover.jpg",
@@ -350,7 +421,7 @@ const companies = [
                 id: "v2",
                 title: "1 pulse online",
                 description: "One heart beat! For Community engagement and government accountability, hear out 1Pulse online.",
-                video_url: "https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0",
+                video_url: "fLQwwh5sSWQ",
                 thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
             }
         ],
@@ -379,10 +450,10 @@ const companies = [
         cover_img: "https://bonizulu.co.za/Hero.jpeg",
         about: {
             description: "BoniZulu is a woman-centric fashion brand created by women, for women, celebrating the unique roles women play in society.",
-            website: "https://greenenergy.com",
+            website: "https://bonizulu.co.za",
             contact: {
-                email: "contact@greenenergy.com",
-                phone: "+9876543210"
+                email: "contact@bonizulu.co.za",
+                phone: "27615375404"
             }
         },
         posts: [
@@ -424,7 +495,7 @@ const companies = [
             cover_img: "",
             contact: {
                 email: "contact@whatsnext.joburg",
-                phone: "+9876543210"
+                phone: "27 68 509 0669"
             }
         },
         posts: [
@@ -448,28 +519,28 @@ const companies = [
                 id: "v2",
                 title: "Justice for Cwecwe | Bureaucracy should not stand in our way: Themba Masango",
                 description: "Civil rights movement, Not in My Name has called for an overhaul on how schools and officials handle the rape of learners at school. This is after a public outrage at the lack of cooperation by school officials, following the rape of a seven- year old girl on school premises in the Eastern Cape.",
-                video_url: "https://www.youtube.com/embed/cm_vs93GJgs",
+                video_url: "cm_vs93GJgs",
                 thumbnail: "https://yt3.googleusercontent.com/x5Bgc7UBYZvOHvp3UG91lZbV6ND0YCOi2a026vLPDGIU5GF2qp5JnHnCeLyPegWhEjM5njpN=s900-c-k-c0x00ffffff-no-rj"
             },
             {
                 id: "v2",
                 title: "School deregistered for mishandling rape case: Vuyiseka Mboxela",
                 description: "The Eastern Cape department of Education has deregistered a Matatiele based private school following the refusal of the school management to cooperate in the rape investigation of a seven year old learner.",
-                video_url: "https://www.youtube.com/embed/3NB0alyk_8o",
+                video_url: "3NB0alyk_8o",
                 thumbnail: "https://yt3.googleusercontent.com/x5Bgc7UBYZvOHvp3UG91lZbV6ND0YCOi2a026vLPDGIU5GF2qp5JnHnCeLyPegWhEjM5njpN=s900-c-k-c0x00ffffff-no-rj"
             },
             {
                 id: "v2",
                 title: "Buy Local Conference",
                 description: "Proudly South African hosted a protest during our buy local conference in Sandton Convention Center.",
-                video_url: "https://www.youtube.com/embed/tg0soDatGDo?autoplay=1&mute=1&loop=1&controls=0",
+                video_url: "tg0soDatGDo",
                 thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
             },
             {
                 id: "v2",
                 title: "1 pulse online",
                 description: "For Community engagement and government accountability, hear out 1Pulse online.",
-                video_url: "https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=0",
+                video_url: "fLQwwh5sSWQ",
                 thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
             }
         ],
@@ -524,6 +595,13 @@ const companies = [
         video_posts: [
            
             
+            {
+                id: "v2",
+                title: "1 pulse online",
+                description: "For Community engagement and government accountability, hear out 1Pulse online.",
+                video_url: "fLQwwh5sSWQ",
+                thumbnail: "https://i.ibb.co/1Yj76MQW/whatsnext.png"
+            }
         ],
         picture_posts: [
           
@@ -540,52 +618,6 @@ const companies = [
         services: [
        
             
-        ]
-    },
-    {
-        id: "c2",
-        name: "Auko Designs",
-        logo: "Auko-designs.png",
-        cover_img: "https://i.ytimg.com/vi/dIpocj891lU/maxresdefault.jpg",
-        about: {
-            description: "AUKODesigns is a leading 3D Industrial Design, R&D, and Manufacturing Company based in Johannesburg, South Africa. We specialize in turning ideas into reality using cutting-edge 3D Computer-Aided Design (CAD) software and advanced manufacturing technologies.",
-            website: "https://www.aukodesigns.co.za/",
-            contact: {
-                email: "contact@aukodesigns.co.za",
-                phone: " +26 60 615 7687"
-            }
-        },
-        posts: [
-        
-        ],
-        petitions: [
-            {
-                id: "pt2",
-                title: "Community Petittion.",
-                cover_img: "https://whatsnext.joburg/1pulse-cover.jpg",
-                description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
-                signatures: 67,
-                date:"",
-                time:"",
-                location:""
-            }
-        ],
-        video_posts: [
-          
-        ],
-        picture_posts: [
-           
-        ],
-        savvies: [
-           
-        ],
-        products: [
-            { id: "pr3", name: "AUKODesigns Chef Apron", product_img:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR4OKPVGw7a3Cqyk4MXrRTKXvFFeWd5e2L8UXTEjnsZqdIg3s4XUokIlGDUhtei0AOHvssfpFT7zXFYY9N7oh_RMNQHL8OR24G0ELVvPPHKEA7yUPETwmqI&usqp=CAE", description:"AUKODesigns gives you a locally designed and manufactured high-end customisable Chef Apron.", price: 850.00},   
-            { id: "pr3", name: "AUKO Designs", product_img:"https://media.takealot.com/covers_images/1cba16b478104528972390ff552bf758/s-zoom.file", description:"Auko Designs South Africa Map Puzzle.", price: 250.00},
-        
-        ],
-        services: [
-            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
         ]
     },
     
