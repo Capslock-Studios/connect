@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Video + Facebook Comments Demo</title>
+  <title>Interactive Video Card</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
       margin: 0;
-      padding: 20px;
+      font-family: sans-serif;
+      background: #f4f4f4;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
     }
 
     .tiktok-card {
       width: 100%;
       max-width: 400px;
-      margin: 0 auto;
-      background: white;
+      margin: auto;
+      background: #fff;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 60px;
+      scroll-snap-align: start;
+      position: relative;
     }
 
     .video-container {
@@ -29,10 +32,9 @@
       padding-top: 56.25%;
     }
 
-    .video-container iframe {
+    iframe {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       border: none;
@@ -45,34 +47,55 @@
     .floating-actions {
       display: flex;
       justify-content: space-around;
-      align-items: center;
       padding: 10px 15px;
       border-top: 1px solid #eee;
+      align-items: center;
     }
 
     .floating-actions img.profile-photo {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      object-fit: cover;
+    }
+
+    .action-button {
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .liked {
+      color: red;
+      transform: scale(1.3);
     }
 
     .fb-comments {
-      margin: 0 15px 15px 15px;
+      display: none;
+      margin: 10px;
     }
+
+    .show-comments {
+      display: block;
+    }
+
+    .feed {
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Facebook SDK (Only once per page) -->
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
-    nonce="xyz123">
-  </script>
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" nonce="xyz123">
+</script>
 
+<div class="feed">
   <!-- TikTok-style Card -->
-  <div class="tiktok-card">
+  <div class="tiktok-card" data-id="fLQwwh5sSWQ">
     <div class="video-container">
       <iframe 
         src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=1&playlist=fLQwwh5sSWQ" 
@@ -82,14 +105,15 @@
 
     <div class="tiktok-user-info">
       <h4>@WhatsNext</h4>
-      <p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+      <p>Your one-stop hub for all things entrepreneurship!</p>
     </div>
 
     <div class="floating-actions">
-      <img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
-      <div>❤️ 1.2K</div>
-      <div>💬 324</div>
-      <div>↪️ 80</div>
+      <img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" class="profile-photo" alt="Profile Picture">
+
+      <div class="action-button like-button">❤️ <span class="like-count">17</span></div>
+      <div class="action-button comment-button">💬</div>
+      <div class="action-button share-button">↪️</div>
     </div>
 
     <!-- Facebook Comments -->
@@ -99,6 +123,59 @@
          data-numposts="3">
     </div>
   </div>
+</div>
+
+<script>
+  const likeButtons = document.querySelectorAll(".like-button");
+
+  likeButtons.forEach(button => {
+    const card = button.closest(".tiktok-card");
+    const videoId = card.dataset.id;
+    const countSpan = button.querySelector(".like-count");
+
+    // Load from localStorage
+    const liked = localStorage.getItem("liked_" + videoId) === "true";
+    if (liked) {
+      button.classList.add("liked");
+    }
+
+    button.addEventListener("click", () => {
+      const isLiked = button.classList.toggle("liked");
+      let count = parseInt(countSpan.textContent.replace(/,/g, ""));
+      count = isLiked ? count + 1 : count - 1;
+      countSpan.textContent = count.toLocaleString();
+      localStorage.setItem("liked_" + videoId, isLiked);
+    });
+  });
+
+  // Comment toggle
+  document.querySelectorAll(".comment-button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const fbComments = btn.closest(".tiktok-card").querySelector(".fb-comments");
+      fbComments.classList.toggle("show-comments");
+    });
+  });
+
+  // Share
+  document.querySelectorAll(".share-button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".tiktok-card");
+      const title = card.querySelector("h4").textContent;
+      const text = card.querySelector("p").textContent;
+      const url = "https://example.com/video/" + card.dataset.id;
+
+      if (navigator.share) {
+        navigator.share({
+          title,
+          text,
+          url
+        }).catch(err => console.log("Share cancelled", err));
+      } else {
+        alert("Sharing not supported on this device.");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
