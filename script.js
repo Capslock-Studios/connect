@@ -106,28 +106,28 @@ document.addEventListener("DOMContentLoaded", () => {
             `).join("");
 
         companyVideo_Posts.innerHTML = `<h3>📹 Video Posts</h3>` + 
-            company.video_posts.map(video => `
-                <div class="tiktok-card" style="margin-bottom: 30px; float: left;">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/${video.video_url}?autoplay=1&mute=1&controls=1&playlist=${video.video_url}" allowfullscreen></iframe>
-                    </div>
-                    <div class="tiktok-user-info">
-                        <h4>${video.title}</h4>
-                        <p>${video.description}</p>
-                    </div>
-                    <div class="floating-actions">
-                        <img src="${video.thumbnail}" alt="Profile Picture" class="profile-photo">
-                        <div>↪️ Share</div>
-                    </div>
-                    
-    <!-- Facebook Comments -->
-    <div class="fb-comments" 
-         data-href="https://example.com/video/fLQwwh5sSWQ" 
-         data-width="90%" 
-         data-numposts="3">
-    </div>
+        company.video_posts.map(video => `
+            <div class="tiktok-card" data-id="${video.video_url}" style="margin-bottom: 30px; float: left;">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/${video.video_url}?autoplay=1&mute=1&controls=1&playlist=${video.video_url}" allowfullscreen></iframe>
                 </div>
-            `).join("");
+                <div class="tiktok-user-info">
+                    <h4>${video.title}</h4>
+                    <p>${video.description}</p>
+                </div>
+                <div class="floating-actions">
+                    <img src="${video.thumbnail}" alt="Profile Picture" class="profile-photo">
+                    <div class="share-button">↪️ Share</div>
+                </div>
+        
+                <div class="fb-comments" 
+                     data-href="https://example.com/video/${video.video_url}" 
+                     data-width="90%" 
+                     data-numposts="3">
+                </div>
+            </div>
+        `).join("");
+        
 
         companyPicture_Posts.innerHTML = `<h3></h3>` + 
             company.picture_posts.map(pic => `
@@ -220,3 +220,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// Re-parse Facebook comments widget after DOM injection
+if (typeof FB !== 'undefined' && FB.XFBML && typeof FB.XFBML.parse === 'function') {
+    FB.XFBML.parse();
+  }
+  
+  // Re-bind share button events
+  bindShareButtons();
+
+
+
+function openCustomShare(videoId) {
+    const url = `https://example.com/video/${videoId}`;
+    const encoded = encodeURIComponent(url);
+
+    document.getElementById("shareURL").value = url;
+    document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${encoded}`;
+    document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?url=${encoded}`;
+    document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encoded}`;
+    
+    document.getElementById("customShareModal").style.display = "flex";
+  }
+
+  function closeShareModal() {
+    document.getElementById("customShareModal").style.display = "none";
+  }
+
+  function copyLink() {
+    const copyText = document.getElementById("shareURL");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert("Link copied!");
+  }
+
+  document.querySelectorAll(".share-button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".tiktok-card");
+      const videoId = card.dataset.id;
+
+      if (navigator.share) {
+        navigator.share({
+          title: "Watch this video",
+          text: "Check this out!",
+          url: `https://example.com/video/${videoId}`
+        }).catch(() => openCustomShare(videoId));
+      } else {
+        openCustomShare(videoId);
+      }
+    });
+  });

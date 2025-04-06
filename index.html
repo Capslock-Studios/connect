@@ -913,46 +913,6 @@
   </div>
 
   <script>
-    function openCustomShare(videoId) {
-      const url = `https://example.com/video/${videoId}`;
-      const encoded = encodeURIComponent(url);
-
-      document.getElementById("shareURL").value = url;
-      document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${encoded}`;
-      document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?url=${encoded}`;
-      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encoded}`;
-      
-      document.getElementById("customShareModal").style.display = "flex";
-    }
-
-    function closeShareModal() {
-      document.getElementById("customShareModal").style.display = "none";
-    }
-
-    function copyLink() {
-      const copyText = document.getElementById("shareURL");
-      copyText.select();
-      copyText.setSelectionRange(0, 99999);
-      document.execCommand("copy");
-      alert("Link copied!");
-    }
-
-    document.querySelectorAll(".share-button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const card = btn.closest(".tiktok-card");
-        const videoId = card.dataset.id;
-
-        if (navigator.share) {
-          navigator.share({
-            title: "Watch this video",
-            text: "Check this out!",
-            url: `https://example.com/video/${videoId}`
-          }).catch(() => openCustomShare(videoId));
-        } else {
-          openCustomShare(videoId);
-        }
-      });
-    });
   </script>
 </body>
 	</html>
