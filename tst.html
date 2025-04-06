@@ -1,99 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Interactive Video Card</title>
+  <title>Interactive TikTok Card</title>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" 
+    nonce="XYZ123">
+  </script>
+
   <style>
     body {
-      margin: 0;
       font-family: sans-serif;
-      background: #f4f4f4;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
     }
 
     .tiktok-card {
-      width: 100%;
-      max-width: 400px;
-      margin: auto;
       background: #fff;
       border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 60px;
-      scroll-snap-align: start;
+      padding: 10px;
+      margin-bottom: 30px;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       position: relative;
     }
 
-    .video-container {
-      position: relative;
+    .video-container iframe {
       width: 100%;
-      padding-top: 56.25%;
-    }
-
-    iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      height: 220px;
+      border-radius: 14px;
       border: none;
     }
 
     .tiktok-user-info {
-      padding: 15px;
+      padding: 10px;
     }
 
     .floating-actions {
       display: flex;
       justify-content: space-around;
-      padding: 10px 15px;
-      border-top: 1px solid #eee;
-      align-items: center;
+      padding: 10px;
+      font-size: 18px;
     }
 
-    .floating-actions img.profile-photo {
+    .profile-photo {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-    }
-
-    .action-button {
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.2s ease;
-    }
-
-    .liked {
-      color: red;
-      transform: scale(1.3);
+      margin-right: 8px;
     }
 
     .fb-comments {
-      display: none;
-      margin: 10px;
+      margin-top: 15px;
     }
 
-    .show-comments {
+    /* Share Modal */
+    #customShareModal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #shareSheet {
+      background: white;
+      padding: 20px;
+      width: 90%;
+      max-width: 350px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    #shareSheet input, #shareSheet a, #shareSheet button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 90%;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    #shareSheet a {
+      background: #eee;
+      text-decoration: none;
+      color: #333;
       display: block;
     }
 
-    .feed {
-      max-height: 100vh;
-      overflow-y: auto;
+    .share-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
     }
-
   </style>
 </head>
+
 <body>
 
-<!-- Facebook SDK -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" nonce="xyz123">
-</script>
-
-<div class="feed">
   <!-- TikTok-style Card -->
   <div class="tiktok-card" data-id="fLQwwh5sSWQ">
     <div class="video-container">
@@ -105,77 +117,78 @@
 
     <div class="tiktok-user-info">
       <h4>@WhatsNext</h4>
-      <p>Your one-stop hub for all things entrepreneurship!</p>
+      <p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
     </div>
 
     <div class="floating-actions">
-      <img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" class="profile-photo" alt="Profile Picture">
-
-      <div class="action-button like-button">❤️ <span class="like-count">121</span></div>
-      <div class="action-button comment-button">💬</div>
-      <div class="action-button share-button">↪️</div>
+      <img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+      <div>❤️ <span class="like-count">1.2K</span></div>
+      <div>💬 324</div>
+      <button class="share-button">↪️</button>
     </div>
 
     <!-- Facebook Comments -->
     <div class="fb-comments" 
          data-href="https://example.com/video/fLQwwh5sSWQ" 
-         data-width="95%" 
+         data-width="90%" 
          data-numposts="3">
     </div>
   </div>
-</div>
 
-<script>
-  const likeButtons = document.querySelectorAll(".like-button");
+  <!-- Custom Share Modal -->
+  <div id="customShareModal">
+    <div id="shareSheet">
+      <h3>Share This Video</h3>
+      <input type="text" id="shareURL" readonly />
+      <button onclick="copyLink()">📋 Copy Link</button>
+      <a id="shareWhatsApp" target="_blank">📱 WhatsApp</a>
+      <a id="shareTwitter" target="_blank">🐦 Twitter</a>
+      <a id="shareFacebook" target="_blank">📘 Facebook</a>
+      <button onclick="closeShareModal()">Close</button>
+    </div>
+  </div>
 
-  likeButtons.forEach(button => {
-    const card = button.closest(".tiktok-card");
-    const videoId = card.dataset.id;
-    const countSpan = button.querySelector(".like-count");
+  <script>
+    function openCustomShare(videoId) {
+      const url = `https://example.com/video/${videoId}`;
+      const encoded = encodeURIComponent(url);
 
-    // Load from localStorage
-    const liked = localStorage.getItem("liked_" + videoId) === "true";
-    if (liked) {
-      button.classList.add("liked");
+      document.getElementById("shareURL").value = url;
+      document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${encoded}`;
+      document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?url=${encoded}`;
+      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encoded}`;
+      
+      document.getElementById("customShareModal").style.display = "flex";
     }
 
-    button.addEventListener("click", () => {
-      const isLiked = button.classList.toggle("liked");
-      let count = parseInt(countSpan.textContent.replace(/,/g, ""));
-      count = isLiked ? count + 1 : count - 1;
-      countSpan.textContent = count.toLocaleString();
-      localStorage.setItem("liked_" + videoId, isLiked);
+    function closeShareModal() {
+      document.getElementById("customShareModal").style.display = "none";
+    }
+
+    function copyLink() {
+      const copyText = document.getElementById("shareURL");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Link copied!");
+    }
+
+    document.querySelectorAll(".share-button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".tiktok-card");
+        const videoId = card.dataset.id;
+
+        if (navigator.share) {
+          navigator.share({
+            title: "Watch this video",
+            text: "Check this out!",
+            url: `https://example.com/video/${videoId}`
+          }).catch(() => openCustomShare(videoId));
+        } else {
+          openCustomShare(videoId);
+        }
+      });
     });
-  });
-
-  // Comment toggle
-  document.querySelectorAll(".comment-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const fbComments = btn.closest(".tiktok-card").querySelector(".fb-comments");
-      fbComments.classList.toggle("show-comments");
-    });
-  });
-
-  // Share
-  document.querySelectorAll(".share-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const card = btn.closest(".tiktok-card");
-      const title = card.querySelector("h4").textContent;
-      const text = card.querySelector("p").textContent;
-      const url = "https://example.com/video/" + card.dataset.id;
-
-      if (navigator.share) {
-        navigator.share({
-          title,
-          text,
-          url
-        }).catch(err => console.log("Share cancelled", err));
-      } else {
-        alert("Sharing not supported on this device.");
-      }
-    });
-  });
-</script>
-
+  </script>
 </body>
 </html>
