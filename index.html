@@ -7,6 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css"/>
     <title>WhatsNext Companies</title>
+	
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" 
+    nonce="XYZ123">
+  </script>
+
+  <style>
+
+    .profile-photo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .fb-comments {
+      margin-top: 15px;
+    }
+
+    /* Share Modal */
+    #customShareModal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #shareSheet {
+      background: white;
+      padding: 20px;
+      width: 90%;
+      max-width: 350px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    #shareSheet input, #shareSheet a, #shareSheet button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 90%;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    #shareSheet a {
+      background: #eee;
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+
+    .share-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body>
 	
@@ -804,9 +868,7 @@
 						</div>
 					
 						<div class="post-actions">
-							<div id="facebook" target="_blank">👍 Like</div>
-							<div id="twitter" target="_blank">💬 Comment</div>
-							<div id="instagram" target="_blank">↪️ Share</div>
+							<button class="share-button">↪️Share</button>
 						</div>
 						</div>
 						<br><br>
@@ -835,6 +897,63 @@
   src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" 
   nonce="abc123">
 </script>
+
+
+  <!-- Custom Share Modal -->
+  <div id="customShareModal">
+    <div id="shareSheet">
+      <h3>Share This Video</h3>
+      <input type="text" id="shareURL" readonly />
+      <button onclick="copyLink()">📋 Copy Link</button>
+      <a id="shareWhatsApp" target="_blank">📱 WhatsApp</a>
+      <a id="shareTwitter" target="_blank">🐦 Twitter</a>
+      <a id="shareFacebook" target="_blank">📘 Facebook</a>
+      <button onclick="closeShareModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openCustomShare(videoId) {
+      const url = `https://example.com/video/${videoId}`;
+      const encoded = encodeURIComponent(url);
+
+      document.getElementById("shareURL").value = url;
+      document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${encoded}`;
+      document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?url=${encoded}`;
+      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encoded}`;
+      
+      document.getElementById("customShareModal").style.display = "flex";
+    }
+
+    function closeShareModal() {
+      document.getElementById("customShareModal").style.display = "none";
+    }
+
+    function copyLink() {
+      const copyText = document.getElementById("shareURL");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Link copied!");
+    }
+
+    document.querySelectorAll(".share-button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".tiktok-card");
+        const videoId = card.dataset.id;
+
+        if (navigator.share) {
+          navigator.share({
+            title: "Watch this video",
+            text: "Check this out!",
+            url: `https://example.com/video/${videoId}`
+          }).catch(() => openCustomShare(videoId));
+        } else {
+          openCustomShare(videoId);
+        }
+      });
+    });
+  </script>
 </body>
 	</html>
 

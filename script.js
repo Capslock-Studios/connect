@@ -117,10 +117,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="floating-actions">
                         <img src="${video.thumbnail}" alt="Profile Picture" class="profile-photo">
-                        <div>❤️ 1.2K</div>
-                        <div>💬 324</div>
-                        <div>↪️ 89</div>
+                        <div>↪️ Share</div>
                     </div>
+                    
+    <!-- Facebook Comments -->
+    <div class="fb-comments" 
+         data-href="https://example.com/video/fLQwwh5sSWQ" 
+         data-width="90%" 
+         data-numposts="3">
+    </div>
                 </div>
             `).join("");
 
