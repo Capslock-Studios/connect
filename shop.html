@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css"/>
+    <title>WhatsNext Companies</title>
+</head>
+<body>
+	
+	<style>
+      
+        .floating-button {
+            position: fixed;
+            bottom: 9%;
+            right: 60%;
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: grab;
+            z-index: 99999999;
+            user-select: none;
+        }
+        .floating-menu {
+            position: fixed;
+            bottom: 12%;
+            right: 50%;
+            background: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+            overflow: hidden;
+            width: 150px;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease-in-out;
+			z-index: 9999999;
+        }
+        .floating-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #fff;
+        }
+        .floating-menu a:last-child {
+            border-bottom: none;
+        }
+        .floating-menu a:hover {
+            background: #f3f3f3;
+        }
+        .open-menu {
+            transform: scaleY(1);
+        }
+    </style>
+	<div id="floatingBtn" class="floating-button">☰</div>
+    <div id="menu" class="floating-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+		<a href="faq.html">FAQ</a>
+        <a href="petitions.html">Petitions</a>
+        <a href="shop.html">Shop</a>
+    </div>
+    <script>
+        const btn = document.getElementById("floatingBtn");
+        const menu = document.getElementById("menu");
+        let isDragging = false;
+
+        btn.addEventListener("click", () => {
+            if (!isDragging) {
+                menu.classList.toggle("open-menu");
+            }
+        });
+
+        btn.addEventListener("mousedown", (e) => {
+            isDragging = false;
+            let shiftX = e.clientX - btn.getBoundingClientRect().left;
+            let shiftY = e.clientY - btn.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                btn.style.left = pageX - shiftX + "px";
+                btn.style.top = pageY - shiftY + "px";
+            }
+
+            function onMouseMove(event) {
+                isDragging = true;
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener("mousemove", onMouseMove);
+
+            btn.addEventListener("mouseup", () => {
+                document.removeEventListener("mousemove", onMouseMove);
+                setTimeout(() => (isDragging = false), 100);
+            }, { once: true });
+        });
+    </script>
+<!-- Add this modal to your HTML -->
+<div id="companyModal" class="compModal">
+    <div class="compModal-content">
+		<span class="close-company-modal">&times;</span>       
+        
+        <div class="company-header">     
+            <div class="company-info">
+				<div id="posts-section">
+					<!----this is a placeholde, data is populated from the db-->
+				<div class="user-card" style=" border-radius: 0 18px 18px 18px !important;" id="posts-container">
+					<div class="cover-photo">
+						<img id="modalCompanyLogo" alt="Profile Picture" class="profile-photo">
+					</div>
+					<div class="user-info">
+						<h3  id="modalCompanyName">WhatsNext</h3>
+						<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+						<p id="modalCompanyDescription"></p>
+					</div>
+					
+					<p><strong>Contact:</strong> 
+						<a id="modalCompanyEmail"></a> | 
+						<a id="modalCompanyPhone"></a>
+					</p>
+					<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
+					<div class="social-links">
+						<a id="modalFacebook" target="_blank">Facebook</a>
+						<a id="modalTwitter" target="_blank">Twitter</a>
+						<a id="modalInstagram" target="_blank">Instagram</a>
+					</div>
+					<div class="buttons">
+						<button class="cta-btn">Call</button>
+						<button class="cta-btn">Email</button>
+					</div>
+				</div>
+				</div>
+                
+            </div>
+        </div>
+
+
+	
+    </div>
+</div>
+
+ <!-- Modal -->
+ 		<div id="addCompanyForm" class="modal">
+		
+	<div class="stable">
+					<!-- Close Button -->
+		<span class="close-btn" id="closeModal">&times;</span>
+		<form id="companyForm" class="form">
+			<!--<label><input type="text" placeholder="Name:" id="name" required></label>-->
+			<br>
+						<label><h3>Add your company</h3></label>
+			<label><input type="text" placeholder="Name:" id="name" required></label>
+			<label><input type="text" placeholder="Category:" id="categoryInput" required></label>
+			<label><textarea type="text" placeholder="Description:" id="descriptionInput" required></textarea></label>
+			<label><input type="email" placeholder="Email:" id="emailInput" required></label>
+			<label><input type="tel" placeholder="Phone:" id="phoneInput" required></label>
+			<label><input type="text" placeholder="Address" id="Address" required></label>
+			<button class="formb" type="submit">Submit</button><br>
+		</form>
+		
+<script>
+	document.getElementById("companyForm").addEventListener("submit", function(event) {
+		event.preventDefault(); // Prevent form submission
+	    // Auto-fill location
+		if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                document.getElementById("latitudeInput").value = position.coords.latitude;
+                document.getElementById("longitudeInput").value = position.coords.longitude;
+            },
+            function(error) {
+                console.error("Error getting location:", error);
+            }
+        );
+    }
+
+		// Extract form data
+		let name = document.getElementById("name").value;
+		let category = document.getElementById("categoryInput").value;
+		let description = document.getElementById("descriptionInput").value;
+		let email = document.getElementById("emailInput").value;
+		let phone = document.getElementById("phoneInput").value;
+		let Address = document.getElementById("Address").value;
+	
+		// Format the WhatsApp message
+		let message = `*New Company Submission:*\n\n` +
+					  `*Name:* ${name}\n` +
+					  `*Category:* ${category}\n` +
+					  `*Description:* ${description}\n` +
+					  `*Email:* ${email}\n` +
+					  `*Phone:* ${phone}\n` +
+					  `*Address:* ${Address}\n`;
+	
+		// Encode the message for URL
+		let encodedMessage = encodeURIComponent(message);
+	
+		// WhatsApp link with pre-filled message
+		let whatsappURL = `https://wa.me/27685090669?text=${encodedMessage}`;
+	
+		// Open WhatsApp
+		window.open(whatsappURL, "_blank");
+	});
+	</script>
+	</div>
+ 		</div>
+			<div class="container">
+			<div class="navbar">
+				<a id="addCompanyBtn" ><button id="swhref" href="#internet" class="tooltip" data-tooltip="Add your company" title="Home">
+					<img style="width: 50px; height: 50px;" src="box-add-button.png" alt="Add"></button></a>	
+				<a id="chref" href="#clock"><button data-tooltip="What they sell" title="Shopping Cart"><i class="fas fa-shopping-cart" ></i></button></a>
+				<a id="thref" href="#timer"><button data-tooltip="What they post" title="Social Media"><i class="fas fa-users"></i></button></a>
+				<a id="thref" href="#social"><button data-tooltip="talk to them" title="Messages"><i class="fas fa-comment-alt"></i></button></a>
+			</div>
+		
+			<div class="content-wrapper">
+				<div  class="a">
+					<div class="rival-box">
+						<style>
+							/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text (hidden by default) */
+.tooltip span {
+    content: attr(data-tooltip); /* Use the tooltip text from the data-tooltip attribute */
+    position: absolute;
+    top: 125%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    border-radius: 4px;
+    font-size: 9px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    height: 25px;
+}
+
+/* Show tooltip when hovering over the button */
+.tooltip:hover span {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px); /* Tooltip scrolls upwards */
+}
+
+/* Tooltip fade-out effect */
+.tooltip span.fade-out {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-15px); /* Tooltip scrolls further up */
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+						</style>
+						<a href="index.html#internet"  ><button id="swhref" class="tooltip">
+							<img src="home-button.png" alt="home">
+							<span>Home</span>
+						</button></a>
+						
+						
+						<script>document.addEventListener("DOMContentLoaded", () => {
+							const addCompanyBtn = document.getElementById("addCompanyBtn");
+						
+							// Function to hide tooltip after interaction on mobile
+							function hideTooltipOnInteraction(event) {
+								if (window.innerWidth <= 767) { // Mobile view
+									addCompanyBtn.classList.add('interacted');
+									document.removeEventListener('touchstart', hideTooltipOnInteraction);
+									document.removeEventListener('click', hideTooltipOnInteraction);
+								}
+							}
+						
+							// Listen for touch or click to hide tooltip on mobile
+							if (window.innerWidth <= 767) {
+								document.addEventListener('touchstart', hideTooltipOnInteraction);
+								document.addEventListener('click', hideTooltipOnInteraction);
+							}
+						});
+						</script>
+					</div>
+					<div class="rival-boxes header" id="logoContainer">
+					</div>
+				</div>
+
+                
+                
+
+
+                
+				<div class="stopw-section" id="internet">
+					<!-- There is a bug with overlow -->
+				<div class="lap-box-fixer">
+					<div class="lap-boxes" id="companyAbout">
+						
+					<div id="companyPosts" class="company-section"></div>
+							<br>
+							  <!-- Company Details Section -->
+		
+							<h3>WELCOME TO</h3>
+						<h1>WhatsNext</h1>
+						<p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+						
+						<div class="row height d-flex justify-content-center align-items-center">
+						<div class="col-md-6">
+						<div class="form">
+					<!-- Search Bar -->
+					<div class="search-container">
+						</span><i id="searchButton"class="fa fa-search search-icon"></i>
+						<input type="text" id="searchInput" class="form-control form-input" placeholder="Search...">
+						<span class="right-icon"><i class="fa fa-microphone"></i>
+					</div>
+	
+						<!-- Modal -->
+						<div id="searchModal" class="modal">
+		<div class="modal-content stable">
+			<span class="close">&times;</span>
+			<div id="modalBody">
+				<h3>Search Results: "<span id="queryText"></span>"</h3>
+				<p id="responseText"></p>
+				<div id="resultsContainer"></div>
+			</div>
+			
+			<style>
+				/* Search Results Layout */
+				.search-results ul {
+				  list-style: none;
+				  padding-left: 0;
+				  margin: 10;				  
+				}
+				
+				.search-item {
+				  display: flex;
+				  align-items: center;
+				  padding: 8px;
+				  border-bottom: 1px solid #ddd;
+				  cursor: pointer;
+				  transition: background 0.2s ease;
+				}
+				
+				.search-item:hover {
+				  background-color: #f0f0f0;
+				}
+				
+				.search-thumb {
+				  width: 50px;
+				  height: 50px;
+				  object-fit: cover;
+				  border-radius: 8px;
+				  margin-right: 12px;
+				}
+				
+				.search-text {
+				  flex: 1;
+				}
+				
+				mark {
+				  background-color: yellow;
+				  font-weight: bold;
+				}
+				
+							</style>
+	
+				<!-- Company Details Modal -->
+				<div id="companyModal" class="logoModal">
+					<div class="logoModal-content">
+						<span class="close-modal">&times;</span>
+						
+						<div class="company-header">
+							<img id="modalCompanyLogo" class="company-logo-large" src="" alt="Company Logo">
+							<div class="company-info">
+								<h2 id="modalCompanyName"></h2>
+								<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
+								<p><strong>Description:</strong> <span id="modalCompanyDescription"></span></p>
+								<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
+								<div class="social-links">
+									<a id="modalFacebook" target="_blank">Facebook</a>
+									<a id="modalTwitter" target="_blank">Twitter</a>
+									<a id="modalInstagram" target="_blank">Instagram</a>
+								</div>
+							</div>
+						</div>
+						
+						<h3>Products</h3>
+						<div class="products-grid" id="modalProductsContainer">
+							<!-- Products will be loaded here -->
+						</div>
+						
+						<h3>Posts</h3>
+						<div id="modalPostsContainer">
+							<!-- Posts will be loaded here -->
+						</div>
+					</div>
+				</div>
+			
+				<!-- existing add company form -->
+				<div id="addCompanyForm" style="display: none;">
+					<!-- Existing form content -->
+				</div>
+		</div>
+		<script>
+	
+	// Close Modal
+	document.querySelector(".close").addEventListener("click", function () {
+		document.getElementById("searchModal").style.display = "none";
+	});
+	
+	// Close Modal on Click Outside
+	window.onclick = function (event) {
+		let modal = document.getElementById("searchModal");
+		if (event.target === modal) {
+			modal.style.display = "none";
+		}
+	};
+	
+		</script>
+						</div>
+						</div>
+						</div>
+						</div>
+						
+						<div id="companyModal" class="compModal">
+							<h3>Products</h3>
+							<div class="products-grid" id="modalProductsContainer"></div>
+							
+							<h3>Posts</h3>
+							<div id="modalPostsContainer"></div>
+						</div>	
+						<br>
+	
+						<h3>Recent Posts</h3>
+						
+						<div id="posts-section">
+							<!----this is a placeholde, data is populated from the db-->
+						<div class="user-card" style=" margin-bottom: 0px !important; padding-bottom: 0px !important; margin-bottom: 10px;"  >
+							<div class="cover-photo">
+								<img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+							</div>
+							<div class="user-info">
+								<h3>WhatsNext</h3>
+								<p>Our mission is to empower businesses through mentorship, strategic partnerships, and access to vital resources. 
+									 We also keep our community informed with the latest industry news and trends,
+									 while our podcast features in-depth discussions with experts, entrepreneurs, and changemakers shaping the future.
+									</p>
+							</div>
+							
+							<!--<div class="buttons">
+								<button class="cta-btn">Contact</button>
+								<button class="cta-btn">Message</button>
+							</div>-->
+							<br>
+						</div>
+						</div>
+	
+						<div id="posts-container"></div>
+						
+						<div id="companyServices" class="company-section"></div>
+	<br>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  <style> </style>
+	
+	  <!-- Facebook SDK (Only once per page) -->
+	  <div id="fb-root"></div>
+	  <script async defer crossorigin="anonymous"
+		src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
+		nonce="xyz123">
+	  </script>
+	
+	  <!-- TikTok-style Card -->
+	  <div class="tiktok-card">
+		<div class="video-container">
+		  <iframe 
+			src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=1&playlist=fLQwwh5sSWQ" 
+			allowfullscreen>
+		  </iframe>
+		</div>
+	
+		<div class="tiktok-user-info">
+		  <h4>@WhatsNext</h4>
+		  <p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+		</div>
+	
+		<div class="floating-actions">
+		  <img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+		  <div>❤️ 1.2K</div>
+		  <div>💬 324</div>
+		  <div>↪️ 80</div>
+		</div>
+	
+		<!-- Facebook Comments -->
+		<div class="fb-comments" 
+			 data-href="https://example.com/video/fLQwwh5sSWQ" 
+			 data-width="90%" 
+			 data-border-radius="18"
+			 data-numposts="3">
+		</div>
+	  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+						<br>
+						<br>
+					</div>
+					<div id="companyVideo_Posts" class="" ></div>
+					<div class="post-content">
+						No more posts to see
+					</div>
+					<br><br>
+				</div>
+				</div>
+			<div class="clock-section" id="clock">
+			<div class="lap-box-fixer">
+				<div class="lap-box">
+					<div id="posts-section"></div>
+                    
+                <div id="companyProducts" class="company-section"></div>
+                <div id="companyServices" class="company-section"></div>
+					<div class="sec">
+				
+					</div>
+					<br><br><br>
+					<div class="post-content">
+						No products to see
+				</div>
+				</div>
+			</div>
+				<!-- There is a bug with overlow -->
+			</div>
+	<div class="timer-section" id="timer">
+			<div class="lap-box-fixer">
+				<div class="lap-box" style="margin-top: 130px;">
+					 <div id="companyPicture_Posts" class="company-section"></div>
+				
+
+				<div class="post-card">
+				<div class="post-content">
+					No more posts to see
+				</div>
+				</div>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
+	</div>
+				<div class="social-section" id="social">
+					
+					<div class="lap-box-fixer">
+						
+						<div class="lap-box" style="padding-top: 30px;">
+							<div class="post-card " style="width: 100%;">
+								<style>
+									h2 {
+										text-align: center;
+										color: #2c3e50;
+									}
+									.faq-container {
+										margin-top: 20px;
+									}
+									.faq-item {
+										background: #a54343;
+										border-radius: 8px;
+										margin-bottom: 10px;
+										box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+										overflow: hidden;
+									}
+									.faq-title {
+										width: 100%;
+										background: #ec892d;
+										color: white;
+										padding: 15px;
+										cursor: pointer;
+										font-size: 18px;
+										font-weight: bold;
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+									}
+									.faq-title span {
+										font-size: 22px;
+									}
+									.faq-content {
+										display: none;
+										padding: 15px;
+										font-size: 14px;
+										background: #f9f9f9;
+										border-top: 1px solid #ddd;
+									}
+									.petition-container img {
+										width: 100%;
+										border-radius: 8px;
+										margin-bottom: 10px;
+									}
+									.petition-container strong {
+										display: block;
+										margin-top: 10px;
+									}
+								</style>
+									<h2>Community Voices</h2>
+							
+									<div class="faq-container">
+										<!-- Savvies Section -->
+										<div class="faq-item">
+											<div class="faq-title" onclick="toggleFAQ(this)">
+												Savvies <span>+</span>
+											</div>
+											<div class="faq-content">
+												<div id="companySavvies" class="company-section"></div>
+												<p>No New Savvies.</p>
+											</div>
+										</div>
+							
+										<!-- Petitions Section -->
+										<div class="faq-item">
+											<div class="faq-title" onclick="toggleFAQ(this)">
+												📝 Petitions <span>+</span>
+											</div>
+											<div class="faq-content petition-container">
+												<div id="companyPetitions" class="company-section"></div>
+												<p>No Petitions.</p>
+											</div>
+										</div>
+									</div>
+									<script>
+										function toggleFAQ(element) {
+											let content = element.nextElementSibling;
+											let icon = element.querySelector("span");
+								
+											if (content.style.display === "block") {
+												content.style.display = "none";
+												icon.textContent = "+";
+											} else {
+												content.style.display = "block";
+												icon.textContent = "−";
+											}
+										}
+									</script>
+								</div>
+						<div class="post-card details" id="companyDetails" id="posts-container">
+                            
+                        
+                         
+						<div class="post-header">
+							<img src="https://cdn.prod.website-files.com/62d84e447b4f9e7263d31e94/6399a4d27711a5ad2c9bf5cd_ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="Profile Picture" class="profile-photo">
+							<div class="user-info">
+								<h4 id="companyName">WhatsNext</h4>
+								<p  id="category">2 hrs ago · 🌍</p>
+							</div>
+						</div>
+						<div class="post-content" id="description">
+							A picture post. Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.
+						</div>
+					
+						<div class="post-actions">
+							<div id="facebook" target="_blank">👍 Like</div>
+							<div id="twitter" target="_blank">💬 Comment</div>
+							<div id="instagram" target="_blank">↪️ Share</div>
+						</div>
+						</div>
+						<br><br>
+						<div class="post-content">
+							No more posts to see
+						</div>
+						</div>
+					</div>
+				</div>
+
+				
+				<div class="post-card details"id="posts-container"></div>
+		</div>
+		</div>
+		</div>
+<script></script>
+<script src="screens.js"></script>
+<script src="script.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script src="search.js"></script>
+	
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" 
+  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" 
+  nonce="abc123">
+</script>
+</body>
+	</html>
+
