@@ -1,6 +1,6 @@
 const companies = [
     {
-        id: "c2",
+        id: "c1",
         name: "Proudly South African",
         logo: "https://whatsnextgp.netlify.app/Img/psa.png",
         cover_img: "https://www.goodthingsguy.com/wp-content/uploads/2023/06/proudlysa.jpg",
@@ -179,7 +179,7 @@ const companies = [
         ]
     },
     {
-        id: "c2",
+        id: "c3",
         name: "Jozi My Jozi",
         logo: "https://i.ibb.co/39Z55ry2/JmJ.png",
         cover_img: "https://i0.wp.com/www.dailymaverick.co.za/wp-content/uploads/2024/06/Wayne-Dawson-Project-Lead-Safety-Security_Jozi-My-Jozi-1.jpg?fit=1280%2C720&quality=89&ssl=1",
