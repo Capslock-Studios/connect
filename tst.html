@@ -1,106 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ice Cream Menu Bar</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .floating-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #ff69b4;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            cursor: grab;
-            z-index: 1000;
-            user-select: none;
-        }
-        .floating-menu {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
-            overflow: hidden;
-            width: 150px;
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.3s ease-in-out;
-        }
-        .floating-menu a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-            color: #333;
-            border-bottom: 1px solid #ddd;
-        }
-        .floating-menu a:last-child {
-            border-bottom: none;
-        }
-        .floating-menu a:hover {
-            background: #f3f3f3;
-        }
-        .open-menu {
-            transform: scaleY(1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video + Facebook Comments Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .tiktok-card {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .tiktok-user-info {
+      padding: 15px;
+    }
+
+    .floating-actions {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .floating-actions img.profile-photo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .fb-comments {
+      margin: 0 15px 15px 15px;
+    }
+  </style>
 </head>
 <body>
-    <div id="floatingContainer" style="position: fixed; bottom: 20px; right: 20px;">
-        <div id="floatingBtn" class="floating-button">☰</div>
-        <div id="menu" class="floating-menu">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Petitions</a>
-            <a href="#">Shops</a>
-        </div>
+
+  <!-- Facebook SDK (Only once per page) -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
+    nonce="xyz123">
+  </script>
+
+  <!-- TikTok-style Card -->
+  <div class="tiktok-card">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/fLQwwh5sSWQ?autoplay=1&mute=1&loop=1&controls=1&playlist=fLQwwh5sSWQ" 
+        allowfullscreen>
+      </iframe>
     </div>
-    <script>
-        const floatingContainer = document.getElementById("floatingContainer");
-        const btn = document.getElementById("floatingBtn");
-        const menu = document.getElementById("menu");
-        let isDragging = false;
 
-        btn.addEventListener("click", () => {
-            if (!isDragging) {
-                menu.classList.toggle("open-menu");
-            }
-        });
+    <div class="tiktok-user-info">
+      <h4>@WhatsNext</h4>
+      <p>Your one-stop hub for all things entrepreneurship! We deliver the latest news, updates, and trends on the companies you care about.</p>
+    </div>
 
-        btn.addEventListener("mousedown", (e) => {
-            isDragging = false;
-            let shiftX = e.clientX - floatingContainer.getBoundingClientRect().left;
-            let shiftY = e.clientY - floatingContainer.getBoundingClientRect().top;
+    <div class="floating-actions">
+      <img src="https://whatsnextgp.netlify.app/Img/whatsnext.png" alt="Profile Picture" class="profile-photo">
+      <div>❤️ 1.2K</div>
+      <div>💬 324</div>
+      <div>↪️ 80</div>
+    </div>
 
-            function moveAt(pageX, pageY) {
-                floatingContainer.style.left = pageX - shiftX + "px";
-                floatingContainer.style.top = pageY - shiftY + "px";
-            }
+    <!-- Facebook Comments -->
+    <div class="fb-comments" 
+         data-href="https://example.com/video/fLQwwh5sSWQ" 
+         data-width="100%" 
+         data-numposts="3">
+    </div>
+  </div>
 
-            function onMouseMove(event) {
-                isDragging = true;
-                moveAt(event.pageX, event.pageY);
-            }
-
-            document.addEventListener("mousemove", onMouseMove);
-
-            btn.addEventListener("mouseup", () => {
-                document.removeEventListener("mousemove", onMouseMove);
-                setTimeout(() => (isDragging = false), 100);
-            }, { once: true });
-        });
-    </script>
 </body>
 </html>

@@ -45,13 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 `).join("");
 
-        companyVideo_Posts.innerHTML = `<h3>📹 Video Posts</h3>` + 
+        companyVideo_Posts.innerHTML = 
             company.video_posts.map(video => `
                 <div>
                     <h4>${video.title}</h4>
                     <a href="${video.video_url}" target="_blank">
                         <img src="${video.thumbnail}" width="150">
                     </a>
+                    <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+  💬 Comment
+</a>
+
                 </div>
             `).join("");
 
