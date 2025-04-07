@@ -21,43 +21,43 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                title: "Designers march against counterfeit clothing at Buy Local Summit",
+                description: "Proudly SA is pleading with government to lighten the regulatory requirements it makes on small businesses.",
                 video_url: "1Po6yjmkG-Q",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             },
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                title: "Proudly SA hosts Buy Local Summit and Expo",
+                description: "Proudly South Africa will host the 13th edition of the Buy Local Summit and Expo at the Sandton Convention Centre. ",
                 video_url: "tg0soDatGDo",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             },
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                title: "Local and Sustainable Construction Practices in South Africa",
+                description: "In South Africa, using local resources and sustainable methods in construction helps create eco-friendly, durable, and affordable buildings.",
                 video_url: "8JiEQeozi1w",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             },
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                title: "Discover Local Career Paths: Opportunities for Students",
+                description: "The webinar will explore diverse career opportunities within South Africa’s locally driven industries, providing students with insights into fields that drive economic growth and community development.",
                 video_url: "dKZzseGL9YI",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             },
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                title: "Proudly South African Buy Local Summit and Expo-Part 4",
+                description: "Jonathan Fairbairn speaks with Telfer Chiks, Assistant Manager at the National Membership Movement, about the importance of connecting mentees with mentors.",
                 video_url: "JaMBjpSyjw8",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             },
             {
                 id: "v2",
-                title: "Buy Local Conference",
-                description: "We hosted a protest during our buy local conference in Sandton Convention Center.",
+                title: "Proudly SA at #SoNA2025",
+                description: "Broadcasting live from the SONA 2025 red carpet with the Local Fashion Police experts! Join us as we celebrate South African fashion and ask the big question: 𝗔𝗿𝗲 𝘆𝗼𝘂 𝘄𝗲𝗮𝗿𝗶𝗻𝗴 𝗹𝗼𝗰𝗮𝗹? ",
                 video_url: "u2tuPNZ4uy4",
                 thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
             }
@@ -262,8 +262,41 @@ const companies = [
            
         ],
         video_posts: [
-           
-            
+            {
+                id: "v2",
+                title: "Impact of Trump's tariffs on SA's agriculture",
+                description: "President Cyril Ramaphosa says the new tariffs imposed by the US on South Africa undermines the spirit of collaboration and fair trade between the two countries..",
+                video_url: "pSgFmM50MHs",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+            id: "v2",
+            title: "Ramaphosa: Business won't dictate GNU direction",
+            description: "ANC President Cyril Ramaphosa has assured South Africans that neither his party nor government will be dictated to by business on the future of the Government of National Unity (GNU).",
+            video_url: "Fcs9a0y_asI",
+            thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+        },
+            {
+                id: "v2",
+                title: "Ward 11 Soweto | President Cyril Ramaphosa arrives in Klipspruit West",
+                description: "President Cyril Ramaphosa visits Ward 11 in Klipspruit West, Soweto today. The purpose of the visit is for him to be briefed by the Zonal Committee leadership...",
+                video_url: "Okg5NOID5FA",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "Live Coverage | Ramaphosa addresses ANC NEC meeting",
+                description: "For more news, visit sabcnews.com and #SABCNews on all Social Media platforms...",
+                video_url: "AZL8gKy7RcM",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "Ramaphosa calls for City of Johannesburg to be fixed ahead of G20 summit",
+                description: "President Cyril Ramaphosa has continued to express his disappointment at the state of the City of Johannesburg as he meets with city officials.",
+                video_url: "HfWtgztwBF4",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
                 {
                     id: "v2",
                     title: "South African Parliament approves budget fiscal framework",
