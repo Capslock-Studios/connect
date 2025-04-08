@@ -8,9 +8,7 @@
     <title>WhatsNext Companies</title>
 </head>
 <body>
-	
 	<style>
-      
         .floating-button {
             position: fixed;
             bottom: 9%;
@@ -101,50 +99,6 @@
             }, { once: true });
         });
     </script>
-<!-- Add this modal to your HTML -->
-<div id="companyModal" class="compModal">
-    <div class="compModal-content">
-		<span class="close-company-modal">&times;</span>       
-        
-        <div class="company-header">     
-            <div class="company-info">
-				<div id="posts-section">
-					<!----this is a placeholde, data is populated from the db-->
-				<div class="user-card" style=" border-radius: 0 18px 18px 18px !important;" id="posts-container">
-					<div class="cover-photo">
-						<img id="modalCompanyLogo" alt="Profile Picture" class="profile-photo">
-					</div>
-					<div class="user-info">
-						<h3  id="modalCompanyName">WhatsNext</h3>
-						<p><strong>Category:</strong> <span id="modalCompanyCategory"></span></p>
-						<p id="modalCompanyDescription"></p>
-					</div>
-					
-					<p><strong>Contact:</strong> 
-						<a id="modalCompanyEmail"></a> | 
-						<a id="modalCompanyPhone"></a>
-					</p>
-					<p><strong>Location:</strong> <span id="modalCompanyLocation"></span></p>
-					<div class="social-links">
-						<a id="modalFacebook" target="_blank">Facebook</a>
-						<a id="modalTwitter" target="_blank">Twitter</a>
-						<a id="modalInstagram" target="_blank">Instagram</a>
-					</div>
-					<div class="buttons">
-						<button class="cta-btn">Call</button>
-						<button class="cta-btn">Email</button>
-					</div>
-				</div>
-				</div>
-                
-            </div>
-        </div>
-
-
-	
-    </div>
-</div>
-
  <!-- Modal -->
  		<div id="addCompanyForm" class="modal">
 		
@@ -284,52 +238,12 @@
 					<div class="rival-boxes header" id="logoContainer">
 					</div>
 				</div>
-
-                
-                
-
-
-                
 				<div class="stopw-section" id="internet">
 					<!-- There is a bug with overlow -->
 				<div class="lap-box-fixer">
 					<div class="lap-boxes">
 												<br>
-	
-
-	  <div class="post-card details" id="companyDetails" id="posts-container">
-		<div class="post-header">
-			<div class="post-content" id="description">
-				<h2>🛍️ Sharable Product Page (Coming Soon)</h2>
-			</div>
-		</div>
-		<!-- PRODUCT PAGE SECTION -->
-		  <div class="sec">
-			<div class="section">
-				<p>Direct link to your featured product with WhatsApp purchase and feedback buttons.</p>
-				<p>Preview and structure coming soon.</p>
-			  </div>
-		</div>
-	</div>
-	<!-- BACKLINK BADGE SECTION -->
-	 <div class="post-card details" id="companyDetails" id="posts-container">        
-            <div class="post-header">
-				<div class="post-content" id="description">
-					<h2>🔗 Backlink Badge (Coming Soon)</h2>
-				</div>
-			</div>
-			<!-- PRODUCT PAGE SECTION -->
-			<div class="sec">
-				<div class="section">
-					<p>Embed this on your site to show you’re featured on WhatsNext and improve your SEO.</p>
-				    <a href="index.html"><img src="https://whatsnext.app/badge.png" alt="Featured on WhatsNext"></a>
-							
-				  </div>
-			</div>
-	</div>
-
-	  <!-- EVENT DIV SECTION -->
-	<div class="post-card details" id="companyDetails" id="posts-container">        
+		  <!-- EVENT DIV SECTION -->   
 	
   <!-- Facebook SDK -->
   <div id="fb-root"></div>
@@ -338,7 +252,7 @@
     nonce="XYZ123">
   </script>
 
-
+<h2>Details</h2>
   <!-- TikTok-style Card -->
   <div class="tiktok-card" data-id="fLQwwh5sSWQ">
     <div class="video-container">
@@ -366,20 +280,6 @@
          data-numposts="3">
     </div>
   </div>
-
-  <!-- Custom Share Modal -->
-  <div id="customShareModal">
-    <div id="shareSheet">
-      <h3>Share This Video</h3>
-      <input type="text" id="shareURL" readonly />
-      <button onclick="copyLink()">📋 Copy Link</button>
-      <a id="shareWhatsApp" target="_blank">📱 WhatsApp</a>
-      <a id="shareTwitter" target="_blank">🐦 Twitter</a>
-      <a id="shareFacebook" target="_blank">📘 Facebook</a>
-      <button onclick="closeShareModal()">Close</button>
-    </div>
-  </div>
-
   <script>
     function openCustomShare(videoId) {
       const url = `https://example.com/video/${videoId}`;
@@ -422,16 +322,7 @@
       });
     });
   </script>
-						
-</div>
-
-
-
-
-
-						<br>
-						<br>
-					</div>
+		<br><br></div>
 					<br><br>
 				</div>
 				</div>
@@ -450,109 +341,19 @@
 			</div>
 		</div>
 	</div>
-				<div class="social-section" id="social">
-					
-					<div class="lap-box-fixer">
 						
-						<div class="lap-box" style="padding-top: 30px;">
-							<div class="post-card " style="width: 100%;">
-								<style>
-									h2 {
-										text-align: center;
-										color: #2c3e50;
-									}
-									.faq-container {
-										margin-top: 20px;
-									}
-									.faq-item {
-										background: #a54343;
-										border-radius: 8px;
-										margin-bottom: 10px;
-										box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-										overflow: hidden;
-									}
-									.faq-title {
-										width: 100%;
-										background: #ec892d;
-										color: white;
-										padding: 15px;
-										cursor: pointer;
-										font-size: 18px;
-										font-weight: bold;
-										display: flex;
-										justify-content: space-between;
-										align-items: center;
-									}
-									.faq-title span {
-										font-size: 22px;
-									}
-									.faq-content {
-										display: none;
-										padding: 15px;
-										font-size: 14px;
-										background: #f9f9f9;
-										border-top: 1px solid #ddd;
-									}
-									.petition-container img {
-										width: 100%;
-										border-radius: 8px;
-										margin-bottom: 10px;
-									}
-									.petition-container strong {
-										display: block;
-										margin-top: 10px;
-									}
-								</style>
-									<h2>Community Voices</h2>
-							
-									<div class="faq-container">
-										<!-- Savvies Section -->
-										<div class="faq-item">
-											<div class="faq-title" onclick="toggleFAQ(this)">
-												Savvies <span>+</span>
-											</div>
-											<div class="faq-content">
-												<div id="companySavvies" class="company-section"></div>
-												<p>No New Savvies.</p>
-											</div>
-										</div>
-							
-										<!-- Petitions Section -->
-										<div class="faq-item">
-											<div class="faq-title" onclick="toggleFAQ(this)">
-												📝 Petitions <span>+</span>
-											</div>
-											<div class="faq-content petition-container">
-												<div id="companyPetitions" class="company-section"></div>
-												<p>No Petitions.</p>
-											</div>
-										</div>
-									</div>
-									<script>
-										function toggleFAQ(element) {
-											let content = element.nextElementSibling;
-											let icon = element.querySelector("span");
-								
-											if (content.style.display === "block") {
-												content.style.display = "none";
-												icon.textContent = "+";
-											} else {
-												content.style.display = "block";
-												icon.textContent = "−";
-											}
-										}
-									</script>
-								</div>
-					
-						<br><br>
-						<div class="post-content">
-							No more posts to see
-						</div>
-						</div>
-					</div>
-				</div>
-
-				
+  <!-- Custom Share Modal -->
+  <div id="customShareModal">
+    <div id="shareSheet">
+      <h3>Share This Video</h3>
+      <input type="text" id="shareURL" readonly />
+      <button onclick="copyLink()">📋 Copy Link</button>
+      <a id="shareWhatsApp" target="_blank">📱 WhatsApp</a>
+      <a id="shareTwitter" target="_blank">🐦 Twitter</a>
+      <a id="shareFacebook" target="_blank">📘 Facebook</a>
+      <button onclick="closeShareModal()">Close</button>
+    </div>
+  </div>
 				<div class="post-card details"id="posts-container"></div>
 		</div>
 		</div>

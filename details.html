@@ -1,79 +1,580 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Company Details</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .container { max-width: 900px; margin: auto; padding: 20px; }
-    .cover-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
-    .company-header { display: flex; align-items: center; margin-top: 20px; }
-    .company-logo { width: 100px; height: 100px; object-fit: contain; margin-right: 20px; }
-    .products-grid, .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 20px; }
-    .card { border: 1px solid #ccc; border-radius: 8px; padding: 10px; text-align: center; }
-    .card img { width: 100%; border-radius: 6px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css"/>
+    <title>WhatsNext Companies</title>
 </head>
 <body>
-  <div class="container">
-    <img id="coverImg" class="cover-img" src="" alt="Cover Image">
-    <div class="company-header">
-      <img id="companyLogo" class="company-logo" src="" alt="Logo">
-      <div>
-        <h2 id="companyName"></h2>
-        <p id="companyDescription"></p>
-        <p><strong>Website:</strong> <a id="companyWebsite" href="#" target="_blank"></a></p>
-        <p><strong>Email:</strong> <span id="companyEmail"></span></p>
-        <p><strong>Phone:</strong> <span id="companyPhone"></span></p>
+	<style>
+        .floating-button {
+            position: fixed;
+            bottom: 9%;
+            right: 60%;
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            cursor: grab;
+            z-index: 99999999;
+            user-select: none;
+        }
+        .floating-menu {
+            position: fixed;
+            bottom: 12%;
+            right: 50%;
+            background: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+            overflow: hidden;
+            width: 150px;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease-in-out;
+			z-index: 9999999;
+        }
+        .floating-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #fff;
+        }
+        .floating-menu a:last-child {
+            border-bottom: none;
+        }
+        .floating-menu a:hover {
+            background: #f3f3f3;
+        }
+        .open-menu {
+            transform: scaleY(1);
+        }
+    </style>
+	<div id="floatingBtn" class="floating-button">☰</div>
+    <div id="menu" class="floating-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+		<a href="faq.html">FAQ</a>
+        <a href="petitions.html">Petitions</a>
+        <a href="shop.html">Shop</a>
+    </div>
+    <script>
+        const btn = document.getElementById("floatingBtn");
+        const menu = document.getElementById("menu");
+        let isDragging = false;
+
+        btn.addEventListener("click", () => {
+            if (!isDragging) {
+                menu.classList.toggle("open-menu");
+            }
+        });
+
+        btn.addEventListener("mousedown", (e) => {
+            isDragging = false;
+            let shiftX = e.clientX - btn.getBoundingClientRect().left;
+            let shiftY = e.clientY - btn.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                btn.style.left = pageX - shiftX + "px";
+                btn.style.top = pageY - shiftY + "px";
+            }
+
+            function onMouseMove(event) {
+                isDragging = true;
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener("mousemove", onMouseMove);
+
+            btn.addEventListener("mouseup", () => {
+                document.removeEventListener("mousemove", onMouseMove);
+                setTimeout(() => (isDragging = false), 100);
+            }, { once: true });
+        });
+    </script>
+ <!-- Modal -->
+ 		<div id="addCompanyForm" class="modal">
+		
+	<div class="stable">
+					<!-- Close Button -->
+		<span class="close-btn" id="closeModal">&times;</span>
+		<form id="companyForm" class="form">
+			<!--<label><input type="text" placeholder="Name:" id="name" required></label>-->
+			<br>
+						<label><h3>Add your company</h3></label>
+			<label><input type="text" placeholder="Name:" id="name" required></label>
+			<label><input type="text" placeholder="Category:" id="categoryInput" required></label>
+			<label><textarea type="text" placeholder="Description:" id="descriptionInput" required></textarea></label>
+			<label><input type="email" placeholder="Email:" id="emailInput" required></label>
+			<label><input type="tel" placeholder="Phone:" id="phoneInput" required></label>
+			<label><input type="text" placeholder="Address" id="Address" required></label>
+			<button class="formb" type="submit">Submit</button><br>
+		</form>
+		
+<script>
+	document.getElementById("companyForm").addEventListener("submit", function(event) {
+		event.preventDefault(); // Prevent form submission
+	    // Auto-fill location
+		if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                document.getElementById("latitudeInput").value = position.coords.latitude;
+                document.getElementById("longitudeInput").value = position.coords.longitude;
+            },
+            function(error) {
+                console.error("Error getting location:", error);
+            }
+        );
+    }
+
+		// Extract form data
+		let name = document.getElementById("name").value;
+		let category = document.getElementById("categoryInput").value;
+		let description = document.getElementById("descriptionInput").value;
+		let email = document.getElementById("emailInput").value;
+		let phone = document.getElementById("phoneInput").value;
+		let Address = document.getElementById("Address").value;
+	
+		// Format the WhatsApp message
+		let message = `*New Company Submission:*\n\n` +
+					  `*Name:* ${name}\n` +
+					  `*Category:* ${category}\n` +
+					  `*Description:* ${description}\n` +
+					  `*Email:* ${email}\n` +
+					  `*Phone:* ${phone}\n` +
+					  `*Address:* ${Address}\n`;
+	
+		// Encode the message for URL
+		let encodedMessage = encodeURIComponent(message);
+	
+		// WhatsApp link with pre-filled message
+		let whatsappURL = `https://wa.me/27685090669?text=${encodedMessage}`;
+	
+		// Open WhatsApp
+		window.open(whatsappURL, "_blank");
+	});
+	</script>
+	</div>
+ 		</div>
+			<div class="container">
+		
+			<div class="content-wrapper">
+				<div  class="a">
+					<div class="rival-box">
+						<style>
+							/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text (hidden by default) */
+.tooltip span {
+    content: attr(data-tooltip); /* Use the tooltip text from the data-tooltip attribute */
+    position: absolute;
+    top: 125%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    border-radius: 4px;
+    font-size: 9px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    height: 25px;
+}
+
+/* Show tooltip when hovering over the button */
+.tooltip:hover span {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px); /* Tooltip scrolls upwards */
+}
+
+/* Tooltip fade-out effect */
+.tooltip span.fade-out {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-15px); /* Tooltip scrolls further up */
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+						</style>
+						<button id="addCompanyBtn" class="tooltip">
+							<img src="https://whatsnext.joburg/add-button.png" alt="Add">
+							<span>Add your company</span>
+						</button>
+						
+						
+						<script>document.addEventListener("DOMContentLoaded", () => {
+							const addCompanyBtn = document.getElementById("addCompanyBtn");
+						
+							// Function to hide tooltip after interaction on mobile
+							function hideTooltipOnInteraction(event) {
+								if (window.innerWidth <= 767) { // Mobile view
+									addCompanyBtn.classList.add('interacted');
+									document.removeEventListener('touchstart', hideTooltipOnInteraction);
+									document.removeEventListener('click', hideTooltipOnInteraction);
+								}
+							}
+						
+							// Listen for touch or click to hide tooltip on mobile
+							if (window.innerWidth <= 767) {
+								document.addEventListener('touchstart', hideTooltipOnInteraction);
+								document.addEventListener('click', hideTooltipOnInteraction);
+							}
+						});
+						</script>
+					</div>
+					<div class="rival-boxes header" id="logoContainer">
+					</div>
+				</div>
+				<div class="stopw-section" id="internet">
+					<!-- There is a bug with overlow -->
+				<div class="lap-box-fixer">
+					<div class="lap-boxes">
+												<br>
+		  <!-- EVENT DIV SECTION -->   
+	
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" 
+    nonce="XYZ123">
+  </script>
+
+<h2>Details</h2>
+  <!-- Count Down -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Event Countdown</title>
+    <style>
+    
+    .event-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .event-cover {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .event-content {
+      padding: 20px;
+    }
+
+    .organizer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .organizer img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .organizer-info {
+      text-align: left;
+    }
+
+    .organizer-info h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .organizer-info p {
+      margin: 2px 0 0;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .countdown div {
+      flex: 1;
+      background: orange;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .countdown div span {
+      display: block;
+      font-size: 0.7em;
+      margin-top: 5px;
+      font-weight: normal;
+    }
+
+    .description {
+      text-align: left;
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    .read-more {
+      color: #007bff;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 8px;
+      display: inline-block;
+    }
+    .actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .actions button {
+      flex: 1;
+      margin: 0 5px;
+      padding: 10px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #eee;
+      transition: background 0.2s ease;
+    }
+
+    .actions button:hover {
+      background: #ddd;
+    }
+    </style>
+    <div class="event-card">
+      <img src="https://www.uyilo.org.za/wp-content/uploads/2021/02/battery-testing-400x265.jpg" alt="Event Cover" class="event-cover" />
+    
+      <div class="event-content">
+        <div class="organizer">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Organizer" />
+          <div class="organizer-info">
+            <h4>Organizer Doe</h4>
+            <p id="event-date">Loading...</p>
+          </div>
+        </div>
+    
+        <h2 id="event-title">Loading...</h2>
+    
+        <div class="countdown">
+          <div><div id="days">00</div><span>Days</span></div>
+          <div><div id="hours">00</div><span>Hours</span></div>
+          <div><div id="minutes">00</div><span>Minutes</span></div>
+          <div><div id="seconds">00</div><span>Seconds</span></div>
+        </div>
+    
+        <div class="description" id="desc">
+          <span id="desc-text">Attention Entrepreneurs & Innovators in Electric Mobility. The uYilo Kick Start Fund is now open for applications. If you're working on innovative solutions in renewable energy, energ
+          </span>
+          <span class="read-more" onclick="toggleReadMore()">Read more</span>
+        </div>
+        <div class="actions">
+          <button onclick="handleComment()">💬 Comment</button>
+          <button onclick="handleShare()">🔗 Share</button>
+          <button onclick="handleRSVP()">✅ RSVP</button>
+        </div>
       </div>
     </div>
-
-    <h3>Products</h3>
-    <div id="productsContainer" class="products-grid"></div>
-
-    <h3>Videos</h3>
-    <div id="videosContainer" class="video-grid"></div>
-  </div>
-
-  <script src="data.js"></script>
+    <script>
+      // 🔸 Simulated event data
+      const event = {
+        title: "GreenTech Conference 2025",
+        organizer: "Organizer Doe",
+        date: "2025-04-31T12:00:00",
+        description: "Attention Entrepreneurs & Innovators in Electric Mobility. The uYilo Kick Start Fund is now open for applications. If you're working on innovative solutions in renewable energy, energy storage, micromobility, digital applications, battery recycling, component manufacturing, business models, or socio-economic initiatives within the electric mobility ecosystem, this is your chance to secure grant funding. Start-Up Culture is continually evolving looking at new industries for MSMEs to build smart business models. Our partnership with UYilo is key to unlocking the New EV MicroMobility Ecosystem for Start-Ups in Logistics, Transportation and Green Mobility. Apply here: https://www.uyilo.org.za/kick-start-fund/- Open to entrepreneurs, Innovators, Start-Ups and academic institutions conducting applied research.  Available across all provinces in South Africa. Entrepreneurs and Start-Ups in SUC Hubs and partner Hubs are encouraged to apply. -  Funding for innovative projects that advance the e-mobility ecosystem. Don’t miss this opportunity—apply now and please share with your networks! 🚗⚡ Closing Date 30 April 2025........ www.asher-group.co.za Start|Disrupt|Innovate"
+      };
+    
+      // Set event info
+      document.getElementById("event-title").textContent = event.title;
+      document.getElementById("event-date").textContent = new Date(event.date).toLocaleString();
+    
+      // Countdown logic
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+    
+      function updateCountdown(targetDate) {
+        const now = new Date().getTime();
+        const distance = new Date(targetDate).getTime() - now;
+    
+        if (distance <= 0) {
+          daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = '00';
+          return;
+        }
+    
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((distance / (1000 * 60)) % 60);
+        const seconds = Math.floor((distance / 1000) % 60);
+    
+        daysEl.textContent = String(days).padStart(2, '0');
+        hoursEl.textContent = String(hours).padStart(2, '0');
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+    
+      setInterval(() => {
+        updateCountdown(event.date);
+      }, 1000);
+      updateCountdown(event.date);
+    
+      // Read more toggle
+      let expanded = false;
+      function toggleReadMore() {
+        const textEl = document.getElementById("desc-text");
+        const button = document.querySelector(".read-more");
+    
+        if (!expanded) {
+          textEl.textContent = event.description;
+          button.textContent = "Read less";
+        } else {
+          textEl.textContent = event.description.slice(0, 160) + "...";
+          button.textContent = "Read more";
+        }
+        expanded = !expanded;
+      }
+    </script>
+  
+  </body>
+  </html>
+  
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const companyId = params.get('id');
-    const company = companies.find(c => c.id === companyId);
+    function openCustomShare(videoId) {
+      const url = `https://example.com/video/${videoId}`;
+      const encoded = encodeURIComponent(url);
 
-    if (!company) {
-      document.body.innerHTML = "<p>Company not found.</p>";
-    } else {
-      document.getElementById('coverImg').src = company.cover_img;
-      document.getElementById('companyLogo').src = company.logo;
-      document.getElementById('companyName').textContent = company.name;
-      document.getElementById('companyDescription').textContent = company.about.description;
-      document.getElementById('companyWebsite').textContent = company.about.website;
-      document.getElementById('companyWebsite').href = company.about.website;
-      document.getElementById('companyEmail').textContent = company.about.contact.email;
-      document.getElementById('companyPhone').textContent = company.about.contact.phone;
-
-      // Populate products
-      const products = company.products || [];
-      const productsHTML = products.map(p => `
-        <div class="card">
-          <img src="${p.product_img}" alt="${p.name}">
-          <p>${p.name}</p>
-          <p><strong>R${p.price}</strong></p>
-        </div>
-      `).join('');
-      document.getElementById('productsContainer').innerHTML = productsHTML;
-
-      // Populate videos
-      const videos = company.video_posts || [];
-      const videosHTML = videos.map(v => `
-        <div class="card">
-          <iframe width="100%" height="150" src="${v.video_url}" frameborder="0" allowfullscreen></iframe>
-          <p><strong>${v.title}</strong></p>
-        </div>
-      `).join('');
-      document.getElementById('videosContainer').innerHTML = videosHTML;
+      document.getElementById("shareURL").value = url;
+      document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${encoded}`;
+      document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?url=${encoded}`;
+      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encoded}`;
+      
+      document.getElementById("customShareModal").style.display = "flex";
     }
+
+    function closeShareModal() {
+      document.getElementById("customShareModal").style.display = "none";
+    }
+
+    function copyLink() {
+      const copyText = document.getElementById("shareURL");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Link copied!");
+    }
+
+    document.querySelectorAll(".share-button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".tiktok-card");
+        const videoId = card.dataset.id;
+
+        if (navigator.share) {
+          navigator.share({
+            title: "Watch this video",
+            text: "Check this out!",
+            url: `https://example.com/video/${videoId}`
+          }).catch(() => openCustomShare(videoId));
+        } else {
+          openCustomShare(videoId);
+        }
+      });
+    });
   </script>
+		<br><br></div>
+					<br><br>
+				</div>
+				</div>
+			<div class="clock-section" id="clock">
+			<div class="lap-box-fixer">
+			
+			</div>
+				<!-- There is a bug with overlow -->
+			</div>
+	<div class="timer-section" id="timer">
+			<div class="lap-box-fixer">
+				<div class="lap-box" style="margin-top: 130px;">
+					 <div id="companyPicture_Posts" class="company-section"></div>
+	
+
+			</div>
+		</div>
+	</div>
+						
+  <!-- Custom Share Modal -->
+  <div id="customShareModal">
+    <div id="shareSheet">
+      <h3>Share This Video</h3>
+      <input type="text" id="shareURL" readonly />
+      <button onclick="copyLink()">📋 Copy Link</button>
+      <a id="shareWhatsApp" target="_blank">📱 WhatsApp</a>
+      <a id="shareTwitter" target="_blank">🐦 Twitter</a>
+      <a id="shareFacebook" target="_blank">📘 Facebook</a>
+      <button onclick="closeShareModal()">Close</button>
+    </div>
+  </div>
+				<div class="post-card details"id="posts-container"></div>
+		</div>
+		</div>
+		</div>
+<script></script>
+<script src="screens.js"></script>
+<script src="scripts.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="data.js"></script>
+<script src="scripts.js"></script>
+<script src="search.js"></script>
+	
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" 
+  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" 
+  nonce="abc123">
+</script>
 </body>
-</html>
+	</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

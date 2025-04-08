@@ -286,9 +286,8 @@ button:hover::after {
 button:hover::after {
     opacity: 1;
 }
-
 .card {
-	width: 290px;
+	width: 320px;
 	height:  auto;
 	padding: 10px 10px 40px 10px;
 	background: #f5f5f5;
@@ -453,7 +452,7 @@ button:hover::after {
 	justify-content: space-around;
 	margin-bottom: 0px;
 	z-index: 50;
-	background-color: #ECF0F3;
+	background-color: #d1c1bb;
 	border-radius: 22px;
 	padding-top: 20px;
 }

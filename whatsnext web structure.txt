@@ -1,0 +1,18 @@
+SEO Planning 
+============
+
+├── video_player.dart   (new)
+|    ├── shop_tab.dart       (new)
+|    └── product_card.dart   (new)
+└── screens/                  # App screens
+    ├── home_screen.dart
+    └── company_profile_screen.dart
+    └── company_profile.dart (new)
+    └── splash_screen.dart
+root
+|______index/
+|______Company/proudly S.A
+|______event/event-title
+|______posts/post-slug
+|______Petitions/event-title
+|______Savvies/savvy name

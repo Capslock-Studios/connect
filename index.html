@@ -537,8 +537,210 @@
 
 
 
-
-
+    <style>
+    
+		.event-card {
+		  background: white;
+		  border-radius: 12px;
+		  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+		  max-width: 400px;
+		  overflow: hidden;
+		  text-align: center;
+		}
+	
+		.event-cover {
+		  width: 100%;
+		  height: 200px;
+		  object-fit: cover;
+		}
+	
+		.event-content {
+		  padding: 20px;
+		}
+	
+		.organizer {
+		  display: flex;
+		  align-items: center;
+		  gap: 12px;
+		  margin-bottom: 10px;
+		}
+	
+		.organizer img {
+		  width: 50px;
+		  height: 50px;
+		  border-radius: 50%;
+		  object-fit: cover;
+		}
+	
+		.organizer-info {
+		  text-align: left;
+		}
+	
+		.organizer-info h4 {
+		  margin: 0;
+		  font-size: 1rem;
+		}
+	
+		.organizer-info p {
+		  margin: 2px 0 0;
+		  font-size: 0.8rem;
+		  color: #777;
+		}
+	
+		.countdown {
+		  display: flex;
+		  justify-content: space-between;
+		  gap: 10px;
+		  font-size: 1.2rem;
+		  font-weight: bold;
+		  margin: 20px 0;
+		}
+	
+		.countdown div {
+		  flex: 1;
+		  background: orange;
+		  color: white;
+		  padding: 10px;
+		  border-radius: 10px;
+		}
+	
+		.countdown div span {
+		  display: block;
+		  font-size: 0.7em;
+		  margin-top: 5px;
+		  font-weight: normal;
+		}
+	
+		.description {
+		  text-align: left;
+		  margin: 10px 0;
+		  line-height: 1.5;
+		}
+	
+		.read-more {
+		  color: #007bff;
+		  cursor: pointer;
+		  font-size: 0.9rem;
+		  margin-top: 8px;
+		  display: inline-block;
+		}
+		.actions {
+		  display: flex;
+		  justify-content: space-around;
+		  margin-top: 20px;
+		}
+	
+		.actions button {
+		  flex: 1;
+		  margin: 0 5px;
+		  padding: 10px;
+		  font-size: 0.9rem;
+		  border: none;
+		  border-radius: 8px;
+		  cursor: pointer;
+		  background: #eee;
+		  transition: background 0.2s ease;
+		}
+	
+		.actions button:hover {
+		  background: #ddd;
+		}
+		</style>
+		<div class="event-card">
+		  <img src="uyilo-grant.jpg" alt="Event Cover" class="event-cover" />
+		
+		  <div class="event-content">
+			<div class="organizer">
+			  <img src="Uyilo.png" alt="Organizer" />
+			  <div class="organizer-info">
+				<h4>Organizer Doe</h4>
+				<p id="event-date">Loading...</p>
+			  </div>
+			</div>
+		
+			<h2 id="event-title">Loading...</h2>
+		
+			<div class="countdown">
+			  <div><div id="days">00</div><span>Days</span></div>
+			  <div><div id="hours">00</div><span>Hours</span></div>
+			  <div><div id="minutes">00</div><span>Minutes</span></div>
+			  <div><div id="seconds">00</div><span>Seconds</span></div>
+			</div>
+		
+			<div class="description" id="desc">
+			  <span id="desc-text">Attention Entrepreneurs & Innovators in Electric Mobility. The uYilo Kick Start Fund is now open for applications. If you're working on innovative solutions in renewable energy, energ
+			  </span>
+			  <span class="read-more" onclick="toggleReadMore()">Read more</span>
+			</div>
+			<div class="actions">
+			  <button onclick="handleComment()">💬 Comment</button>
+			  <button onclick="handleShare()">🔗 Share</button>
+			  <button onclick="handleRSVP()">✅ RSVP</button>
+			</div>
+		  </div>
+		</div>
+		<script>
+		  // 🔸 Simulated event data
+		  const event = {
+			title: "GreenTech Conference 2025",
+			organizer: "Organizer Doe",
+			date: "2025-04-30T10:00:00",
+			description: "Attention Entrepreneurs & Innovators in Electric Mobility. The uYilo Kick Start Fund is now open for applications. If you're working on innovative solutions in renewable energy, energy storage, micromobility, digital applications, battery recycling, component manufacturing, business models, or socio-economic initiatives within the electric mobility ecosystem, this is your chance to secure grant funding. Start-Up Culture is continually evolving looking at new industries for MSMEs to build smart business models. Our partnership with UYilo is key to unlocking the New EV MicroMobility Ecosystem for Start-Ups in Logistics, Transportation and Green Mobility. Apply here: https://www.uyilo.org.za/kick-start-fund/- Open to entrepreneurs, Innovators, Start-Ups and academic institutions conducting applied research.  Available across all provinces in South Africa. Entrepreneurs and Start-Ups in SUC Hubs and partner Hubs are encouraged to apply. -  Funding for innovative projects that advance the e-mobility ecosystem. Don’t miss this opportunity—apply now and please share with your networks! 🚗⚡ Closing Date 30 April 2025........ www.asher-group.co.za Start|Disrupt|Innovate"
+		  };
+		
+		  // Set event info
+		  document.getElementById("event-title").textContent = event.title;
+		  document.getElementById("event-date").textContent = new Date(event.date).toLocaleString();
+		
+		  // Countdown logic
+		  const daysEl = document.getElementById("days");
+		  const hoursEl = document.getElementById("hours");
+		  const minutesEl = document.getElementById("minutes");
+		  const secondsEl = document.getElementById("seconds");
+		
+		  function updateCountdown(targetDate) {
+			const now = new Date().getTime();
+			const distance = new Date(targetDate).getTime() - now;
+		
+			if (distance <= 0) {
+			  daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = '00';
+			  return;
+			}
+		
+			const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+			const minutes = Math.floor((distance / (1000 * 60)) % 60);
+			const seconds = Math.floor((distance / 1000) % 60);
+		
+			daysEl.textContent = String(days).padStart(2, '0');
+			hoursEl.textContent = String(hours).padStart(2, '0');
+			minutesEl.textContent = String(minutes).padStart(2, '0');
+			secondsEl.textContent = String(seconds).padStart(2, '0');
+		  }
+		
+		  setInterval(() => {
+			updateCountdown(event.date);
+		  }, 1000);
+		  updateCountdown(event.date);
+		
+		  // Read more toggle
+		  let expanded = false;
+		  function toggleReadMore() {
+			const textEl = document.getElementById("desc-text");
+			const button = document.querySelector(".read-more");
+		
+			if (!expanded) {
+			  textEl.textContent = event.description;
+			  button.textContent = "Read less";
+			} else {
+			  textEl.textContent = event.description.slice(0, 160) + "...";
+			  button.textContent = "Read more";
+			}
+			expanded = !expanded;
+		  }
+		</script>
+	  
+<br><br>
 
 
 

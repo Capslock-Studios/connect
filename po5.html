@@ -530,38 +530,6 @@
         };
     </script>
 
-      
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const items = document.querySelectorAll(".faq-item");
-          items.forEach(item => {
-            const question = item.querySelector(".faq-question");
-            question.addEventListener("click", () => {
-              items.forEach(i => i.classList.remove("active"));
-              item.classList.add("active");
-            });
-          });
-        });
-      </script>
-      
-	  <div class="post-card details" id="companyDetails" id="posts-container">
-		<div class="post-header">
-			<div class="post-content" id="description">
-				<h2>🛍️ Sharable Product Page (Coming Soon)</h2>
-			</div>
-		</div>
-		<!-- PRODUCT PAGE SECTION -->
-		  <div class="sec">
-			<div class="section">
-				<p>Direct link to your featured product with WhatsApp purchase and feedback buttons.</p>
-				<p>Preview and structure coming soon.</p>
-			  </div>
-		</div>
-	</div>
-
-
-
-
 
 						<br>
 						<br>
@@ -588,97 +556,7 @@
 					
 					<div class="lap-box-fixer">
 						
-						<div class="lap-box" style="padding-top: 30px;">
-							<div class="post-card " style="width: 100%;">
-								<style>
-									h2 {
-										text-align: center;
-										color: #2c3e50;
-									}
-									.faq-container {
-										margin-top: 20px;
-									}
-									.faq-item {
-										background: #a54343;
-										border-radius: 8px;
-										margin-bottom: 10px;
-										box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-										overflow: hidden;
-									}
-									.faq-title {
-										width: 100%;
-										background: #ec892d;
-										color: white;
-										padding: 15px;
-										cursor: pointer;
-										font-size: 18px;
-										font-weight: bold;
-										display: flex;
-										justify-content: space-between;
-										align-items: center;
-									}
-									.faq-title span {
-										font-size: 22px;
-									}
-									.faq-content {
-										display: none;
-										padding: 15px;
-										font-size: 14px;
-										background: #f9f9f9;
-										border-top: 1px solid #ddd;
-									}
-									.petition-container img {
-										width: 100%;
-										border-radius: 8px;
-										margin-bottom: 10px;
-									}
-									.petition-container strong {
-										display: block;
-										margin-top: 10px;
-									}
-								</style>
-									<h2>Community Voices</h2>
-							
-									<div class="faq-container">
-										<!-- Savvies Section -->
-										<div class="faq-item">
-											<div class="faq-title" onclick="toggleFAQ(this)">
-												Savvies <span>+</span>
-											</div>
-											<div class="faq-content">
-												<div id="companySavvies" class="company-section"></div>
-												<p>No New Savvies.</p>
-											</div>
-										</div>
-							
-										<!-- Petitions Section -->
-										<div class="faq-item">
-											<div class="faq-title" onclick="toggleFAQ(this)">
-												📝 Petitions <span>+</span>
-											</div>
-											<div class="faq-content petition-container">
-												<div id="companyPetitions" class="company-section"></div>
-												<p>No Petitions.</p>
-											</div>
-										</div>
-									</div>
-									<script>
-										function toggleFAQ(element) {
-											let content = element.nextElementSibling;
-											let icon = element.querySelector("span");
-								
-											if (content.style.display === "block") {
-												content.style.display = "none";
-												icon.textContent = "+";
-											} else {
-												content.style.display = "block";
-												icon.textContent = "−";
-											}
-										}
-									</script>
-								</div>
-					
-						<br><br>
+							<br><br>
 						<div class="post-content">
 							No more posts to see
 						</div>
