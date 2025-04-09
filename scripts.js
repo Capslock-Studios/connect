@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const companySavvies = document.getElementById("companySavvies");
     const companyProducts = document.getElementById("companyProducts");
     const companyServices = document.getElementById("companyServices");
+    const companyEvents = document.getElementById("companyEvents");
+
 
     // Load logos as buttons in the header
     companies.forEach(company => {
@@ -149,6 +151,40 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>-->
                 </div>
             `).join("");
+            companyEvents.innerHTML = `<h3>🔥 Events</h3>` + 
+            company.events.map(events => `
+		<div class="event-card">
+		  <img src="${company.cover_img}" alt="${company.name}" class="event-cover" />
+		
+		  <div class="event-content">
+			<div class="organizer">
+			  <img src="${company.logo}" alt="Organizer" />
+			  <div class="organizer-info">
+				<h4>Organizer: ${company.name}</h4>
+				<p id="event-date">${events.date}</p>
+			  </div>
+			</div>
+		
+			<h2 id="event-title">${events.title}</h2>
+		
+			<div class="countdown">
+			  <div><div id="days">00</div><span>Days</span></div>
+			  <div><div id="hours">00</div><span>Hours</span></div>
+			  <div><div id="minutes">00</div><span>Minutes</span></div>
+			  <div><div id="seconds">00</div><span>Seconds</span></div>
+			</div>
+		
+			<div class="description" id="desc">
+			  <span id="desc-text">${events.description}  </span>
+			<span class="read-more" onclick="this.previousElementSibling.classList.toggle('expanded')">Read more</span>
+			</div>
+			<div class="actions">
+			  <button onclick="handleComment()">💬 Comment</button>
+			  <button onclick="handleShare()">🔗 Share</button>
+			  <button onclick="handleRSVP()">✅ RSVP</button>
+			</div>
+		  </div>
+		</div>`).join("");
 
         companySavvies.innerHTML = `<h3>🔥 Savvies</h3>` + 
             company.savvies.map(savvy => `<div><h4>${savvy.topic}</h4><p>Votes: ${savvy.votes}</p></div>`).join("");
@@ -209,4 +245,57 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    
+		  // Set event info
+		  document.getElementById("event-title").textContent = event.title;
+		  document.getElementById("event-date").textContent = new Date(event.date).toLocaleString();
+		
+		  // Countdown logic
+		  const daysEl = document.getElementById("days");
+		  const hoursEl = document.getElementById("hours");
+		  const minutesEl = document.getElementById("minutes");
+		  const secondsEl = document.getElementById("seconds");
+		
+		  function updateCountdown(targetDate) {
+			const now = new Date().getTime();
+			const distance = new Date(targetDate).getTime() - now;
+		
+			if (distance <= 0) {
+			  daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = '00';
+			  return;
+			}
+		
+			const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+			const minutes = Math.floor((distance / (1000 * 60)) % 60);
+			const seconds = Math.floor((distance / 1000) % 60);
+		
+			daysEl.textContent = String(days).padStart(2, '0');
+			hoursEl.textContent = String(hours).padStart(2, '0');
+			minutesEl.textContent = String(minutes).padStart(2, '0');
+			secondsEl.textContent = String(seconds).padStart(2, '0');
+		  }
+		
+		  setInterval(() => {
+			updateCountdown(event.date);
+		  }, 1000);
+		  updateCountdown(event.date);
+		
+		  // Read more toggle
+		  let expanded = false;
+		  function toggleReadMore() {
+			const textEl = document.getElementById("desc-text");
+			const button = document.querySelector(".read-more");
+		
+			if (!expanded) {
+			  textEl.textContent = event.description;
+			  button.textContent = "Read less";
+			} else {
+			  textEl.textContent = event.description.slice(0, 160) + "...";
+			  button.textContent = "Read more";
+			}
+			expanded = !expanded;
+		  }
+		
 });

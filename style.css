@@ -452,7 +452,7 @@ button:hover::after {
 	justify-content: space-around;
 	margin-bottom: 0px;
 	z-index: 50;
-	background-color: #d1c1bb;
+	background-color: #f3f3f3;
 	border-radius: 22px;
 	padding-top: 20px;
 }

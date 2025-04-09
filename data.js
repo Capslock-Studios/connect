@@ -21,6 +21,13 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
+                title: "Face The Nation | Helen Zille on future of the GNU | BOSA on alternative revenue proposals",
+                description: "DA Federal Chairperson Helen Zille says the DA have never been unfaithful to the GNU. Zille says the ANC has gone behind the GNU's back to negotiate with other parties outside the GNU. Zille says the  ANC must stick to the GNU rules.",
+                video_url: "1nqX4ysqpno",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            },
+            {
+                id: "v2",
                 title: "Designers march against counterfeit clothing at Buy Local Summit",
                 description: "Proudly SA is pleading with government to lighten the regulatory requirements it makes on small businesses.",
                 video_url: "1Po6yjmkG-Q",
@@ -105,9 +112,9 @@ const companies = [
             
             {
                 id: "v2",
-                title: "Tshimologong",
-                description: "A 2 sec free-style from Siya Percy and a presentation of his innovation Tae-Trax!",
-                video_url: "cObkS3f8I2I",
+                title: "Tshimologong Digital Innovation Precinct hosts Climate Enterprise School",
+                description: "In January of 2025 Tshimologong Digital Innovation Precinct in collaboration with The University of Edinburgh and Wits University hosted Climate Enterprise School, a climate leadership progr …",
+                video_url: "isyCDbnnx8Y",
                 thumbnail: "https://i.ibb.co/jPG8vdF4/Tshimologong.png"
             },
             {
@@ -351,6 +358,122 @@ const companies = [
         ],
         services: [
          
+        ]
+    },
+    {
+        id: "c2",
+        name: "uYilo Kick Start Fund",
+        logo: "Uyilo.png",
+        cover_img: "uyilo-grant.jpg",
+        about: {
+            description: "Mphorobotics, based in Johannesburg, is a leading South African innovator specializing in professional and affordable 3D printing and Laser Cutting services. Our swift turnaround time empowers customers to seamlessly transform digital designs into tangible objects using cutting-edge 3D printing technology. ",
+            website: "https://www.uyilo.org.za/kick-start-fund/",
+            contact: {
+                email: "info@uyilo.org.za",
+                phone: "+27 (0)10 005 5346"
+            }
+        },
+        events: [
+            {
+                title: "The uYilo Kick Start Fund 2025",
+                organizer: "uYilo Kick Start Fund",
+                date: "2025-04-30T10:00:00",
+                description: "Attention Entrepreneurs & Innovators in Electric Mobility. The uYilo Kick Start Fund is now open for applications. If you're working on innovative solutions in renewable energy, energy storage, micromobility, digital applications, battery recycling, component manufacturing, business models, or socio-economic initiatives within the electric mobility ecosystem, this is your chance to secure grant funding. Start-Up Culture is continually evolving looking at new industries for MSMEs to build smart business models. Our partnership with UYilo is key to unlocking the New EV MicroMobility Ecosystem for Start-Ups in Logistics, Transportation and Green Mobility. Apply here: https://www.uyilo.org.za/kick-start-fund/- Open to entrepreneurs, Innovators, Start-Ups and academic institutions conducting applied research.  Available across all provinces in South Africa. Entrepreneurs and Start-Ups in SUC Hubs and partner Hubs are encouraged to apply. -  Funding for innovative projects that advance the e-mobility ecosystem. Don’t miss this opportunity—apply now and please share with your networks! 🚗⚡ Closing Date 30 April 2025........ www.asher-group.co.za Start|Disrupt|Innovate"
+              }
+        ],
+        posts: [
+        
+        ],
+        petitions: [
+            {
+                id: "pt2",
+                title: "Community Petittion.",
+                cover_img: "https://whatsnext.joburg/1pulse-cover.jpg",
+                description: "We would like you to be a part of a constitutional community structure that is responsible for holding the minicipality accountable. A community Trust.The Community Trust will act as a governing body ensuring fair allocation of municipal funds. Our mission is to bring transparency, accountability, and community-driven decision-making to budget spending. Being part of the Trust means giving a little time each week to make big changes in how our city works. ✅ Commitment Members are asked to set aside one hour per week for discussions, budget reviews, and decision-making. 📊 Reviewing Finances The Financial Oversight Team will present budget details every week. Members will discuss where funds should go and flag any suspicious spending. 🗳️ Voting on Community Needs Each member votes on which projects need urgent funding. Votes are counted and submitted to the municipality. 📢 Making Your Voice Heard Community representatives gather input from their neighborhoods. They present concerns and priorities at weekly meetings. 👀 Tracking Progress The Project Monitoring Team tracks projects from start to finish. Updates are shared online and at meetings so everyone knows what’s happening. 💡 Life Cycle of the Trust. The decision-making process follows a structured cycle... 📢 Community submits concerns & budget suggestions. 🗳️ Weekly review & voting on financial needs ✅ Trust finalizes allocations & submits decisions 📊 Transparency reports shared with the community. 📊 Community Engagement",
+                signatures: 67,
+                date:"",
+                time:"",
+                location:""
+            }
+        ],
+        video_posts: [
+            {
+                id: "v2",
+                title: "MPHOROBOTICS: Making Robots for Education | @mystartuptvregional",
+                description: "#MPHOROBOTICS #EducationalRobots #STEMEducation #TechInnovation #Robotics #MphoMakutu #MyStartupTV #LiveBroadcast #TechInAfrica #EdTech #RoboticsEducation #mystartuptv #mystartupott #majorsunilshetty #mystartuplife  #mystartuptvregional #mystartuptvmediahouse",
+                video_url: "I078qbHRuko",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },
+            {
+                id: "v2",
+                title: "Unlimit Your Life - The Unlimited: Mpho Makhutu",
+                description: "When you think “small village”, the last thing you think of is “big idea”. That is until you meet Mpho – a robotics technology student at Wits University, whose story started in a dusty township...",
+                video_url: "yKl4dQJxLBg",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "How To Make A Robot // Mpho The Invetor",
+                description: " In this video we look at the process Mpho goes through with his innovations",
+                video_url: "HrIT1VIoLOg",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },
+            {
+                id: "v2",
+                title: "Mpho Makutu the South African Inventor",
+                description: "Mpho Makutu the South African Inventor makes a grass trimmer from trash. I made this Grass Trimmer from old drill motor. It is powered by 12v battery.",
+                video_url: "Z4ky1VO30Hg",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho, Mr Robot.",
+                description: "This South African inventor is turning trash to luxury and fortune.This is the story of Mpho, a.k.a Mr Robot, from South Africa.",
+                video_url: "bZun8IAA2xY",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho Makutu South African Inventor Tells his story!",
+                description: "South African Inventor tells his story of how he grew up and how was it.He grew up with no enough enough tools and materials to build stuff. He was taking his fathers music system to get the parts.",
+                video_url: "Ctd6P40El5w",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "A young inventor from Soweto in Johannesburg has built a 'robot entirely out of trash and old parts.",
+                description: "South African inventor builds 'robot' from reclaimed parts Mpho Makutu took two weeks to construct his creative machine, now he's hoping his invention brings him fame and fortune.",
+                video_url: "Z_tEfJLtcMU",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho Makutu the South African Inventor.",
+                description: "The South African Inventor makes robots for education. Ladies assisting him to assemble them.",
+                video_url: "XkEu7JMakaU",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "What happened to Mpho?",
+                description: "🇿🇦- The man who builds robots from trash✔",
+                video_url: "co2e1x2ubDU",
+                thumbnail: "mpho-robotics-cover.jpg"
+            },{
+                id: "v2",
+                title: "Mpho Makutu the South African Inventor makes Robot From Trash!!",
+                description: "South African Inventor makes robot from waste materials. I collect waste to turn it into a trassure. ",
+                video_url: "ckIBzom2Jg0",
+                thumbnail: "mpho-robotics-cover.jpg"
+            }
+        ],
+        picture_posts: [
+           
+        ],
+        savvies: [
+           
+        ],
+        products: [
+            { id: "pr3", name: "4 Axis Robot Arm with Sensor", product_img:"https://www.mphorobotics.co.za/images/catalog_pics/image0.jpeg", description:"This educational 4 axis robot arm is equipped with a precision sensor to pick up objects. ", price: 1350.00},   
+            { id: "pr3", name: "Customized Blue Lighting Trophy", product_img:"https://www.mphorobotics.co.za/images/catalog_pics/jonny%20walker.jpg", description:"This customized trophy features stunning blue lights that illuminate its elegant design. ", price: 1350.00},
+            { id: "pr3", name: "Customized Color-Changing Lighting Trophy", product_img:"https://www.mphorobotics.co.za/images/catalog_pics/Fakugesi.jpg", description:"This customized lighting trophy features an elegant design that changes colors to create a dynamic display. ", price: 1350.00},
+        ],
+        services: [
+            { id: "sv2", name: "Energy Audits", description: "Evaluate your energy efficiency and optimize costs." }
         ]
     },
     {
