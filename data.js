@@ -248,6 +248,61 @@ const companies = [
         services: [
            
         ]
+    },{
+        id: "c2",
+        name: "The Bannister Hotel",
+        logo: "thebannister.png",
+        cover_img: "thebannisterhotel.jpg",
+        about: {
+            description: "The Bannister Hotel is a stylish, friendly spot in the heart of Braamfontein, Johannesburg—just under a kilometer from Park Station and the Gautrain. Ideal for business travelers, it's near government offices, major courts, NGOs, trade unions, and both Wits and UJ campuses. For leisure, it’s on the City Sightseeing bus route and close to Constitution Hill, Joburg Theatre, and Market Theatre. While the area is business-focused on weekdays, weekends come alive with art, music, and nightlife.",
+            website: "https://bannisterhotel.co.za/",
+            contact: {
+                email: "stay@bannisterhotel.co.za",
+                phone: "+27723667615"
+            }
+        },
+        posts: [
+           
+        ],
+        petitions: [
+           
+        ],
+        video_posts: [
+            
+            {
+                id: "v2",
+                title: "Hotels are getting fed up! | Anele and the Club",
+                description: "Hotels are cracking down on outside food, and guests aren’t happy! 🏨🚫 Some say it’s a fair policy to protect their business, while others argue it’s an unfair restriction on guest freedom. Should hotels have the right to ban outside food, or is this rule going too far? 🍕🤔 Let us know your thoughts in the comments! ⬇️",
+                video_url: "WxanLbhyfHU",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "The Bannister Hotel",
+                description: "Braamfontien Johannesburg …",
+                video_url: "0sq2Xb9XXJg",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+            {
+                id: "v2",
+                title: "Ward 11 Soweto | President Cyril Ramaphosa arrives in Klipspruit West",
+                description: "President Cyril Ramaphosa visits Ward 11 in Klipspruit West, Soweto today. The purpose of the visit is for him to be briefed by the Zonal Committee leadership...",
+                video_url: "3D4K13wqSH0",
+                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            },
+        ],
+        picture_posts: [
+           
+        ],
+        savvies: [
+            
+        ],
+        products: [
+           
+        ],
+        services: [
+         
+        ]
     },
     {
         id: "c2",
