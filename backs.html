@@ -131,38 +131,7 @@
     <option value="search.js">search.js</option>
   </select>
 
-  <script>
-    let currentScript = null;
-
-    function loadScript(src) {
-      // Avoid reloading the same script
-      if (currentScript === src) return;
-
-      // Remove the previous script tag if needed
-      if (currentScript) {
-        const oldScript = document.querySelector(`script[src="${currentScript}"]`);
-        if (oldScript) oldScript.remove();
-      }
-
-      const script = document.createElement('script');
-      script.src = src;
-      script.onload = () => console.log(`${src} loaded`);
-      script.onerror = () => console.error(`Failed to load ${src}`);
-      document.body.appendChild(script);
-
-      currentScript = src;
-    }
-
-    function loadSelectedScript() {
-      const selectedScript = document.getElementById('scriptSelector').value;
-      loadScript(selectedScript);
-    }
-
-    // Load default script.js on page load
-    window.onload = () => {
-      loadScript('script.js');
-    };
-  </script>
+ 
         <a href="whatsnext.joburg">Home</a>
         <a href='/about'>About</a>
                 <a href="faq.html">FAQ</a>
@@ -1081,7 +1050,38 @@
       <button onclick="closeShareModal()">Close</button>
     </div>
   </div>
+ <script>
+    let currentScript = null;
 
+    function loadScript(src) {
+      // Avoid reloading the same script
+      if (currentScript === src) return;
+
+      // Remove the previous script tag if needed
+      if (currentScript) {
+        const oldScript = document.querySelector(`script[src="${currentScript}"]`);
+        if (oldScript) oldScript.remove();
+      }
+
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () => console.log(`${src} loaded`);
+      script.onerror = () => console.error(`Failed to load ${src}`);
+      document.body.appendChild(script);
+
+      currentScript = src;
+    }
+
+    function loadSelectedScript() {
+      const selectedScript = document.getElementById('scriptSelector').value;
+      loadScript(selectedScript);
+    }
+
+    // Load default script.js on page load
+    window.onload = () => {
+      loadScript('script.js');
+    };
+  </script>
   <script>
   </script>
 </body>
