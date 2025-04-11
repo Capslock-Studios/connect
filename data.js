@@ -285,8 +285,8 @@ const companies = [
             },
             {
                 id: "v2",
-                title: "Ward 11 Soweto | President Cyril Ramaphosa arrives in Klipspruit West",
-                description: "President Cyril Ramaphosa visits Ward 11 in Klipspruit West, Soweto today. The purpose of the visit is for him to be briefed by the Zonal Committee leadership...",
+                title: "Spend the day with me || @The Bannister Hotel & Unboxing",
+                description: "If you’re a student looking for a new hangout 😼I got you 😌check out the Bannister Hotel in BRAAMFONTEIN Check out the following links below: …",
                 video_url: "3D4K13wqSH0",
                 thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
             },
