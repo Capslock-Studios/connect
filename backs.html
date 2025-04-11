@@ -126,24 +126,42 @@
         <div id="floatingBtn" class="floating-button">☰</div>
     <div id="menu" class="floating-menu">
   <select id="scriptSelector" onchange="loadSelectedScript()">
-    <option value="" disabled selected>Select a script</option>
+    <option value="script.js" selected>script.js (default)</option>
     <option value="data.js">data.js</option>
-    <option value="script.js">script.js</option>
     <option value="search.js">search.js</option>
   </select>
-  <button onclick="loadSelectedScript()">Activate Script</button>
 
-   <script>
-    function loadSelectedScript() {
-      const selector = document.getElementById('scriptSelector');
-      const selectedScript = selector.value;
+  <script>
+    let currentScript = null;
 
-      if (selectedScript) {
-        const script = document.createElement('script');
-        script.src = selectedScript;
-        document.body.appendChild(script);
+    function loadScript(src) {
+      // Avoid reloading the same script
+      if (currentScript === src) return;
+
+      // Remove the previous script tag if needed
+      if (currentScript) {
+        const oldScript = document.querySelector(`script[src="${currentScript}"]`);
+        if (oldScript) oldScript.remove();
       }
+
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () => console.log(`${src} loaded`);
+      script.onerror = () => console.error(`Failed to load ${src}`);
+      document.body.appendChild(script);
+
+      currentScript = src;
     }
+
+    function loadSelectedScript() {
+      const selectedScript = document.getElementById('scriptSelector').value;
+      loadScript(selectedScript);
+    }
+
+    // Load default script.js on page load
+    window.onload = () => {
+      loadScript('script.js');
+    };
   </script>
         <a href="whatsnext.joburg">Home</a>
         <a href='/about'>About</a>
