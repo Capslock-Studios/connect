@@ -132,12 +132,16 @@
   </select>
   <button onclick="loadSelectedScript()">Activate Script</button>
 
-  <script>
+   <script>
     function loadSelectedScript() {
-      const selectedScript = document.getElementById('scriptSelector').value;
-      const script = document.createElement('script');
-      script.src = selectedScript;
-      document.body.appendChild(script);
+      const selector = document.getElementById('scriptSelector');
+      const selectedScript = selector.value;
+
+      if (selectedScript) {
+        const script = document.createElement('script');
+        script.src = selectedScript;
+        document.body.appendChild(script);
+      }
     }
   </script>
         <a href="whatsnext.joburg">Home</a>
