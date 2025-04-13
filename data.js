@@ -21,6 +21,20 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
+                title: "Eustace Mashimbye (CEO Proudly South African) - Creative Cnergy Conference",
+                description: "Eustace Mashimbye, CEO of Proudly South African, emphasizes the power of local choices.From the music we enjoy to the clothes we wear, supporting South African-made products fuels our economy and celebrates our identity. …",
+                video_url: "AIWxWM3VYj0",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            },
+            {
+                id: "v2",
+                title: "Spotlight: Proudly South African making a mark with Buy Local Summit",
+                description: "The team chats to Proudly SA's head of marketing Happy MaKhumalo Ngidi about the Buy Local Summit. ",
+                video_url: "UPDjl0Yw_mw",
+                thumbnail: "https://whatsnextgp.netlify.app/Img/psa.png"
+            },
+            {
+                id: "v2",
                 title: "Face The Nation | Helen Zille on future of the GNU | BOSA on alternative revenue proposals",
                 description: "DA Federal Chairperson Helen Zille says the DA have never been unfaithful to the GNU. Zille says the ANC has gone behind the GNU's back to negotiate with other parties outside the GNU. Zille says the  ANC must stick to the GNU rules.",
                 video_url: "1nqX4ysqpno",
