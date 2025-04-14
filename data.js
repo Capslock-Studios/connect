@@ -288,21 +288,21 @@ const companies = [
                 title: "Hotels are getting fed up! | Anele and the Club",
                 description: "Hotels are cracking down on outside food, and guests aren’t happy! 🏨🚫 Some say it’s a fair policy to protect their business, while others argue it’s an unfair restriction on guest freedom. Should hotels have the right to ban outside food, or is this rule going too far? 🍕🤔 Let us know your thoughts in the comments! ⬇️",
                 video_url: "WxanLbhyfHU",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "The Bannister Hotel",
                 description: "Braamfontien Johannesburg …",
                 video_url: "0sq2Xb9XXJg",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "Spend the day with me || @The Bannister Hotel & Unboxing",
                 description: "If you’re a student looking for a new hangout 😼I got you 😌check out the Bannister Hotel in BRAAMFONTEIN Check out the following links below: …",
                 video_url: "3D4K13wqSH0",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
         ],
         picture_posts: [
@@ -321,7 +321,7 @@ const companies = [
     {
         id: "c2",
         name: "The governing of national unity",
-        logo: "https://i.ibb.co/YwWPCP8/G20-logo.png",
+        logo: "GNU-logo.jpg",
         cover_img: "https://www.sagoodnews.co.za/wp-content/uploads/2024/06/Agreement-signed-in-the-GNU-1.jpg",
         about: {
             description: "A national unity government, government of national unity (GNU), or national union government is a broad coalition government consisting of all parties (or all major parties) in the legislature, usually formed during a time of war or other national emergency.",
@@ -343,77 +343,77 @@ const companies = [
                 title: "Impact of Trump's tariffs on SA's agriculture",
                 description: "President Cyril Ramaphosa says the new tariffs imposed by the US on South Africa undermines the spirit of collaboration and fair trade between the two countries..",
                 video_url: "pSgFmM50MHs",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
             id: "v2",
             title: "Ramaphosa: Business won't dictate GNU direction",
             description: "ANC President Cyril Ramaphosa has assured South Africans that neither his party nor government will be dictated to by business on the future of the Government of National Unity (GNU).",
             video_url: "Fcs9a0y_asI",
-            thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+            thumbnail: "GNU-logo.jpg"
         },
             {
                 id: "v2",
                 title: "Ward 11 Soweto | President Cyril Ramaphosa arrives in Klipspruit West",
                 description: "President Cyril Ramaphosa visits Ward 11 in Klipspruit West, Soweto today. The purpose of the visit is for him to be briefed by the Zonal Committee leadership...",
                 video_url: "Okg5NOID5FA",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "Live Coverage | Ramaphosa addresses ANC NEC meeting",
                 description: "For more news, visit sabcnews.com and #SABCNews on all Social Media platforms...",
                 video_url: "AZL8gKy7RcM",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "Ramaphosa calls for City of Johannesburg to be fixed ahead of G20 summit",
                 description: "President Cyril Ramaphosa has continued to express his disappointment at the state of the City of Johannesburg as he meets with city officials.",
                 video_url: "HfWtgztwBF4",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
                 {
                     id: "v2",
                     title: "South African Parliament approves budget fiscal framework",
                     description: "Political analyst Sandile Swana delves into the budget row days after South Africa's National Assembly approved the 2025 fiscal framework, which establishes economic policy, revenue projections, and limits on government spending.",
                     video_url: "xiG24Ks83tg",
-                    thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                    thumbnail: "GNU-logo.jpg"
                 },
                 {
                 id: "v2",
                 title: "Mark Burke:",
                 description: " 'On GNU', SA Budget, VAT increase, DA, ANC, SA economy, Action SA, MK Party, Parliament.",
                 video_url: "SdQ868cF9Ms",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "End of the GNU! | DA leaving the GNU?",
                 description: "If you like our content and want to support us, buy us a Coffee at:",
                 video_url: "wLAxOeI6oCc",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "Chaos AND Drama Parliament ",
                 description: "Budget 25 Fiscal Framework and Revenue Report.",
                 video_url: "lUuMQr_6XsE",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "GNU implosion on the cards - Harvey",
                 description: "Political analyst Dr Ebrahim Harvey believes the GNU is going to (implode) due to the dispute between the ANC and the DA over the proposed VAT increase",
                 video_url: "GIOLjM0G6bA",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             },
             {
                 id: "v2",
                 title: "What’s SHAKING South African politics in 2025?",
                 description: " ‘GNU’, ANC v DA v EFF v MK.",
                 video_url: "UwMU2Qj_E7E",
-                thumbnail: "https://i.ibb.co/YwWPCP8/G20-logo.png"
+                thumbnail: "GNU-logo.jpg"
             }
         ],
         picture_posts: [
