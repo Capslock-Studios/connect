@@ -850,6 +850,13 @@ const companies = [
         video_posts: [
             {
                 id: "v2",
+                title: "chadwick boseman denzel washington",
+                description: " Chadwick Boseman’s Powerful Tribute to Denzel Washington!",
+                video_url: "RelrZFuDE_g",
+                thumbnail: "https://yt3.googleusercontent.com/x5Bgc7UBYZvOHvp3UG91lZbV6ND0YCOi2a026vLPDGIU5GF2qp5JnHnCeLyPegWhEjM5njpN=s900-c-k-c0x00ffffff-no-rj"
+            },
+            {
+                id: "v2",
                 title: "Justice for Cwecwe | Bureaucracy should not stand in our way: Themba Masango",
                 description: "Civil rights movement, Not in My Name has called for an overhaul on how schools and officials handle the rape of learners at school. This is after a public outrage at the lack of cooperation by school officials, following the rape of a seven- year old girl on school premises in the Eastern Cape.",
                 video_url: "cm_vs93GJgs",
