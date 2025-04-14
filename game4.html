@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Magic Trick</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 60px;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        #progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            margin-top: 20px;
+        }
+        
+        #progress-bar-fill {
+            height: 30px;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .steps {
+            text-align: left;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Math Magic Trick</h1>
+    
+    <!-- Modal 1: Introduction -->
+    <div id="modal1" class="modal" style="display: block;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Step 1: Learn the Trick</h2>
+            <p>Here's a magic way to multiply any two numbers:</p>
+            <div class="steps">
+                <p><strong>Step 1:</strong> Subtract 5 from each number twice</p>
+                <p><strong>Step 2:</strong> Add the first results and multiply by 10</p>
+                <p><strong>Step 3:</strong> Multiply the second results and add to previous</p>
+            </div>
+            <p>Example: 9 × 8</p>
+            <div class="steps">
+                <p>9 - 5 = 4, 4 - 5 = -1</p>
+                <p>8 - 5 = 3, 3 - 5 = -2</p>
+                <p>4 + 3 = 7 → 7 × 10 = 70</p>
+                <p>-1 × -2 = 2 → 70 + 2 = 72</p>
+            </div>
+            <button id="next1">Next</button>
+        </div>
+    </div>
+    
+    <!-- Modal 2: Try It -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Step 2: Try It Yourself</h2>
+            <p>Enter two numbers to multiply:</p>
+            <input type="number" id="num1" placeholder="First number">
+            <input type="number" id="num2" placeholder="Second number">
+            <button id="submit">Start</button>
+        </div>
+    </div>
+    
+    <!-- Modal 3: Steps -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Step 3: See the Steps</h2>
+            <div id="steps-display">
+                <p>Calculating for <span id="num1-display"></span> × <span id="num2-display"></span>...</p>
+                <div id="steps-details"></div>
+            </div>
+            <div id="progress-bar">
+                <div id="progress-bar-fill"></div>
+            </div>
+            <div id="answer-section" style="display: none;">
+                <h3>Your Answer: <span id="answer"></span></h3>
+                <button id="try-again">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM elements
+        const modal1 = document.getElementById("modal1");
+        const modal2 = document.getElementById("modal2");
+        const modal3 = document.getElementById("modal3");
+        const next1 = document.getElementById("next1");
+        const submitBtn = document.getElementById("submit");
+        const tryAgainBtn = document.getElementById("try-again");
+        const num1Input = document.getElementById("num1");
+        const num2Input = document.getElementById("num2");
+        const stepsDetails = document.getElementById("steps-details");
+        const progressBar = document.getElementById("progress-bar-fill");
+        const answerSection = document.getElementById("answer-section");
+        const answerSpan = document.getElementById("answer");
+        const num1Display = document.getElementById("num1-display");
+        const num2Display = document.getElementById("num2-display");
+        
+        // Close buttons
+        document.querySelectorAll(".close").forEach(btn => {
+            btn.addEventListener("click", function() {
+                document.querySelectorAll(".modal").forEach(modal => {
+                    modal.style.display = "none";
+                });
+            });
+        });
+        
+        // Next button from modal 1
+        next1.addEventListener("click", function() {
+            modal1.style.display = "none";
+            modal2.style.display = "block";
+        });
+        
+        // Submit button from modal 2
+        submitBtn.addEventListener("click", function() {
+            const num1 = parseInt(num1Input.value);
+            const num2 = parseInt(num2Input.value);
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter two valid numbers!");
+                return;
+            }
+            
+            modal2.style.display = "none";
+            modal3.style.display = "block";
+            
+            num1Display.textContent = num1;
+            num2Display.textContent = num2;
+            
+            // Reset progress bar
+            progressBar.style.width = "0%";
+            stepsDetails.innerHTML = "";
+            
+            // Show steps
+            showSteps(num1, num2);
+        });
+        
+        // Try again button
+        tryAgainBtn.addEventListener("click", function() {
+            answerSection.style.display = "none";
+            modal3.style.display = "none";
+            modal2.style.display = "block";
+        });
+        
+        // Function to show steps with progress bar
+        function showSteps(num1, num2) {
+            const step1 = `Step 1: Subtract 5 from each number twice`;
+            const step1a = `${num1} - 5 = ${num1 - 5}, ${num1 - 5} - 5 = ${num1 - 10}`;
+            const step1b = `${num2} - 5 = ${num2 - 5}, ${num2 - 5} - 5 = ${num2 - 10}`;
+            
+            const step2 = `Step 2: Add the first results (${num1 - 5} + ${num2 - 5}) = ${(num1 - 5) + (num2 - 5)}`;
+            const step2a = `Multiply by 10: ${(num1 - 5) + (num2 - 5)} × 10 = ${((num1 - 5) + (num2 - 5)) * 10}`;
+            
+            const step3 = `Step 3: Multiply the second results (${num1 - 10} × ${num2 - 10}) = ${(num1 - 10) * (num2 - 10)}`;
+            
+            const step4 = `Final answer: ${((num1 - 5) + (num2 - 5)) * 10} + ${(num1 - 10) * (num2 - 10)} = ${num1 * num2}`;
+            
+            const steps = [step1, step1a, step1b, step2, step2a, step3, step4];
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 1;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress % 15 === 0 && steps.length > 0) {
+                    const step = steps.shift();
+                    const p = document.createElement("p");
+                    p.textContent = step;
+                    stepsDetails.appendChild(p);
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    answerSpan.textContent = num1 * num2;
+                    answerSection.style.display = "block";
+                }
+            }, 100);
+        }
+        
+        // Close when clicking outside
+        window.addEventListener("click", function(event) {
+            if (event.target.classList.contains("modal")) {
+                event.target.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
