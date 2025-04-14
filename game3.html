@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Power of 5 - Multiplication Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background: #f2f2f2; padding: 20px; }
+    .container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; }
+    input { width: 60px; padding: 5px; margin: 5px; text-align: center; font-size: 20px; }
+    .step, .verify-section { margin-top: 20px; display: none; }
+    .loader { height: 10px; background: #ccc; border-radius: 10px; overflow: hidden; }
+    .bar { height: 100%; width: 0%; background: green; transition: width 3s linear; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; display: none; }
+    .modal-content { background: #222; padding: 20px; border-radius: 10px; }
+    .hidden-number { font-style: italic; color: gray; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>The Power of 5</h2>
+    <p>Enter two numbers to multiply:</p>
+    <input type="number" id="num1" /> x <input type="number" id="num2" />
+    <br /><br />
+    <button onclick="startGame()">Start</button>
+
+    <div class="step" id="stepSection">
+      <p><strong>Step-by-step breakdown:</strong></p>
+      <div id="steps"></div>
+    </div>
+
+    <div class="loader" id="loader" style="display: none;"><div class="bar" id="bar"></div></div>
+
+    <div class="verify-section" id="verifySection">
+      <p>Now enter the missing parts:</p>
+      <label>Top Hidden: <input type="number" id="hiddenTopInput" /></label><br/>
+      <label>Bottom Hidden: <input type="number" id="hiddenBottomInput" /></label><br/>
+      <label>Final Answer: <input type="number" id="userAnswer" /></label>
+      <br /><br />
+      <button onclick="checkAnswer()">Submit</button>
+    </div>
+  </div>
+
+  <div class="modal" id="resultModal">
+    <div class="modal-content" id="modalMessage"></div>
+  </div>
+
+  <script>
+    let correctAnswer = 0;
+    let hiddenTop = 0;
+    let hiddenBottom = 0;
+
+    function startGame() {
+      const n1 = parseInt(document.getElementById("num1").value);
+      const n2 = parseInt(document.getElementById("num2").value);
+      if (isNaN(n1) || isNaN(n2)) return alert("Enter both numbers");
+
+      const d1 = n1 - 5;
+      const d2 = n2 - 5;
+
+      hiddenTop = n2 + d1;
+      hiddenBottom = n1 + d2;
+
+      // Using improved formula
+      correctAnswer = 25 + 5 * (d1 + d2) + (d1 * d2);
+
+      const stepsDiv = document.getElementById("steps");
+      stepsDiv.innerHTML = `
+        ${n1} - 5 = ${d1} <span class="hidden-number">(Top diff)</span><br />
+        ${n2} - 5 = ${d2} <span class="hidden-number">(Bottom diff)</span><br /><br />
+        Hidden Numbers: ${n2} + (${d1}) = <strong>${hiddenTop}</strong>,
+        ${n1} + (${d2}) = <strong>${hiddenBottom}</strong><br /><br />
+        Formula: 25 + 5(${d1} + ${d2}) + (${d1} × ${d2})<br />
+        = 25 + ${5 * (d1 + d2)} + ${d1 * d2}<br />
+        Final Answer = <strong>${correctAnswer}</strong>
+      `;
+
+      document.getElementById("stepSection").style.display = "block";
+      document.getElementById("loader").style.display = "block";
+      document.getElementById("bar").style.width = "0%";
+
+      setTimeout(() => {
+        document.getElementById("bar").style.width = "100%";
+      }, 50);
+
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("stepSection").style.display = "none";
+        document.getElementById("verifySection").style.display = "block";
+      }, 3050);
+    }
+
+    function checkAnswer() {
+      const topInput = parseInt(document.getElementById("hiddenTopInput").value);
+      const bottomInput = parseInt(document.getElementById("hiddenBottomInput").value);
+      const userAnswer = parseInt(document.getElementById("userAnswer").value);
+
+      const modal = document.getElementById("resultModal");
+      const message = document.getElementById("modalMessage");
+
+      let correctCount = 0;
+      if (topInput === hiddenTop) correctCount++;
+      if (bottomInput === hiddenBottom) correctCount++;
+      if (userAnswer === correctAnswer) correctCount++;
+
+      if (correctCount === 3) {
+        message.innerHTML = "✅ Perfect! You got all the answers right.";
+      } else {
+        message.innerHTML = `❌ Not quite. <br />
+          Correct Top Hidden: ${hiddenTop}<br />
+          Correct Bottom Hidden: ${hiddenBottom}<br />
+          Correct Final Answer: ${correctAnswer}`;
+      }
+
+      modal.style.display = "flex";
+      setTimeout(() => (modal.style.display = "none"), 6000);
+    }
+  </script>
+</body>
+</html>
