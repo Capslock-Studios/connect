@@ -3,6 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Planner</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; background: #f7f7f7; }
+    h1, h2 { color: #333; }
+    .project, .task-category { margin: 1rem 0; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.1); }
+    button { margin: 0.25rem; padding: 0.5rem 1rem; border: none; border-radius: 5px; background: #0055aa; color: white; cursor: pointer; }
+    button:hover { background: #004080; }
+    .task { margin: 0.5rem 0; padding: 0.5rem; background: #e0ecff; border-left: 4px solid #0055aa; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+    .modal-content { background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; }
+    .modal-content input, .modal-content select { width: 100%; padding: 10px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Project Planner</h1>
+
+  <button onclick="openModal('projectModal')">+ New Project</button>
+  <div id="projectsContainer"></div>
+
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <h2>Add New Project</h2>
+      <input id="projectName" placeholder="Project name" />
+      <button onclick="addProject()">Add</button>
+      <button onclick="closeModal('projectModal')">Cancel</button>
+    </div>
+  </div>
+
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <h2>Add New Task</h2>
+      <input id="taskName" placeholder="Task name" />
+      <select id="taskCategory">
+        <option value="Quick">Quick</option>
+        <option value="Easy">Easy</option>
+        <option value="Slow">Slow</option>
+      </select>
+      <button onclick="addTask()">Add Task</button>
+      <button onclick="closeModal('taskModal')">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    let currentProjectIndex = null;
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+    function saveProjects() {
+      localStorage.setItem("projects", JSON.stringify(projects));
+    }
+
+    function renderProjects() {
+      const container = document.getElementById("projectsContainer");
+      container.innerHTML = "";
+      projects.forEach((proj, index) => {
+        const div = document.createElement("div");
+        div.className = "project";
+        div.innerHTML = `<h2>${proj.name}</h2>
+          <button onclick="openTaskModal(${index})">+ New Task</button>
+          <div class='task-category'><h3>Quick</h3>${proj.tasks.Quick.map(t => `<div class='task'>${t}</div>`).join('')}</div>
+          <div class='task-category'><h3>Easy</h3>${proj.tasks.Easy.map(t => `<div class='task'>${t}</div>`).join('')}</div>
+          <div class='task-category'><h3>Slow</h3>${proj.tasks.Slow.map(t => `<div class='task'>${t}</div>`).join('')}</div>`;
+        container.appendChild(div);
+      });
+    }
+
+    function addProject() {
+      const name = document.getElementById("projectName").value;
+      if (name) {
+        projects.push({ name, tasks: { Quick: [], Easy: [], Slow: [] } });
+        saveProjects();
+        renderProjects();
+        closeModal('projectModal');
+      }
+    }
+
+    function openTaskModal(index) {
+      currentProjectIndex = index;
+      openModal("taskModal");
+    }
+
+    function addTask() {
+      const name = document.getElementById("taskName").value;
+      const category = document.getElementById("taskCategory").value;
+      if (name && category !== "") {
+        projects[currentProjectIndex].tasks[category].push(name);
+        saveProjects();
+        renderProjects();
+        closeModal("taskModal");
+      }
+    }
+
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+      document.querySelectorAll("input, select").forEach(e => e.value = "");
+    }
+
+    renderProjects();
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Energy Ball Planner</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
