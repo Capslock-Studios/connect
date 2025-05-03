@@ -1,3 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy Ball Planner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .category-column {
+      min-height: 300px;
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .task-card {
+      background: white;
+      border: 1px solid #dee2e6;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .urgent {
+      border-left: 5px solid red;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <h2 class="mb-4 text-center">Energy Ball Planner</h2>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="category-column">
+          <h5>Quick Jobs</h5>
+          <div class="task-card" onclick="openModal('Call Telkom about fibre', 'Follow up on installation timing.')">Call Telkom about fibre</div>
+          <div class="task-card" onclick="openModal('Buy Airtime', 'Buy R50 MTN airtime for data.')">Buy Airtime</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="category-column">
+          <h5>Easy Jobs</h5>
+          <div class="task-card" onclick="openModal('Reply to Emails', 'Check Wits and WhatsNext emails.')">Reply to Emails</div>
+          <div class="task-card" onclick="openModal('Design Poster', 'Poster for WhatsNext campaign.')">Design Poster</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="category-column">
+          <h5>Slow Jobs</h5>
+          <div class="task-card" onclick="openModal('Build PHP Task App', 'Start scaffolding Energy Ball Planner system.')">Build PHP Task App</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <h4>Urgent Priorities</h4>
+      <div class="task-card urgent" onclick="openModal('Pay Rent', 'Rent due this week.')">Pay Rent</div>
+      <div class="task-card urgent" onclick="openModal('Submit Telkom Proposal', 'Deadline: Friday')">Submit Telkom Proposal</div>
+    </div>
+
+    <h4>Night Time Report</h4>
+    <form id="reportForm">
+      <div class="mb-3">
+        <label for="note" class="form-label">What did you accomplish today?</label>
+        <textarea class="form-control" id="note" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Report</button>
+    </form>
+  </div>
+
+  <!-- Task Modal -->
+  <div class="modal fade" id="taskModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="taskTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="taskDetails"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openModal(title, details) {
+      document.getElementById('taskTitle').innerText = title;
+      document.getElementById('taskDetails').innerText = details;
+      const modal = new bootstrap.Modal(document.getElementById('taskModal'));
+      modal.show();
+    }
+
+    document.getElementById('reportForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const note = document.getElementById('note').value;
+      alert('Report saved: ' + note);
+      document.getElementById('note').value = '';
+    });
+  </script>
+</body>
+</html>
 
 You said:
 The power of five. How much do you know about it sir? 
