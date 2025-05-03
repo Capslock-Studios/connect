@@ -1,6 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Planner</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+        h2 { text-align: center; }
+        .project, .task { border: 1px solid #ccc; padding: 10px; margin-top: 10px; border-radius: 6px; }
+        .project { background-color: #e0f7fa; }
+        .task { background-color: #e8f5e9; }
+        .task.quick { background-color: #ffecb3; }
+        .task.easy { background-color: #ffe0b2; }
+        .task.slow { background-color: #dcedc8; }
+        .buttons { margin-top: 10px; }
+        button { margin: 5px; padding: 5px 10px; }
+        #modal, #alarmModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-content { background: #fff; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Project Planner</h2>
+        <button onclick="openProjectModal()">Add New Project</button>
+        <div id="projects"></div>
+    </div>
+
+    <div id="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <input type="text" id="inputText" placeholder="Enter title"><br><br>
+            <button onclick="saveData()">Save</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <div id="alarmModal">
+        <div class="modal-content">
+            <h3 id="alarmTitle"></h3>
+            <button onclick="attendTask()">Attend</button>
+            <button onclick="snoozeTask()">Snooze</button>
+        </div>
+    </div>
+
+    <script>
+        let projects = JSON.parse(localStorage.getItem('projects')) || [];
+        let currentProjectIndex = null;
+        let modalType = null;
+        let activeAlarm = null;
+
+        function renderProjects() {
+            const container = document.getElementById('projects');
+            container.innerHTML = '';
+            projects.forEach((project, i) => {
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'project';
+                projectDiv.innerHTML = `<strong>${project.name}</strong> <button onclick="openTaskModal(${i})">Add Task</button>`;
+                project.tasks.forEach((task, j) => {
+                    const taskDiv = document.createElement('div');
+                    taskDiv.className = `task ${task.category}`;
+                    const now = new Date();
+                    const due = new Date(task.dueTime);
+                    const timeLeft = Math.max(0, Math.floor((due - now) / 60000));
+                    taskDiv.innerHTML = `${task.name} (${task.category}) - Due in ${timeLeft} mins - Status: ${task.status}`;
+                    projectDiv.appendChild(taskDiv);
+                });
+                container.appendChild(projectDiv);
+            });
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        function openProjectModal() {
+            modalType = 'project';
+            document.getElementById('modalTitle').innerText = 'New Project';
+            document.getElementById('inputText').value = '';
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function openTaskModal(index) {
+            currentProjectIndex = index;
+            modalType = 'task';
+            document.getElementById('modalTitle').innerText = 'New Task (format: name,category,dueTime ISO)';
+            document.getElementById('inputText').value = '';
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function saveData() {
+            const text = document.getElementById('inputText').value;
+            if (modalType === 'project') {
+                projects.push({ name: text, tasks: [] });
+            } else if (modalType === 'task' && currentProjectIndex !== null) {
+                const [name, category, dueTime] = text.split(',');
+                projects[currentProjectIndex].tasks.push({ name, category, dueTime, status: 'scheduled' });
+            }
+            closeModal();
+            renderProjects();
+        }
+
+        function checkAlarms() {
+            const now = new Date();
+            projects.forEach((project, i) => {
+                project.tasks.forEach((task, j) => {
+                    if (task.status === 'scheduled' && new Date(task.dueTime) <= now) {
+                        task.status = 'due';
+                        activeAlarm = { projectIndex: i, taskIndex: j };
+                        document.getElementById('alarmTitle').innerText = `Task Due: ${task.name}`;
+                        document.getElementById('alarmModal').style.display = 'flex';
+                    }
+                });
+            });
+            renderProjects();
+        }
+
+        function attendTask() {
+            const { projectIndex, taskIndex } = activeAlarm;
+            projects[projectIndex].tasks[taskIndex].status = 'pending';
+            document.getElementById('alarmModal').style.display = 'none';
+            activeAlarm = null;
+            renderProjects();
+        }
+
+        function snoozeTask() {
+            const { projectIndex, taskIndex } = activeAlarm;
+            projects[projectIndex].tasks[taskIndex].status = 'postponed';
+            document.getElementById('alarmModal').style.display = 'none';
+            activeAlarm = null;
+            renderProjects();
+        }
+
+        function endOfDayCheck() {
+            const now = new Date();
+            if (now.getHours() === 2) {
+                projects.forEach(project => {
+                    project.tasks.forEach(task => {
+                        if (['pending', 'postponed'].includes(task.status)) {
+                            task.status = 'completed';
+                        } else if (task.status === 'due') {
+                            task.status = 'missed';
+                        }
+                    });
+                });
+                renderProjects();
+            }
+        }
+
+        renderProjects();
+        setInterval(checkAlarms, 60000);
+        setInterval(endOfDayCheck, 3600000);
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Planner</title>
