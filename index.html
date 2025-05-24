@@ -15,7 +15,96 @@
     src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" 
     nonce="XYZ123">
   </script>
+  <style>
 
+    .navcontainer {
+      padding: 50px;
+      text-align: center;
+    }
+
+    /* Modal Styles */
+    .navmodal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .navmodal-content {
+      position: relative;
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .navclose-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .navclose-button:hover {
+      color: #000;
+    }
+
+    .navoption {
+      flex: 1 1 40%;
+      max-width: 45%;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fafafa;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .navoption:hover {
+      transform: scale(1.05);
+    }
+
+    .navoption img.logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .navoption img.preview {
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    .navoption h3 {
+      margin: 10px 0 5px;
+    }
+
+    .navoption p {
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .navoption {
+        max-width: 100%;
+      }
+    }
+  </style>
   <style>
 
     .profile-photo {
@@ -91,7 +180,7 @@
             color: rgb(0, 0, 0);
             font-size: 18px;
             cursor: grab;
-            z-index: 99999999;
+            z-index: 999;
             user-select: none;
         }
         .floating-menu {
@@ -106,7 +195,7 @@
             transform: scaleY(0);
             transform-origin: bottom;
             transition: transform 0.3s ease-in-out;
-			z-index: 9999999;
+			z-index: 999;
         }
         .floating-menu a {
             display: block;
@@ -127,7 +216,7 @@
     </style>
 	<div id="floatingBtn" class="floating-button">☰</div>
     <div id="menu" class="floating-menu">
-        <a href="whatsnext.joburg">Home</a>
+        <a href="index.html">Home</a>
         <a href='/about'>About</a>
 		<a href="faq.html">FAQ</a>
         <a href='/petitions'>Petitions</a>
@@ -1101,6 +1190,61 @@
   </div>
 
   <script>
+  </script>
+
+
+
+
+
+
+
+
+  <!-- NAV Modal -->
+  <div id="navmodal" class="navmodal">
+    <div class="navmodal-content">
+      <span class="navclose-button" onclick="closeModal()">&times;</span>
+
+      <div class="navoption" onclick="location.href='page1.html'">
+        <img src="brand4.png" class="navlogo" alt="Logo 1" />
+        <h3>Explore Products</h3>
+        <p>Browse our latest and greatest products, curated just for you.</p>
+        <img src="brand5.png" class="navpreview" alt="Products Preview"/>
+      </div>
+
+      <div class="navoption" onclick="location.href='page2.html'">
+        <img src="brand7.png" class="navlogo" alt="Logo 2" />
+        <h3>Learn with Us</h3>
+        <p>Access tutorials, webinars, and learning paths tailored to your goals.</p>
+        <img src="image2.jpg" class="navpreview" alt="Learning Preview"/>
+      </div>
+
+      <div class="navoption" onclick="location.href='page3.html'">
+        <img src="logo3.png" class="navlogo" alt="Logo 3" />
+        <h3>Join the Community</h3>
+        <p>Connect with other users and share your experiences and feedback.</p>
+        <img src="image3.jpg" class="navpreview" alt="Community Preview"/>
+      </div>
+
+      <div class="navoption" onclick="location.href='page4.html'">
+        <img src="logo4.png" class="navlogo" alt="Logo 4" />
+        <h3>Get Support</h3>
+        <p>Need help? Our support team is here to assist you 24/7.</p>
+        <img src="image4.jpg" class="navpreview" alt="Support Preview"/>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show modal after 3 seconds
+    window.onload = function () {
+      setTimeout(function () {
+        document.getElementById("navmodal").style.display = "block";
+      }, 3000);
+    };
+
+    function closeModal() {
+      document.getElementById("navmodal").style.display = "none";
+    }
   </script>
 </body>
 	</html>
