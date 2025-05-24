@@ -1203,6 +1203,37 @@
   <div id="navmodal" class="navmodal">
     <div class="navmodal-content">
       <span class="navclose-button" onclick="closeModal()">&times;</span>
+<!-- Promo Product Scroller Section (inside .navmodal-content) -->
+<div style="width: 100%;">
+  <h2 style="text-align:center; margin-top: 10px;">🔥 Promotions Just for You</h2>
+  <div style="overflow-x: auto; white-space: nowrap; padding: 10px 0;">
+   <div class="navoption" style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product2.html'">
+  <iframe width="100%" height="150" style="border-radius: 8px;" src="https://www.youtube.com/embed/pJ5o2fxSAM4" 
+    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+  <p><strong>Product 2</strong><br><small>$29.99</small></p>
+</div>
+
+  <div class="navoption" style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product2.html'">
+  <img src="brand5.png" alt="Promo 2" style="width: 100%; border-radius: 8px;">
+  <p><strong>Product 2</strong><br><small>$29.99</small></p>
+</div>
+
+    <div class="navoption" style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product3.html'">
+      <img src="brand5.png" alt="Promo 3" style="width: 100%; border-radius: 8px;">
+      <p><strong>Product 3</strong><br><small>$14.99</small></p>
+    </div>
+	   <div class="navoption" style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product4.html'">
+      
+        <h3>Explore Products</h3>
+        <p>Browse our latest and greatest products, curated just for you.</p>
+        <img src="brand5.png" class="navpreview" alt="Products Preview"/>
+		  <p><strong>Product 4</strong><br><small>$49.99</small></p>
+      </div>
+
+    <!-- Add more products here -->
+  </div>
+</div>
 
       <div class="navoption" onclick="location.href='page1.html'">
         <img src="brand4.png" class="navlogo" alt="Logo 1" />
@@ -1233,6 +1264,39 @@
       </div>
     </div>
   </div>
+<script>
+  // Show modal after 3 seconds
+  window.onload = function () {
+    setTimeout(function () {
+      document.getElementById("navmodal").style.display = "block";
+    }, 3000);
+
+    // Start auto-scroll after 5 seconds total (3s for modal + 2s delay)
+    setTimeout(startAutoScroll, 5000);
+  };
+
+  function closeModal() {
+    document.getElementById("navmodal").style.display = "none";
+  }
+
+  function startAutoScroll() {
+    const scroller = document.getElementById('scroller');
+    if (!scroller) return;
+
+    let scrollAmount = 0;
+    const step = 2;
+    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+
+    const scrollInterval = setInterval(() => {
+      scrollAmount += step;
+      if (scrollAmount >= maxScroll) {
+        clearInterval(scrollInterval);
+        return;
+      }
+      scroller.scrollLeft += step;
+    }, 30); // Speed of scroll (lower = faster)
+  }
+</script>
 
   <script>
     // Show modal after 3 seconds
