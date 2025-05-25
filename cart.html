@@ -114,6 +114,10 @@
       text-align: center;
       width: 90%;
       max-width: 500px;
+
+
+
+      gap: 20px;
     }
 
     .modal-content h2 {
@@ -164,13 +168,108 @@
     <div class="modal-content">
       <span class="close-btn" onclick="hideModal()">&times;</span>
       <h2>Select a Payment Method</h2>
-      <div>
-        <div class="bank-btn" onclick="pay('FNB')">FNB</div>
-        <div class="bank-btn" onclick="pay('Capitec')">Capitec</div>
-        <div class="bank-btn" onclick="pay('Nedbank')">Nedbank</div>
-        <div class="bank-btn" onclick="pay('Standard Bank')">Standard Bank</div>
-        <div class="bank-btn" onclick="pay('Absa')">Absa</div>
+ <style>
+    /* Navigation Options */
+    .navoption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: transform 0.2s;
+      min-height: 100px;
+      margin: 5px;
+    }
+
+    .navoption:hover {
+      transform: scale(1.03);
+    }
+
+    .navlogo {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      border-radius: 8px;
+    }
+
+    .navtext {
+      flex: 1;
+      text-align: left;
+    }
+
+    .navtext h3 {
+      margin: 0 0 5px;
+      font-size: 1em;
+    }
+
+    .navtext p {
+      margin: 0;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .navpreview {
+      width: 100px;
+      height: auto;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .navoption {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navlogo,
+      .navpreview {
+        width: 100%;
+        height: auto;
+      }
+
+      .navtext {
+        text-align: center;
+      }
+    }
+  </style>
+
+      <!-- Navigation Options -->
+      <div class="navoption" onclick="location.href='page1.html'">
+        <img src="brand5.png" class="navlogo" alt="Logo 1" />
+        <div class="navtext">
+          <h3>FNB</h3>
+          <p>First National Bank</p>
+        </div>
       </div>
+
+      <div class="navoption" onclick="location.href='page2.html'">
+        <img src="brand7.png" class="navlogo" alt="Logo 2" />
+        <div class="navtext">
+          <h3>Capitec</h3>
+          <p>Capitec Bank</p>
+        </div>
+      </div>
+
+      <div class="navoption" onclick="location.href='page3.html'">
+        <img src="brand5.png" class="navlogo" alt="Logo 3" />
+        <div class="navtext">
+          <h3>ABSA</h3>
+          <p>Absa Bank</p>
+      </div></div>
+
+      <div class="navoption" onclick="location.href='page4.html'">
+        <img src="brand5.png" class="navlogo" alt="Logo 4" />
+        <div class="navtext">
+          <h3>NEDBANK</h3>
+          <p>NedBank</p>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
