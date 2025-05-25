@@ -26,21 +26,20 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
     .navmodal-content {
-      position: relative;
       background-color: #fff;
-      margin: 10% auto;
+      margin: 5% auto;
       padding: 30px;
       border-radius: 8px;
       width: 90%;
-      max-width: 800px;
+      max-width: 1000px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 20px;
-      justify-content: center;
+      position: relative;
     }
 
     .navclose-button {
@@ -57,45 +56,103 @@
       color: #000;
     }
 
-    .navoption {
-      flex: 1 1 40%;
-      max-width: 45%;
+    .promo-section h2 {
       text-align: center;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .promo-scroller {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 10px 0;
+    }
+
+    .promo-item {
+      display: inline-block;
+      width: 200px;
+      margin-right: 10px;
+      text-align: center;
+      vertical-align: top;
       background: #fafafa;
-      transition: transform 0.2s;
+      padding: 10px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
-    .navoption:hover {
-      transform: scale(1.05);
+    .promo-item iframe,
+    .promo-item img {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
     }
 
-    .navoption img.logo {
+    .promo-item p {
+      margin: 10px 0 0;
+    }
+
+    /* Navigation Options */
+    .navoption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: transform 0.2s;
+      min-height: 100px;
+    }
+
+    .navoption:hover {
+      transform: scale(1.03);
+    }
+
+    .navlogo {
       width: 50px;
       height: 50px;
+      flex-shrink: 0;
+      border-radius: 8px;
     }
 
-    .navoption img.preview {
-      width: 100%;
-      height: auto;
-      margin-top: 10px;
-      border-radius: 5px;
+    .navtext {
+      flex: 1;
+      text-align: left;
     }
 
-    .navoption h3 {
-      margin: 10px 0 5px;
+    .navtext h3 {
+      margin: 0 0 5px;
+      font-size: 1em;
     }
 
-    .navoption p {
+    .navtext p {
+      margin: 0;
       font-size: 0.9em;
+      color: #555;
+    }
+
+    .navpreview {
+      width: 100px;
+      height: auto;
+      border-radius: 5px;
+      flex-shrink: 0;
     }
 
     @media (max-width: 600px) {
       .navoption {
-        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navlogo,
+      .navpreview {
+        width: 100%;
+        height: auto;
+      }
+
+      .navtext {
+        text-align: center;
       }
     }
   </style>
@@ -111,56 +168,64 @@
   <div id="navmodal" class="navmodal">
     <div class="navmodal-content">
       <span class="navclose-button" onclick="closeModal()">&times;</span>
-<!-- Promo Product Scroller Section (inside .navmodal-content) -->
-<div style="width: 100%;">
-  <h2 style="text-align:center; margin-top: 10px;">🔥 Promotions Just for You</h2>
-  <div style="overflow-x: auto; white-space: nowrap; padding: 10px 0;">
-    <div style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product1.html'">
-      <img src="promo1.jpg" alt="Promo 1" style="width: 100%; border-radius: 8px;">
-      <p><strong>Product 1</strong><br><small>$19.99</small></p>
-    </div>
-    <div style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product2.html'">
-      <img src="promo2.jpg" alt="Promo 2" style="width: 100%; border-radius: 8px;">
-      <p><strong>Product 2</strong><br><small>$29.99</small></p>
-    </div>
-    <div style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product3.html'">
-      <img src="promo3.jpg" alt="Promo 3" style="width: 100%; border-radius: 8px;">
-      <p><strong>Product 3</strong><br><small>$14.99</small></p>
-    </div>
-    <div style="display: inline-block; width: 200px; margin-right: 10px; text-align: center;" onclick="location.href='product4.html'">
-      <img src="promo4.jpg" alt="Promo 4" style="width: 100%; border-radius: 8px;">
-      <p><strong>Product 4</strong><br><small>$49.99</small></p>
-    </div>
-    <!-- Add more products here -->
-  </div>
-</div>
- <div class="navoption" onclick="location.href='page1.html'">
-        <img src="logo1.png" class="navlogo" alt="Logo 1" />
-        <h3>Explore Products</h3>
-        <p>Browse our latest and greatest products, curated just for you.</p>
-        <img src="image1.jpg" class="navpreview" alt="Products Preview"/>
+
+      <!-- Promo Section -->
+      <div class="promo-section">
+        <h2> Promotions </h2>
+        <div class="promo-scroller">
+          <div class="promo-item" onclick="location.href='product2.html'">
+            <iframe src="https://www.youtube.com/embed/pJ5o2fxSAM4" title="Promo Video" frameborder="0" allowfullscreen></iframe>
+            <p><strong>Video Promo</strong><br><small>R29.99</small></p>
+          </div>
+          <div class="promo-item" onclick="location.href='product2.html'">
+            <img src="brand5.png" alt="Promo 2">
+            <p><strong>Product 2</strong><br><small>R29.99</small></p>
+          </div>
+          <div class="promo-item" onclick="location.href='product3.html'">
+            <img src="brand5.png" alt="Promo 3">
+            <p><strong>Product 3</strong><br><small>R14.99</small></p>
+          </div>
+          <div class="promo-item" onclick="location.href='product4.html'">
+            <img src="brand5.png" alt="Promo 4">
+            <p><strong>Product 4</strong><br><small>R49.99</small></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Options -->
+       <h2> Make Your Move </h2>
+      <div class="navoption" onclick="location.href='page1.html'">
+        <img src="brand5.png" class="navlogo" alt="Logo 1" />
+        <div class="navtext">
+          <h3>Explore Products</h3>
+          <p>Browse our latest and greatest products, curated just for you.</p>
+        </div>
       </div>
 
       <div class="navoption" onclick="location.href='page2.html'">
-        <img src="logo2.png" class="navlogo" alt="Logo 2" />
-        <h3>Learn with Us</h3>
-        <p>Access tutorials, webinars, and learning paths tailored to your goals.</p>
-        <img src="image2.jpg" class="navpreview" alt="Learning Preview"/>
+        <img src="brand7.png" class="navlogo" alt="Logo 2" />
+        <div class="navtext">
+          <h3>Learn with Us</h3>
+          <p>Access tutorials, webinars, and learning paths tailored to your goals.</p>
+        </div>
       </div>
 
       <div class="navoption" onclick="location.href='page3.html'">
-        <img src="logo3.png" class="navlogo" alt="Logo 3" />
-        <h3>Join the Community</h3>
-        <p>Connect with other users and share your experiences and feedback.</p>
-        <img src="image3.jpg" class="navpreview" alt="Community Preview"/>
+        <img src="brand5.png" class="navlogo" alt="Logo 3" />
+        <div class="navtext">
+          <h3>Join the Community</h3>
+          <p>Connect with other users and share your experiences and feedback.</p>
+        </div>
       </div>
 
       <div class="navoption" onclick="location.href='page4.html'">
-        <img src="logo4.png" class="navlogo" alt="Logo 4" />
-        <h3>Get Support</h3>
-        <p>Need help? Our support team is here to assist you 24/7.</p>
-        <img src="image4.jpg" class="navpreview" alt="Support Preview"/>
+        <img src="brand5.png" class="navlogo" alt="Logo 4" />
+        <div class="navtext">
+          <h3>Get Support</h3>
+          <p>Need help? Our support team is here to assist you 24/7.</p>
+        </div>
       </div>
+
     </div>
   </div>
 
