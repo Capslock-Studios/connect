@@ -92,6 +92,59 @@
     .checkout-btn:hover {
       background: #1e7e34;
     }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .bank-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .bank-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .close-btn:hover {
+      color: #000;
+    }
   </style>
 </head>
 <body>
@@ -102,7 +155,22 @@
     <div class="total" id="total"></div>
     <div class="cart-actions">
       <button class="remove-btn" onclick="clearCart()">Clear Cart</button>
-      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+      <button class="checkout-btn" onclick="showModal()">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="hideModal()">&times;</span>
+      <h2>Select a Payment Method</h2>
+      <div>
+        <div class="bank-btn" onclick="pay('FNB')">FNB</div>
+        <div class="bank-btn" onclick="pay('Capitec')">Capitec</div>
+        <div class="bank-btn" onclick="pay('Nedbank')">Nedbank</div>
+        <div class="bank-btn" onclick="pay('Standard Bank')">Standard Bank</div>
+        <div class="bank-btn" onclick="pay('Absa')">Absa</div>
+      </div>
     </div>
   </div>
 
@@ -166,14 +234,22 @@
       updateCartDisplay();
     }
 
-    function checkout() {
+    function showModal() {
       if (cart.length === 0) {
         alert("Your cart is empty.");
         return;
       }
+      document.getElementById("paymentModal").style.display = "flex";
+    }
 
-      alert("Proceeding to checkout!");
-      // Replace this with actual payment logic or redirect
+    function hideModal() {
+      document.getElementById("paymentModal").style.display = "none";
+    }
+
+    function pay(bank) {
+      alert(`Redirecting to ${bank} payment gateway...`);
+      hideModal();
+      // You could also redirect to a URL or simulate transaction processing
     }
 
     updateCartDisplay();
