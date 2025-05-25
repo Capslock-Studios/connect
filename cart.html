@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f0f0f0;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity {
+      min-width: 30px;
+      text-align: center;
+    }
+
+    button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .qty-btn {
+      background: #007bff;
+      color: white;
+    }
+
+    .qty-btn:hover {
+      background: #0056b3;
+    }
+
+    .remove-btn {
+      background: #dc3545;
+      color: white;
+    }
+
+    .remove-btn:hover {
+      background: #a71d2a;
+    }
+
+    .total {
+      font-size: 20px;
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .cart-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .checkout-btn {
+      background: #28a745;
+      color: white;
+    }
+
+    .checkout-btn:hover {
+      background: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart-container">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+    <div class="total" id="total"></div>
+    <div class="cart-actions">
+      <button class="remove-btn" onclick="clearCart()">Clear Cart</button>
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    function updateCartDisplay() {
+      const cartItemsDiv = document.getElementById("cart-items");
+      const totalDiv = document.getElementById("total");
+      cartItemsDiv.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+        totalDiv.textContent = "";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+
+        cartItemsDiv.innerHTML += `
+          <div class="cart-item">
+            <span>${item.name} - R${item.price.toFixed(2)}</span>
+            <div class="item-controls">
+              <button class="qty-btn" onclick="decreaseQty(${index})">−</button>
+              <span class="quantity">${item.quantity}</span>
+              <button class="qty-btn" onclick="increaseQty(${index})">+</button>
+              <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+      });
+
+      totalDiv.textContent = `Total: R${total.toFixed(2)}`;
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function increaseQty(index) {
+      cart[index].quantity += 1;
+      updateCartDisplay();
+    }
+
+    function decreaseQty(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+      } else {
+        removeItem(index);
+      }
+      updateCartDisplay();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function clearCart() {
+      cart = [];
+      localStorage.removeItem("cart");
+      updateCartDisplay();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+
+      alert("Proceeding to checkout!");
+      // Replace this with actual payment logic or redirect
+    }
+
+    updateCartDisplay();
+  </script>
+
+</body>
+</html>

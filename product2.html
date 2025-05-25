@@ -1,0 +1,93 @@
+<!-- product2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    .product-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .product-container img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-details {
+      margin-top: 20px;
+    }
+
+    .product-details h2 {
+      margin: 0;
+    }
+
+    .product-details p {
+      color: #555;
+    }
+
+    .price {
+      font-size: 24px;
+      color: green;
+      margin: 15px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-container">
+    <img src="bread.jpg" alt="Product Image">
+    <div class="product-details">
+      <h2>Egg-Bread/ Skhaf'thini</h2>
+      <p>Wholesome Brown Bread dipped in scrammbled egg and toasted with baccon and other fillings.</p>
+      <div class="price">R29.99</div>
+      <button onclick="addToCart()">Add to Cart</button>
+       <button onclick="buyNow()">buy now</button>
+    </div>
+  </div>
+
+  <script>
+  function addToCart() {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const existing = cart.find(item => item.name === "Product 2");
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ name: "Product 2", price: 29.99, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Added to cart!");
+}
+
+  </script>
+
+</body>
+</html>
