@@ -40,13 +40,13 @@
 
     .price {
       font-size: 24px;
-      color: green;
+      color: #fea41c;
       margin: 15px 0;
     }
 
     button {
       padding: 10px 20px;
-      background: #28a745;
+      background: #fea41c;
       color: white;
       border: none;
       border-radius: 5px;
@@ -60,6 +60,56 @@
   </style>
 </head>
 <body>
+
+ <style>
+    /* Header Navigation */
+    .header {
+      background-color: #ffffff00;
+      color: rgb(255, 163, 24);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-links a,
+    .nav-links button {
+      color: white;
+      text-decoration: none;
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+
+  </style>
+  <!-- ✅ Header Navigation -->
+  <header class="header">
+      <button onclick="goBack()">← Back</button>
+      <button onclick="goHome()">Home</button>
+    </nav>
+  </header>
 
   <div class="product-container">
     <img src="bread.jpg" alt="Product Image">
@@ -95,5 +145,16 @@
 
   </script>
 
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function goHome() {
+      window.location.href = "index.html"; // Update to your homepage filename
+    }
+  </script>
 </body>
 </html>
+
+
