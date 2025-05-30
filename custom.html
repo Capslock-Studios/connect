@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customize Skhafthini Plan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #e63946;
+    }
+    .plan-selector {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .customize-form {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .day {
+      margin-bottom: 20px;
+    }
+    .day h3 {
+      margin-bottom: 10px;
+      color: #555;
+    }
+    label {
+      display: block;
+      margin-left: 20px;
+      margin-bottom: 5px;
+    }
+    .contact-info {
+      margin-top: 30px;
+    }
+    .contact-info input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #e63946;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #b52a36;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+      color: #e63946;
+    }
+    .modal-content a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2a9d8f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .modal-content a:hover {
+      background-color: #21867a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Customize Your Skhafthini Plan</h1>
+
+  <div class="plan-selector">
+    <label for="plan">Select Plan:</label>
+    <select id="plan" onchange="loadMeals()">
+      <option value="r750">R750 Plan</option>
+      <option value="r1000">R1000 Plan</option>
+      <option value="r1500">R1500 Plan</option>
+    </select>
+  </div>
+
+  <form class="customize-form" id="customForm">
+    <!-- Dynamic content will appear here -->
+  </form>
+
+  <div class="modal" id="invoiceModal">
+    <div class="modal-content">
+      <h2>How to Settle Your Invoice</h2>
+      <p>Please check your email for the invoice. You can pay via EFT or use our alternative payment page below.</p>
+      <a id="paymentLink" href="#" target="_blank">Go to Payment Page</a>
+    </div>
+  </div>
+
+  <script>
+    const meals = {
+      r750: ["Pap & Chicken Stew", "Rice & Beef Curry", "Samp & Beans", "Macaroni & Mince", "Vetkoek & Mince", "Boerewors & Pap", "Chicken Liver & Dumpling"],
+      r1000: ["Chicken Wrap & Chips", "Beef Burger & Salad", "Kota with Russians", "Grilled Chicken & Rice", "Fish & Chips", "Pasta Alfredo", "Bunny Chow"],
+      r1500: ["Quinoa Salad & Chicken", "Lentil Wrap & Apple", "Veggie Stir-fry", "Wholegrain Pasta & Tuna", "Boiled Egg & Salad", "Smoothie Bowl", "Tofu & Greens"]
+    };
+
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+    function loadMeals() {
+      const plan = document.getElementById('plan').value;
+      const form = document.getElementById('customForm');
+      form.innerHTML = '';
+
+      days.forEach(day => {
+        const section = document.createElement('div');
+        section.className = 'day';
+
+        const header = document.createElement('h3');
+        header.innerText = day;
+        section.appendChild(header);
+
+        meals[plan].forEach(meal => {
+          const label = document.createElement('label');
+          const radio = document.createElement('input');
+          radio.type = 'radio';
+          radio.name = day;
+          radio.value = meal;
+          label.appendChild(radio);
+          label.appendChild(document.createTextNode(' ' + meal));
+          section.appendChild(label);
+        });
+
+        form.appendChild(section);
+      });
+
+      const contactDiv = document.createElement('div');
+      contactDiv.className = 'contact-info';
+      contactDiv.innerHTML = `
+        <h3>Your Contact Details</h3>
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+      `;
+      form.appendChild(contactDiv);
+
+      const submitButton = document.createElement('button');
+      submitButton.type = 'submit';
+      submitButton.innerText = 'Submit & Receive Invoice';
+      form.appendChild(submitButton);
+    }
+
+    document.getElementById('customForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const selections = {};
+
+      days.forEach(day => {
+        const meal = formData.get(day);
+        selections[day] = meal || "None selected";
+      });
+
+      const contactDetails = {
+        name: formData.get("fullname"),
+        email: formData.get("email"),
+        phone: formData.get("phone")
+      };
+
+      const params = new URLSearchParams({
+        name: contactDetails.name,
+        email: contactDetails.email,
+        phone: contactDetails.phone,
+        ...selections
+      }).toString();
+
+      document.getElementById('paymentLink').href = 'payment.html?' + params;
+      document.getElementById('invoiceModal').style.display = 'block';
+    });
+
+    window.onload = loadMeals;
+  </script>
+</body>
+</html>
