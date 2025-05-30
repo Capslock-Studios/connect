@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skhafthini | Lunch Box Subscription</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff8f0;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #e63946;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .tier {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 1rem;
+      padding: 1.5rem;
+      width: 300px;
+      text-align: center;
+    }
+    .tier h2 {
+      color: #e63946;
+    }
+    .tier p {
+      margin: 0.5rem 0;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #e63946;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #b52a36;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #e63946;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #b52a36;
+    }
+    .view-menu {
+      margin-left: 10px;
+      background-color: #f4a261;
+    }
+    .view-menu:hover {
+      background-color: #e76f51;
+    }
+    .customize-btn {
+      margin-left: 10px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #264653;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .customize-btn:hover {
+      background-color: #1b333f;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .download-btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2a9d8f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .download-btn:hover {
+      background-color: #21867a;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: #f8f8f8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Skhafthini</h1>
+    <p>Pay once. Get covered the whole month.</p>
+  </header>
+ <style>
+    /* Header Navigation */
+    .header {
+      background-color: #ffffff00;
+      color: rgb(255, 163, 24);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-links a,
+    .nav-links button {
+      color: white;
+      text-decoration: none;
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+  <!-- ✅ Header Navigation -->
+  <header class="header">
+      <button onclick="goBack()">← Back</button>
+      <button onclick="goHome()">Home</button>
+    </nav>
+  </header>
+  
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function goHome() {
+      window.location.href = "index.html"; // Update to your homepage filename
+    }
+  </script>
+  <div class="container">
+    <div class="tier">
+      <h2>R750 Plan</h2>
+      <p><strong>Regular Lunch Menu</strong></p>
+      <p>Enjoy a mix of daily home-style lunchbox meals with fresh sides and a drink.</p>
+   
+        <button onclick="addToCart()">Add to Cart</button>
+       <button onclick="buyNow()">buy now</button>
+      <a class="btn view-menu" onclick="document.getElementById('menuModal').style.display='block'">View Menu</a>
+    </div>
+
+    <div class="tier">
+      <h2>R1000 Plan</h2>
+      <p><strong>Restaurant Selection</strong></p>
+      <p>A curated selection of meals from your favorite local restaurants every week.</p>
+       <button onclick="addToCart()">Add to Cart</button>
+       <button onclick="buyNow()">buy now</button>
+      <a class="btn view-menu" onclick="document.getElementById('menuModal').style.display='block'">View Menu</a>
+    </div>
+
+    <div class="tier">
+      <h2>R1500 Plan</h2>
+      <p><strong>Healthy Lifestyle</strong></p>
+      <p>Fresh, nutritious meals sourced from Food Lovers Market. Health on your plate!</p>
+       <button onclick="addToCart()">Add to Cart</button>
+       <button onclick="buyNow()">buy now</button>
+      <a class="btn view-menu" onclick="document.getElementById('menuModal').style.display='block'">View Menu</a>
+    </div>
+  </div>
+
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('menuModal').style.display='none'">&times;</span>
+      <h2>Weekly Menu</h2>
+      <ul>
+        <li>Monday: Pap & Chicken Stew</li>
+        <li>Tuesday: Rice & Beef Curry</li>
+        <li>Wednesday: Samp & Beans</li>
+        <li>Thursday: Macaroni & Mince</li>
+        <li>Friday: Vetkoek & Mince</li>
+        <li>Saturday: Braai Plate (Optional)</li>
+        <li>Sunday: Chef's Surprise (Optional)</li>
+      </ul>
+      <a class="download-btn" href="Skhafthini_Menus.xlsx" download>Download PDF</a>
+      <a class="customize-btn" href="#">Customize</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Skhafthini. All rights reserved.
+  </footer>
+
+  <script>
+  function addToCart() {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const existing = cart.find(item => item.name === "Egg-Bread/ Skhaf'thini");
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ name: "Egg-Bread/ Skhaf'thini", price: 49.99, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Added to cart!");
+}
+
+
+
+  function buyNow() {
+    window.location.href = "cart.html";
+  }
+
+  </script>
+  <script>
+    window.onclick = function(event) {
+      const modal = document.getElementById('menuModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
