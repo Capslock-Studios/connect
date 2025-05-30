@@ -12,7 +12,7 @@
       padding: 0;
       color: #333;
     }
-    header {
+    header.main-header {
       background-color: #e63946;
       color: white;
       padding: 1.5rem;
@@ -20,6 +20,35 @@
     }
     h1 {
       margin: 0;
+    }
+    .hero {
+      width: 100%;
+      height: 300px;
+      background-image: url('https://images.unsplash.com/photo-1606788075761-7791f8d69b1d');
+      background-size: cover;
+      background-position: center;
+    }
+    .nav-header {
+      background-color: #ffffff00;
+      color: rgb(255, 163, 24);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .nav-header button {
+      color: white;
+      background: #e63946;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    .nav-header button:hover {
+      background-color: #b52a36;
     }
     .container {
       display: flex;
@@ -42,52 +71,36 @@
     .tier p {
       margin: 0.5rem 0;
     }
-
-    .button {
+    .btn, .button, .download-btn, .customize-btn {
       display: inline-block;
       margin-top: 1rem;
       padding: 0.75rem 1.5rem;
-      background-color: #e63946;
       color: white;
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
-    .button:hover {
-      background-color: #b52a36;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
+    .btn, .button {
       background-color: #e63946;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
     }
-    .btn:hover {
+    .btn:hover, .button:hover {
       background-color: #b52a36;
     }
     .view-menu {
-      margin-left: 10px;
       background-color: #f4a261;
     }
     .view-menu:hover {
       background-color: #e76f51;
     }
+    .download-btn {
+      background-color: #2a9d8f;
+    }
+    .download-btn:hover {
+      background-color: #21867a;
+    }
     .customize-btn {
-      margin-left: 10px;
-      display: inline-block;
-      padding: 10px 20px;
       background-color: #264653;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
     }
     .customize-btn:hover {
       background-color: #1b333f;
@@ -124,19 +137,6 @@
       text-decoration: none;
       cursor: pointer;
     }
-    .download-btn {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #2a9d8f;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    .download-btn:hover {
-      background-color: #21867a;
-    }
     footer {
       text-align: center;
       padding: 1rem;
@@ -146,75 +146,69 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="nav-header">
+    <button onclick="goBack()">← Back</button>
+    <button onclick="goHome()">Home</button>
+  </header>
+
+  <header class="main-header">
     <h1>Skhafthini</h1>
     <p>Pay once. Get covered the whole month.</p>
   </header>
- <style>
-    /* Header Navigation */
-    .header {
-      background-color: #ffffff00;
-      color: rgb(255, 163, 24);
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
 
-    .logo {
-      font-size: 1.5em;
-      font-weight: bold;
-    }
+  <div class="hero">
+    <!-- Hero Section -->
+<div class="hero">
+  <img src="https://afrenet.org/wp-content/uploads/2024/12/kk2-e1735587953635.webp" class="active">
+  <img src="https://afrenet.org/wp-content/uploads/2024/12/kk1-300x300.webp">
+  <img src="https://www.thespruceeats.com/thmb/MDioJIXM7Yaw5ZtJhzhG5wiO05Y=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-basic-french-toast-3056820-hero-01-6ed70ff7901a4e64995d890b03946ac0.jpg">
+  <img src="https://sugarspunrun.com/wp-content/uploads/2023/08/French-Toast-recipe-1-of-1.jpg">
+  <img src="https://hips.hearstapps.com/hmg-prod/images/babka-french-toast-index-672ee93f7b3ad.jpg?crop=0.8890550674061611xw:1xh;center,top&resize=1200:*">
+</div>
 
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
 
-    .nav-links a,
-    .nav-links button {
-      color: white;
-      text-decoration: none;
-      background: none;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.2s;
-    }
+  .hero img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
 
-    .nav-links a:hover,
-    .nav-links button:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-  </style>
-  <!-- ✅ Header Navigation -->
-  <header class="header">
-      <button onclick="goBack()">← Back</button>
-      <button onclick="goHome()">Home</button>
-    </nav>
-  </header>
-  
-  <script>
-    function goBack() {
-      window.history.back();
-    }
+  .hero img.active {
+    opacity: 1;
+  }
+</style>
 
-    function goHome() {
-      window.location.href = "index.html"; // Update to your homepage filename
-    }
-  </script>
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.hero img');
+
+  setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }, 3000); // Change slide every 3 seconds
+</script>
+  </div>
+
   <div class="container">
     <div class="tier">
       <h2>R750 Plan</h2>
       <p><strong>Regular Lunch Menu</strong></p>
       <p>Enjoy a mix of daily home-style lunchbox meals with fresh sides and a drink.</p>
-   
-        <button onclick="addToCart()">Add to Cart</button>
-       <button onclick="buyNow()">buy now</button>
+      <button class="btn" onclick="addToCart()">Add to Cart</button>
+      <button class="btn" onclick="buyNow()">Buy Now</button>
       <a class="btn view-menu" onclick="document.getElementById('menuModal').style.display='block'">View Menu</a>
     </div>
 
@@ -222,8 +216,8 @@
       <h2>R1000 Plan</h2>
       <p><strong>Restaurant Selection</strong></p>
       <p>A curated selection of meals from your favorite local restaurants every week.</p>
-       <button onclick="addToCart()">Add to Cart</button>
-       <button onclick="buyNow()">buy now</button>
+      <button class="btn" onclick="addToCart()">Add to Cart</button>
+      <button class="btn" onclick="buyNow()">Buy Now</button>
       <a class="btn view-menu" onclick="document.getElementById('menuModal').style.display='block'">View Menu</a>
     </div>
 
@@ -231,8 +225,8 @@
       <h2>R1500 Plan</h2>
       <p><strong>Healthy Lifestyle</strong></p>
       <p>Fresh, nutritious meals sourced from Food Lovers Market. Health on your plate!</p>
-       <button onclick="addToCart()">Add to Cart</button>
-       <button onclick="buyNow()">buy now</button>
+      <button class="btn" onclick="addToCart()">Add to Cart</button>
+      <button class="btn" onclick="buyNow()">Buy Now</button>
       <a class="btn view-menu" onclick="document.getElementById('menuModal').style.display='block'">View Menu</a>
     </div>
   </div>
@@ -260,28 +254,30 @@
   </footer>
 
   <script>
-  function addToCart() {
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const existing = cart.find(item => item.name === "Egg-Bread/ Skhaf'thini");
+    function addToCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const existing = cart.find(item => item.name === "Egg-Bread/ Skhaf'thini");
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name: "Egg-Bread/ Skhaf'thini", price: 49.99, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to cart!");
+    }
 
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({ name: "Egg-Bread/ Skhaf'thini", price: 49.99, quantity: 1 });
-  }
+    function buyNow() {
+      window.location.href = "cart.html";
+    }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert("Added to cart!");
-}
+    function goBack() {
+      window.history.back();
+    }
 
+    function goHome() {
+      window.location.href = "index.html";
+    }
 
-
-  function buyNow() {
-    window.location.href = "cart.html";
-  }
-
-  </script>
-  <script>
     window.onclick = function(event) {
       const modal = document.getElementById('menuModal');
       if (event.target == modal) {
@@ -291,18 +287,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
