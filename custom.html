@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Customize Skhafthini Plan</title>
   <style>
     body {
@@ -119,8 +119,8 @@
   <div class="modal" id="invoiceModal">
     <div class="modal-content">
       <h2>How to Settle Your Invoice</h2>
-      <p>Please check your email for the invoice. You can pay via EFT or Or Just send this to our whatsApp page below.</p>
-     <!---WHatsApp Captures data and loads it on a whatsApp chat box--><a id="paymentLink" href="#" target="_blank">whatsApp</a>
+      <p>Please check your email for the invoice. You can pay via EFT or just send this message to our WhatsApp below.</p>
+      <a id="paymentLink" href="#" target="_blank">WhatsApp</a>
     </div>
   </div>
 
@@ -176,10 +176,23 @@
       form.appendChild(submitButton);
     }
 
+    function buildWhatsAppLink(contactDetails, selections) {
+      const phoneNumber = "27108730";
+      let message = `Hello Skhafthini,%0A%0AHere is my lunch plan (%0APlan: ${contactDetails.plan.toUpperCase()}):%0A`;
+
+      Object.entries(selections).forEach(([day, meal]) => {
+        message += `${day}: ${meal || "None"}%0A`;
+      });
+
+      message += `%0AName: ${contactDetails.name}%0AEmail: ${contactDetails.email}%0APhone: ${contactDetails.phone}`;
+      return `https://wa.me/${phoneNumber}?text=${message}`;
+    }
+
     document.getElementById('customForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const formData = new FormData(e.target);
       const selections = {};
+      const selectedPlan = document.getElementById('plan').value;
 
       days.forEach(day => {
         const meal = formData.get(day);
@@ -189,17 +202,11 @@
       const contactDetails = {
         name: formData.get("fullname"),
         email: formData.get("email"),
-        phone: formData.get("phone")
+        phone: formData.get("phone"),
+        plan: selectedPlan
       };
 
-      const params = new URLSearchParams({
-        name: contactDetails.name,
-        email: contactDetails.email,
-        phone: contactDetails.phone,
-        ...selections
-      }).toString();
-
-      document.getElementById('paymentLink').href = 'payment.html?' + params;
+      document.getElementById('paymentLink').href = buildWhatsAppLink(contactDetails, selections);
       document.getElementById('invoiceModal').style.display = 'block';
     });
 
