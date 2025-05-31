@@ -178,11 +178,11 @@
 
     function buildWhatsAppLink(contactDetails, selections) {
       const phoneNumber = "+27685090669 ";
-      let message = `Hello Skhafthini,%0A%0AHere is my lunch plan (%0APlan: ${contactDetails.plan.toUpperCase()}):%0A`;
+      let message = `Hello,%0A%0AHere is my lunch plan (%0APlan: ${contactDetails.plan.toUpperCase()}):%0A`;
 
       message += `%0AName: ${contactDetails.name}%0AEmail: ${contactDetails.email}%0APhone: ${contactDetails.phone}`;
       return `https://wa.me/${phoneNumber}?text=${message}`;
-      
+
       Object.entries(selections).forEach(([day, meal]) => {
         message += `${day}: ${meal || "None"}%0A`;
       });
