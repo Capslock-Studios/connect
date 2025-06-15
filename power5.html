@@ -2,152 +2,167 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>1Pulse.online | Partner With Us</title>
+  <title>Partner with 1Pulse.online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
+      background: #f4f4f4;
     }
     .btn-open {
-      padding: 12px 24px;
-      background: #e63946;
+      display: block;
+      margin: 40px auto;
+      padding: 14px 28px;
+      font-size: 16px;
+      background-color: #e63946;
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 8px;
       cursor: pointer;
-      margin: 40px;
     }
     .modal {
       display: none;
       position: fixed;
       z-index: 999;
-      left: 0; top: 0;
+      top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      align-items: center;
+      background-color: rgba(0,0,0,0.7);
       justify-content: center;
+      align-items: center;
     }
     .modal-content {
       background: white;
-      padding: 30px;
-      width: 90%;
-      max-width: 700px;
       border-radius: 10px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.2);
-      position: relative;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
       max-height: 90vh;
       overflow-y: auto;
+      position: relative;
     }
     .modal-content h2 {
       margin-top: 0;
-      color: #333;
+      font-size: 20px;
+      text-align: center;
     }
-    .modal-content label {
+    label {
+      font-size: 14px;
+      margin-top: 10px;
       display: block;
-      margin-top: 15px;
     }
-    .modal-content input,
-    .modal-content textarea,
-    .modal-content select {
+    input, select, textarea {
       width: 100%;
       padding: 10px;
-      border-radius: 6px;
+      font-size: 14px;
       border: 1px solid #ccc;
-      margin-top: 5px;
-    }
-    .modal-content .checkbox-group {
-      margin-top: 10px;
-    }
-    .modal-content .checkbox-group label {
-      display: block;
+      border-radius: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
     }
     .btn-close {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 20px;
-      color: #666;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      color: #555;
       cursor: pointer;
     }
-    .btn-submit {
+    .btn-send {
+      width: 100%;
       margin-top: 20px;
-      padding: 12px;
       background: #2a9d8f;
       color: white;
+      font-size: 16px;
+      padding: 12px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-<!-- Trigger Button -->
 <button class="btn-open" onclick="document.getElementById('modal').style.display='flex'">
   Partner With Us
 </button>
 
-<!-- Modal -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="btn-close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
     <h2>Partner With 1Pulse.online</h2>
 
-    <form>
-      <label>Full Name / Business Name:</label>
-      <input type="text" required>
+    <form id="partnerForm" onsubmit="sendToWhatsApp(); return false;">
+      <label>Full Name / Business:</label>
+      <input type="text" id="name" required>
 
-      <label>Email Address:</label>
-      <input type="email" required>
+      <label>Email:</label>
+      <input type="email" id="email" required>
 
-      <label>Phone Number:</label>
-      <input type="text" required>
+      <label>Phone:</label>
+      <input type="text" id="phone" required>
 
-      <label>Type of Partner:</label>
-      <select required>
+      <label>Type:</label>
+      <select id="type">
         <option>Individual Investor</option>
-        <option>Business (Service for Equity)</option>
+        <option>Business (Service for Shares)</option>
         <option>Both</option>
       </select>
 
       <label>Cash Contribution (ZAR):</label>
-      <input type="number">
+      <input type="number" id="cash">
 
-      <label>Services You Can Offer:</label>
-      <textarea rows="3" placeholder="e.g. legal, marketing, venues..."></textarea>
+      <label>Services You Offer:</label>
+      <textarea id="services"></textarea>
 
       <label>Estimated Value of Services (ZAR):</label>
-      <input type="number">
+      <input type="number" id="value">
 
-      <label>Number of Shares You're Interested In:</label>
-      <input type="number">
+      <label>Number of Shares Interested In:</label>
+      <input type="number" id="shares">
 
-      <label>Preferred Return(s):</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox"> Equity (Shares)</label>
-        <label><input type="checkbox"> Dashboard Advertising</label>
-        <label><input type="checkbox"> Listed Partner Status</label>
-        <label><input type="checkbox"> Combination</label>
-      </div>
+      <label>Why do you want to partner?</label>
+      <textarea id="why"></textarea>
 
-      <label>Why are you interested in partnering?</label>
-      <textarea rows="3"></textarea>
+      <label>Expectations:</label>
+      <textarea id="expect"></textarea>
 
-      <label>What do you expect from this partnership?</label>
-      <textarea rows="3"></textarea>
-
-      <div class="checkbox-group">
-        <label><input type="checkbox" required> I understand this is an expression of interest only</label>
-        <label><input type="checkbox"> Please send me investor updates</label>
-      </div>
-
-      <button type="submit" class="btn-submit">Submit Interest</button>
+      <button class="btn-send" type="submit">Send via WhatsApp</button>
     </form>
   </div>
 </div>
+
+<script>
+  function sendToWhatsApp() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const type = document.getElementById("type").value;
+    const cash = document.getElementById("cash").value;
+    const services = document.getElementById("services").value;
+    const value = document.getElementById("value").value;
+    const shares = document.getElementById("shares").value;
+    const why = document.getElementById("why").value;
+    const expect = document.getElementById("expect").value;
+
+    const message = `*1Pulse.online Partnership Interest*\n
+Name/Business: ${name}
+Email: ${email}
+Phone: ${phone}
+Partner Type: ${type}
+Cash Contribution: R${cash}
+Services Offered: ${services}
+Estimated Service Value: R${value}
+Shares Interested In: ${shares}
+Why Partner: ${why}
+Expectations: ${expect}`;
+
+    const encodedMsg = encodeURIComponent(message);
+   const whatsappNumber = "+27685090669"; // e.g. 27831234567
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, '_blank');
+  }
+</script>
 
 </body>
 </html>
