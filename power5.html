@@ -1,151 +1,115 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css"/>
-    <title>WhatsNext Companies</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1Pulse.online | Press Kit</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #0a74da;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .submit-btn {
+      margin-top: 15px;
+      background-color: #25D366;
+    }
+  </style>
 </head>
 <body>
 
-			<div class="container">
-		
-			<div class="content-wrapper">
-                
-                
+  <h1>Welcome to 1Pulse.online</h1>
+  <button id="openModal">View Press Kit</button>
 
+  <div id="pressKitModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>1Pulse.online Press Kit</h2>
+      <p>Please fill in your interest or request. When you click "Submit", you'll be taken to WhatsApp to send us your message directly.</p>
 
-                
-				<div class="stopw-section" id="internet">
-					<!-- There is a bug with overlow -->
-				<div class="lap-box-fixer">
-					<div class="lap-boxes">
-						
-               
-                          <style>
-                            body {
-                              font-family: Arial, sans-serif;
-                              padding: 20px;
-                            }
-                            input, select, textarea, button {
-                              margin: 10px 0;
-                              padding: 8px;
-                              font-size: 16px;
-                            }
-                            .formula {
-                              background: #f0f0f0;
-                              padding: 10px;
-                              margin: 10px 0;
-                              border-left: 5px solid #333;
-                            }
-                          </style>
-                          
-                          <h1>Learning Calculator 📚</h1>
-                          <label>Enter a question (e.g., 20% of 150):</label><br>
-                          <input type="text" id="question" placeholder="e.g., 20% of 150" size="40"><br>
-                        
-                          <label>Choose a model:</label><br>
-                          <select id="modelSelect">
-                            <option value="model1">Model 1: Convert % to decimal</option>
-                            <option value="model2">Model 2: Use fraction</option>
-                            <option value="model3">Model 3: Multiply then divide</option>
-                          </select>
-                        
-                          <div class="formula" id="formulaDisplay">
-                            💡 Formula: 0.2 × 150
-                          </div>
-                        
-                          <label>Your steps (explain how you solved it):</label><br>
-                          <textarea id="steps" rows="4" cols="50" placeholder="Write your steps here..."></textarea><br>
-                        
-                          <button onclick="showFormula()">Switch Formula</button>
-                          <button onclick="checkAnswer()">Check Steps</button>
-                        
-                          <div id="result"></div>
-                        
-                          <script>
-                            const formulaMap = {
-                              model1: "💡 Formula: Convert 20% to decimal → 0.2 × 150",
-                              model2: "💡 Formula: Use fraction → (20/100) × 150",
-                              model3: "💡 Formula: Multiply, then divide → 20 × 150 ÷ 100"
-                            };
-                        
-                            function showFormula() {
-                              const selected = document.getElementById("modelSelect").value;
-                              document.getElementById("formulaDisplay").innerText = formulaMap[selected];
-                            }
-                        
-                            function checkAnswer() {
-                              const steps = document.getElementById("steps").value;
-                              const selectedModel = document.getElementById("modelSelect").value;
-                              let result = "Nice work! 🎉";
-                        
-                              if (!steps.includes("150")) {
-                                result = "Hmm, make sure you're using the correct numbers! 🧐";
-                              }
-                        
-                              document.getElementById("result").innerHTML = `<p>${result}</p>`;
-                            }
-                          </script>
-                        
+      <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
+        <label for="message">Your message:</label><br>
+        <textarea id="message" name="message" placeholder="e.g. Hi, I'm interested in collaborating with 1Pulse.online..."></textarea>
+        <button type="submit" class="submit-btn">Submit to WhatsApp</button>
+      </form>
+    </div>
+  </div>
 
+  <script>
+    const modal = document.getElementById("pressKitModal");
+    const btn = document.getElementById("openModal");
+    const span = document.getElementById("closeModal");
 
+    btn.onclick = () => modal.style.display = "block";
+    span.onclick = () => modal.style.display = "none";
+    window.onclick = event => { if (event.target === modal) modal.style.display = "none"; }
 
+    function sendToWhatsApp(event) {
+      event.preventDefault();
+      const message = document.getElementById("message").value.trim();
+      if (message === "") {
+        alert("Please enter a message first.");
+        return;
+      }
 
+      const phoneNumber = "27831234567"; // Replace with your actual WhatsApp number (no + sign)
+      const encodedMessage = encodeURIComponent(message);
+      const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      window.open(url, '_blank');
+    }
+  </script>
 
-
-						<br>
-						<br>
-					</div>
-					<br><br>
-				</div>
-				</div>
-			<div class="clock-section" id="clock">
-			<div class="lap-box-fixer">
-			
-			</div>
-				<!-- There is a bug with overlow -->
-			</div>
-	<div class="timer-section" id="timer">
-			<div class="lap-box-fixer">
-				<div class="lap-box" style="margin-top: 130px;">
-					 <div id="companyPicture_Posts" class="company-section"></div>
-	
-
-			</div>
-		</div>
-	</div>
-				<div class="social-section" id="social">
-					
-					<div class="lap-box-fixer">
-						
-							<br><br>
-						<div class="post-content">
-							No more posts to see
-						</div>
-						</div>
-					</div>
-				</div>
-
-				
-				<div class="post-card details"id="posts-container"></div>
-		</div>
-		</div>
-		</div>
-<script></script>
-<script src="screens.js"></script>
-<script src="scripts.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="data.js"></script>
-<script src="scripts.js"></script>
-<script src="search.js"></script>
-	
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" 
-  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" 
-  nonce="abc123">
-</script>
 </body>
-	</html>
-
+</html>
