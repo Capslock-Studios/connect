@@ -1,115 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>1Pulse.online | Press Kit</title>
+  <meta charset="UTF-8">
+  <title>1Pulse.online | Partner With Us</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
       margin: 0;
-      padding: 40px;
-      text-align: center;
+      padding: 0;
     }
-
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      background-color: #0a74da;
+    .btn-open {
+      padding: 12px 24px;
+      background: #e63946;
       color: white;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
+      margin: 40px;
     }
-
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 999;
       left: 0; top: 0;
       width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
     }
-
     .modal-content {
-      background-color: white;
-      margin: 10% auto;
-      padding: 20px;
+      background: white;
+      padding: 30px;
       width: 90%;
-      max-width: 600px;
+      max-width: 700px;
       border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
       position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
     }
-
-    .close {
-      color: #aaa;
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .modal-content label {
+      display: block;
+      margin-top: 15px;
+    }
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+    .modal-content .checkbox-group {
+      margin-top: 10px;
+    }
+    .modal-content .checkbox-group label {
+      display: block;
+    }
+    .btn-close {
       position: absolute;
-      top: 10px;
+      top: 15px;
       right: 20px;
-      font-size: 28px;
-      font-weight: bold;
+      font-size: 20px;
+      color: #666;
       cursor: pointer;
     }
-
-    textarea {
-      width: 100%;
-      height: 150px;
-      margin-top: 10px;
-      padding: 10px;
-      font-size: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .submit-btn {
-      margin-top: 15px;
-      background-color: #25D366;
+    .btn-submit {
+      margin-top: 20px;
+      padding: 12px;
+      background: #2a9d8f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to 1Pulse.online</h1>
-  <button id="openModal">View Press Kit</button>
+<!-- Trigger Button -->
+<button class="btn-open" onclick="document.getElementById('modal').style.display='flex'">
+  Partner With Us
+</button>
 
-  <div id="pressKitModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModal">&times;</span>
-      <h2>1Pulse.online Press Kit</h2>
-      <p>Please fill in your interest or request. When you click "Submit", you'll be taken to WhatsApp to send us your message directly.</p>
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="btn-close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+    <h2>Partner With 1Pulse.online</h2>
 
-      <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
-        <label for="message">Your message:</label><br>
-        <textarea id="message" name="message" placeholder="e.g. Hi, I'm interested in collaborating with 1Pulse.online..."></textarea>
-        <button type="submit" class="submit-btn">Submit to WhatsApp</button>
-      </form>
-    </div>
+    <form>
+      <label>Full Name / Business Name:</label>
+      <input type="text" required>
+
+      <label>Email Address:</label>
+      <input type="email" required>
+
+      <label>Phone Number:</label>
+      <input type="text" required>
+
+      <label>Type of Partner:</label>
+      <select required>
+        <option>Individual Investor</option>
+        <option>Business (Service for Equity)</option>
+        <option>Both</option>
+      </select>
+
+      <label>Cash Contribution (ZAR):</label>
+      <input type="number">
+
+      <label>Services You Can Offer:</label>
+      <textarea rows="3" placeholder="e.g. legal, marketing, venues..."></textarea>
+
+      <label>Estimated Value of Services (ZAR):</label>
+      <input type="number">
+
+      <label>Number of Shares You're Interested In:</label>
+      <input type="number">
+
+      <label>Preferred Return(s):</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox"> Equity (Shares)</label>
+        <label><input type="checkbox"> Dashboard Advertising</label>
+        <label><input type="checkbox"> Listed Partner Status</label>
+        <label><input type="checkbox"> Combination</label>
+      </div>
+
+      <label>Why are you interested in partnering?</label>
+      <textarea rows="3"></textarea>
+
+      <label>What do you expect from this partnership?</label>
+      <textarea rows="3"></textarea>
+
+      <div class="checkbox-group">
+        <label><input type="checkbox" required> I understand this is an expression of interest only</label>
+        <label><input type="checkbox"> Please send me investor updates</label>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Interest</button>
+    </form>
   </div>
-
-  <script>
-    const modal = document.getElementById("pressKitModal");
-    const btn = document.getElementById("openModal");
-    const span = document.getElementById("closeModal");
-
-    btn.onclick = () => modal.style.display = "block";
-    span.onclick = () => modal.style.display = "none";
-    window.onclick = event => { if (event.target === modal) modal.style.display = "none"; }
-
-    function sendToWhatsApp(event) {
-      event.preventDefault();
-      const message = document.getElementById("message").value.trim();
-      if (message === "") {
-        alert("Please enter a message first.");
-        return;
-      }
-
-      const phoneNumber = "27831234567"; // Replace with your actual WhatsApp number (no + sign)
-      const encodedMessage = encodeURIComponent(message);
-      const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-      window.open(url, '_blank');
-    }
-  </script>
+</div>
 
 </body>
 </html>
