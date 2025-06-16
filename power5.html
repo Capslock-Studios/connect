@@ -1,17 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Partner with 1Pulse.online</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1Pulse Customer Types</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
     }
-    .btn-open {
+  .btn-open {
       display: block;
       margin: 40px auto;
       padding: 14px 28px;
@@ -79,10 +80,105 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+    } 
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .customer-card {
+      background: white;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .customer-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .customer-type {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 6px;
+    }
+    .goal {
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .benefits {
+      margin-bottom: 10px;
+    }
+    .benefits li {
+      margin-bottom: 6px;
+    }
+    .cta-btn {
+      display: block;
+      text-align: center;
+      background: #e63946;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .cta-btn:hover {
+      background: #d62839;
     }
   </style>
 </head>
 <body>
+
+  <div class="container">
+    <h1>Who Are You on 1Pulse.online?</h1>
+
+    <!-- Type A: Political Party -->
+    <div class="customer-card">
+      <img src="https://i.ibb.co/hmt4cVf/political.jpg" alt="Political Party">
+      <div class="customer-type">🟥 Political Party</div>
+      <div class="goal">Goal: Win public trust and track members.</div>
+      <ul class="benefits">
+        <li>Track real community issues</li>
+        <li>Assign reps and volunteers</li>
+        <li>Show public impact on a map</li>
+      </ul>
+      <a class="cta-btn" href="#">I’m a Political Party</a>
+    </div>
+
+    <!-- Type B: Profit-Driven -->
+    <div class="customer-card">
+      <img src="https://i.ibb.co/zPwMydX/entrepreneur.jpg" alt="Business Opportunist">
+      <div class="customer-type">🟨 Opportunist / Business</div>
+      <div class="goal">Goal: Make money from traffic and data.</div>
+      <ul class="benefits">
+        <li>Advertise in high-traffic zones</li>
+        <li>Convert public attention into leads</li>
+        <li>Access CRM filters for targeting</li>
+      </ul>
+      <a class="cta-btn" href="#">I’m a Business</a>
+    </div>
+
+    <!-- Type C: Venue/Service Provider -->
+    <div class="customer-card">
+      <img src="https://i.ibb.co/smWYZBk/venue.jpg" alt="Event Venue or Service Provider">
+      <div class="customer-type">🟩 Venue or Service Provider</div>
+      <div class="goal">Goal: Get bookings from parties and the public.</div>
+      <ul class="benefits">
+        <li>Appear in public fix events</li>
+        <li>Get booked by political reps</li>
+        <li>Gain trust through visibility</li>
+      </ul>
+      <a class="cta-btn" href="#">I’m a Venue or Service</a>
+    </div>
+
+  </div>
 
 <button class="btn-open" onclick="document.getElementById('modal').style.display='flex'">
   Partner With Us
